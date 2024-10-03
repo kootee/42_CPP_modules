@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:00:30 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/03 15:10:34 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/03 19:01:16 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <iostream>    // input and output
 # include <string>      // strings
 # include <cctype>      // character modifications
+# include <limits>      // limits
 
 using namespace std;
 
