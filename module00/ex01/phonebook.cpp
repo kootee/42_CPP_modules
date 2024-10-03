@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:01:10 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/03 11:57:41 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/03 15:58:15 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,13 @@ class	Contact
 	string  first_name, last_name, nickname;
 	string	phone_number;
 	string  darkest_secret;
-
+	
 public:
-	static int	index;
-	void		print_info();
+	void		print_column(int idx);
+	void		print_contact_info();
 	Contact 	(string a, string b, string c, string d, string e);
 };
 
-int Contact:: index = 0;
 
 /* New contact constructor */
 Contact::Contact (string a, string b, string c, string d, string e)
@@ -34,54 +33,48 @@ Contact::Contact (string a, string b, string c, string d, string e)
 	nickname = c;
 	phone_number = d;
 	darkest_secret = e;
-	index++;
 }
 
 class	PhoneBook
 {
 	Contact	*contacts[8];
-
 public:
+	static int	index;
 	void    add_contact(); 
 	void	search_contact();
 };
+
+int PhoneBook:: index = 0;
 
 void	PhoneBook::add_contact()
 {
 	string a, b, c, d, e;
 
-	cout << "First name: ";
+	cout << FIRST_NAME;
 	cin >> a;
-	cout << endl;
-	cout << "Last name: ";
+	cout << LAST_NAME;
 	cin >> b;
-	cout << endl;
-	cout << "Nickname: ";
+	cout << NICKNAME;
 	cin >> c;
-	cout << endl;
-	cout << "Phone number: ";
+	cout << PHONE_NUMBER;
 	cin >> d;
-	cout << endl;
-	cout << "Deepest darkest secret: ";
+	cout << DARKEST_SECRET;
 	cin >> e;
-	cout << endl;
 	
-	contacts[Contact::index] = new Contact (a, b, c, d, e);
+	contacts[index % 8] = new Contact (a, b, c, d, e);
+	index++;
 }
-
-void	print_too_long(string str)
-{ 
-	printf("%.*s", 9, str);
-	cout << ".|" << endl;
-}
-
+iindex
 void	print_value(string str)
 {
 	size_t	len;
 
 	len = 10 - str.size();
 	if (len < 0)
-		print_too_long(str);
+	{
+		printf("%.*s", 9, str);
+		cout << ".|";
+	}
 	else
 	{
 		while (len--)
@@ -91,28 +84,45 @@ void	print_value(string str)
 	}
 }
 
-void	Contact::print_info()
+void	Contact::print_column(int idx)
 {
 	cout << COLUMNS << endl;
-	cout << "|" << index;
+	cout << "|         " << idx;
 	print_value(first_name);
 	print_value(last_name);
 	print_value(nickname);
-	cout << "|" << endl;
+	cout << endl;
+}
+
+void	Contact::print_contact_info()
+{
+	cout << FIRST_NAME << first_name << endl;
+	cout << LAST_NAME << last_name << endl;
+	cout << NICKNAME << nickname << endl;
+	cout << PHONE_NUMBER << phone_number << endl;
+	cout << DARKEST_SECRET << darkest_secret << endl;
 }
 
 void	PhoneBook::search_contact()
 {
-	string	to_print;
-	int		i = 0;
+	char		*input;
+	long int	id_print;
 
-
-	while (i++ < 8)
+	for (int i = 0; i < 8; i++)
+		contacts[i]->print_column(i);
+	while (true)
 	{
-		contacts[i]->print_info();
-		cout << "";
+		cout << "Enter index to display: ";
+		cin >> input;
+		id_print = atoi(input);
+		if ((id_print > 7 || id_print < 0) || id_print > index % 8)
+			cout << INVALID_SEARCH_ID << endl;
+		else
+		{
+			contacts[id_print]->print_contact_info();
+			break ;
+		}
 	}
-	
 }
 
 int	main()
@@ -127,11 +137,7 @@ int	main()
 		if (input == "EXIT")
 			break ;
 		else if (input == "ADD")
-		{
-			if (Contact::index == 7)
-				Contact::index = 0;
 			phonebook.add_contact();
-		}
 		else if (input == "SEARCH")
 			phonebook.search_contact();
 	}
