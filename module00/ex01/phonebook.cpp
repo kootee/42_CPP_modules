@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:01:10 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/03 10:56:41 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/03 11:56:11 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,12 @@ class	Contact
 	string  darkest_secret;
 
 public:
-	Contact (string a, string b, string c, string d, string e);
-	int		index;
+	static int	index;
+	void		print_info();
+	Contact 	(string a, string b, string c, string d, string e);
 };
+
+int Contact:: index = 0;
 
 /* New contact constructor */
 Contact::Contact (string a, string b, string c, string d, string e)
@@ -31,6 +34,7 @@ Contact::Contact (string a, string b, string c, string d, string e)
 	nickname = c;
 	phone_number = d;
 	darkest_secret = e;
+	index++;
 }
 
 class	PhoneBook
@@ -38,7 +42,6 @@ class	PhoneBook
 	Contact	*contacts[8];
 
 public:
-	int		num = 0;
 	void    add_contact(); 
 	void	search_contact();
 };
@@ -63,35 +66,70 @@ void	PhoneBook::add_contact()
 	cin >> e;
 	cout << endl;
 	
-	contacts[num] = new Contact (a, b, c, d, e);
-	contacts[num]->index = num;
-	num++;
+	contacts[Contact::index] = new Contact (a, b, c, d, e);
+}
+
+void	print_too_long(string str)
+{ 
+	printf("%.*s", 9, str);
+	cout << ".|" << endl;
+}
+
+void	print_value(string str)
+{
+	size_t	len;
+
+	len = 10 - str.size();
+	if (len < 0)
+		print_too_long(str);
+	else
+	{
+		while (len--)
+			cout << " ";
+		cout << str << "|";
+		printf("%s|", str);
+	}
+}
+
+void	Contact::print_info()
+{
+	cout << "|     INDEX|FIRST NAME| LAST NAME|  NICKNAME|" << endl;
+	cout << "|" << index;
+	print_value(first_name);
+	print_value(last_name);
+	print_value(nickname);
+	cout << "|" << endl;
 }
 
 void	PhoneBook::search_contact()
 {
-	string	name;
+	string	to_print;
+	int		i = 0;
+
+
+	while (i++ < 8)
+	{
+		contacts[i]->print_info();
+		cout << "";
+	}
 	
-	cout << "Search for:";
-	cin >> name;
 }
 
 int	main()
 {
 	PhoneBook   phonebook;
 	string      input;
-	bool        run;
 
-	run = true;
-	while (run)
+	while (true)
 	{
+		cout << "Enter phonebook command: " << endl;
 		getline(cin, input);
 		if (input == "EXIT")
-			run = false;
+			break ;
 		else if (input == "ADD")
 		{
-			if (phonebook.num == 7)
-				phonebook.num = 0;
+			if (Contact::index == 7)
+				Contact::index = 0;
 			phonebook.add_contact();
 		}
 		else if (input == "SEARCH")
