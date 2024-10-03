@@ -6,29 +6,37 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 09:59:16 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/09/23 10:26:22 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/09/23 16:42:25 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "megaphone.hpp"
 
+# include <iostream>
+# include <string>
+# include <cctype>
+
+# define DEFAULT_MSG "* LOUD AND UNBEARABLE FEEDBACK NOISE *"
+
+using namespace std;
+
 int main(int argc, char **argv)
 {
-    std::string arg;
+    string arg;
     
     if (argc == 1)
     {
-        std::cout << DEFAULT_MSG << std::endl;
-        return 0;
+        cout << DEFAULT_MSG << endl;
+        return (0);
     }
     for (int i = 1; i < argc; i++)
     {
         arg = argv[i];
 
-        for (std::string::iterator i = arg.begin(); i != arg.end(); ++i)
-            *i = std::toupper(*i);
-        std::cout << arg << " ";
+        for (string::iterator i = arg.begin(); i != arg.end(); ++i)
+            *i = toupper(*i);
+        cout << arg << " ";
     }
-    std::cout << std::endl;
-    return 0;
+    cout << endl;
+    return (0);
 }
