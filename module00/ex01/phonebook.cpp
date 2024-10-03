@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:01:10 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/03 11:56:11 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/03 11:57:41 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	print_value(string str)
 
 void	Contact::print_info()
 {
-	cout << "|     INDEX|FIRST NAME| LAST NAME|  NICKNAME|" << endl;
+	cout << COLUMNS << endl;
 	cout << "|" << index;
 	print_value(first_name);
 	print_value(last_name);
