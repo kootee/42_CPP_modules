@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:01:10 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/03 19:04:25 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/04 12:54:54 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ void	print_value(string str)
 		while (len--)
 			cout << " ";
 		cout << str << "|";
-		printf("%s|", str);
 	}
 }
 
@@ -135,6 +134,12 @@ void	PhoneBook::search_contact()
 		}
 	}
 }
+int exit_phonebook(int exit_value)
+{
+    if (exit_value)
+        cout << "Exiting phonebook" << endl;
+    return (0);
+}
 
 int	main()
 {
@@ -144,9 +149,10 @@ int	main()
 	while (true)
 	{
 		cout << "Enter phonebook command: " << endl;
-		getline(cin, input);
+		if (!getline(cin, input))
+            return (exit_phonebook(1));
 		if (input == "EXIT")
-			break ;
+			return (exit_phonebook(0));
 		else if (input == "ADD")
 			phonebook.add_contact();
 		else if (input == "SEARCH")

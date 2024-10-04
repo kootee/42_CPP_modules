@@ -14,9 +14,9 @@ SRCS = phonebook.cpp
 OBJS = ${SRCS:.cpp=.o}
 
 # Set debug
-#ifeq {${debug}, 1}
-#    CFLAGS = ${DBFLAGS} ${FLAGS}
-#endif
+ifeq (${debug}, 1)
+    CFLAGS = ${DBFLAGS} ${FLAGS}
+endif
 
 all: ${NAME}
 
