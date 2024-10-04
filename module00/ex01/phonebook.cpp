@@ -6,54 +6,32 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:01:10 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/04 12:54:54 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/04 14:30:55 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-class	Contact 
+int exit_phonebook(int exit_value)
 {
-	string  first_name, last_name, nickname;
-	string	phone_number;
-	string  darkest_secret;
-	
-public:
-	void	print_column(int idx);
-	void    print_contact_info();
-	Contact (string a, string b, string c, string d, string e);
-    Contact ();
-};
-
-/* Contact class parameters constructor */
-Contact::Contact (string a, string b, string c, string d, string e)
-{
-	first_name = a;
-	last_name = b;
-	nickname = c;
-	phone_number = d;
-	darkest_secret = e;
+    if (exit_value)
+        cout << EXIT_MSG << endl;
+    return (0);
 }
 
-/* Contact class default constructor */
-Contact::Contact () :   
-        first_name(""), 
-        last_name(""), 
-        nickname(""), 
-        phone_number(""), 
-        darkest_secret("")
-{}
-
-class	PhoneBook
+int check_search_id(const string& str)
 {
-	Contact	contacts[8];
-public:
-	static int	index;
-	void    add_contact(); 
-	void	search_contact();
-};
+    string::const_iterator c = str.begin();
+    while (c != str.end())
+    {
+        if (!isdigit(*c))
+            return (1);
+        c++;   
+    }
+    return (0);
+}
 
-int PhoneBook:: index = 0;
+int PhoneBook:: index = 0, status = 0;
 
 void	PhoneBook::add_contact()
 {
@@ -75,70 +53,34 @@ void	PhoneBook::add_contact()
 	index++;
 }
 
-void	print_value(string str)
-{
-	size_t	len;
-
-	len = 10 - str.size();
-	if (len < 0)
-	{
-        for (int i = 0; i < 10; i++)
-            cout << str[i];
-		cout << ".|";
-	}
-	else
-	{
-		while (len--)
-			cout << " ";
-		cout << str << "|";
-	}
-}
-
-void	Contact::print_column(int idx)
-{
-	cout << COLUMNS << endl;
-	cout << "|         " << idx;
-	print_value(first_name);
-	print_value(last_name);
-	print_value(nickname);
-	cout << endl;
-}
-
-void	Contact::print_contact_info()
-{
-	cout << FIRST_NAME << first_name << endl;
-	cout << LAST_NAME << last_name << endl;
-	cout << NICKNAME << nickname << endl;
-	cout << PHONE_NUMBER << phone_number << endl;
-	cout << DARKEST_SECRET << darkest_secret << endl;
-}
-
 void	PhoneBook::search_contact()
 {
-	char		*input;
+	string		input;
 	long int	id_print;
 
 	for (int i = 0; i < 8; i++)
 		contacts[i].print_column(i);
 	while (true)
 	{
-		cout << "Enter index to display: ";
-		cin >> input;
-		id_print = atoi(input);
-		if ((id_print > 7 || id_print < 0) || id_print > index % 8)
+		cout << SEARCH_PROMPT;
+		if (!getline(cin, input))
+        {
+            status = 1;
+            return ;
+        }
+        if (input == "BACK")
+            return ;
+        else if (!check_search_id(input))
+		    id_print = atoi(input.c_str());
+		if ((id_print > 7 || id_print < 0) 
+            || (!index || id_print > index % 8))
 			cout << INVALID_SEARCH_ID << endl;
 		else
 		{
 			contacts[id_print].print_contact_info();
-			break ;
+			return ;
 		}
 	}
-}
-int exit_phonebook(int exit_value)
-{
-    if (exit_value)
-        cout << "Exiting phonebook" << endl;
-    return (0);
 }
 
 int	main()
@@ -148,7 +90,9 @@ int	main()
 
 	while (true)
 	{
-		cout << "Enter phonebook command: " << endl;
+        if (cin.eof())
+            return (exit_phonebook(1));
+		cout << PROMPT;
 		if (!getline(cin, input))
             return (exit_phonebook(1));
 		if (input == "EXIT")

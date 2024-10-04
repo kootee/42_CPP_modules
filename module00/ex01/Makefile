@@ -8,7 +8,7 @@ debug   ?= 0
 NAME = phonebook
 
 # Source files
-SRCS = phonebook.cpp
+SRCS = PhoneBook.cpp Contact.cpp
 
 # Object files
 OBJS = ${SRCS:.cpp=.o}
