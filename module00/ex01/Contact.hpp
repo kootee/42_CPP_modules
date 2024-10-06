@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 13:50:50 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/04 14:04:49 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/04 18:49:39 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ class	Contact
 	string  darkest_secret;
 	
 public:
-	void	print_column(int idx);
-	void    print_contact_info();
+	void	print_column(int id);
+	void    print_contact_info(int id);
 	Contact (string a, string b, string c, string d, string e);
     Contact ();
 };

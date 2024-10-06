@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 13:48:35 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/04 14:56:51 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/04 18:53:00 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,9 @@ void	Contact::print_column(int idx)
 	cout << endl;
 }
 
-void	Contact::print_contact_info()
+void	Contact::print_contact_info(int id)
 {
+	cout << endl << CONTACT_ID << id << endl;
 	cout << FIRST_NAME << first_name << endl;
 	cout << LAST_NAME << last_name << endl;
 	cout << NICKNAME << nickname << endl;
