@@ -8,7 +8,7 @@ debug   ?= 0
 NAME = zombie
 
 # Source files
-SRCS = 
+SRCS = main.cpp newZombie.cpp randomChump.cpp
 
 # Object files
 OBJS = ${SRCS:.cpp=.o}
