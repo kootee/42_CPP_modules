@@ -6,16 +6,14 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 13:50:50 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/07 08:00:15 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/07 13:12:12 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
 
-# include "PhoneBook.hpp"
-
-class	Contact 
+class	Contact
 {
 	std::string  first_name, last_name, nickname;
 	std::string	phone_number;
