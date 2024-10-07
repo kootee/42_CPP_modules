@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 11:11:31 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/07 14:39:40 by ktoivola         ###   ########.fr       */
+/*   Created: 2024/10/07 11:09:26 by ktoivola          #+#    #+#             */
+/*   Updated: 2024/10/07 14:29:06 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
 
-int main()
+# include <iostream>
+
+# define BRAINS ": BraiiiiiiinnnzzzZ..."
+
+class   Zombie
 {
-    int horde_size = 8;
-    
-    Zombie *testhorde = zombieHorde(horde_size, "tyyne");
+	std::string name;
+public:
+    void        announce(void);
+    void        init_zombie(std::string name);
+    Zombie      (std::string name);
+    Zombie      ();
+};
 
-    for (int i = 0; i < horde_size; i++)
-    {
-        testhorde[i].announce();
-    }
+Zombie  *zombieHorde(int N, std::string name);
 
-    delete[] testhorde;
-}
+#endif

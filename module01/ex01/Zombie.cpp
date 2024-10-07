@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 11:11:31 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/07 14:39:40 by ktoivola         ###   ########.fr       */
+/*   Created: 2024/10/07 13:27:36 by ktoivola          #+#    #+#             */
+/*   Updated: 2024/10/07 14:37:53 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-int main()
+/* Announce function */
+void	Zombie::announce(void)
 {
-    int horde_size = 8;
-    
-    Zombie *testhorde = zombieHorde(horde_size, "tyyne");
-
-    for (int i = 0; i < horde_size; i++)
-    {
-        testhorde[i].announce();
-    }
-
-    delete[] testhorde;
+	std::cout << this->name << BRAINS << std::endl;
 }
+
+void	Zombie::init_zombie(std::string name)
+{
+	this->name = name;
+}
+
+/* Zombie constructor */
+Zombie::Zombie (std::string str) : name(str) {}
+
+/* Zombie default constructor */
+Zombie::Zombie () : name("") {}

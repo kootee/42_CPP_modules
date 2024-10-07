@@ -8,7 +8,7 @@ debug   ?= 0
 NAME = zombiehorde
 
 # Source files
-SRCS = main.cpp
+SRCS = main.cpp zombieHorde.cpp Zombie.cpp
 
 # Object files
 OBJS = ${SRCS:.cpp=.o}

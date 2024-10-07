@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 13:27:31 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/07 14:00:45 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/07 14:05:54 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,11 @@
 
 int main()
 {
-    
+	std::string input;
+	
+	while (true)
+	{
+		if (std::cin.eof())
+			break ;
+	}
 }
