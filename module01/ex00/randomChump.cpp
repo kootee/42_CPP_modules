@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*   randomChump.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/04 13:50:50 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/07 08:00:15 by ktoivola         ###   ########.fr       */
+/*   Created: 2024/10/07 11:07:13 by ktoivola          #+#    #+#             */
+/*   Updated: 2024/10/07 11:07:28 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_HPP
-# define CONTACT_HPP
+#include "Zombie.hpp"
 
-# include "PhoneBook.hpp"
-
-class	Contact 
+void    randomChump(std::string name)
 {
-	std::string  first_name, last_name, nickname;
-	std::string	phone_number;
-	std::string  darkest_secret;
-	
-public:
-	void	print_column(int id);
-	void    print_contact_info(int id);
-	Contact (std::string a, std::string b, std::string c, std::string d, std::string e);
-    Contact ();
-};
 
-#endif
+}

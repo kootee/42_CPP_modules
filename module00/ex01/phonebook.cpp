@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*   phonebook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:01:10 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/06 16:07:53 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/07 08:02:07 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,20 @@
 int exit_phonebook(int exit_value)
 {
     if (exit_value)
-        cout << EXIT_MSG << endl;
+        std::cout << EXIT_MSG << std::endl;
     return (0);
 }
 
-int check_search_id(const string& str, int phonebook_id)
+int check_search_id(const std::string& str, int phonebook_id)
 {
     int id;
 
-    string::const_iterator c = str.begin();
+    std::string::const_iterator c = str.begin();
     while (c != str.end())
     {
         if (!isdigit(*c))
         {
-            cout << INVALID_INPUT << endl;
+            std::cout << INVALID_INPUT << std::endl;
             return (-1);
         }
         c++;   
@@ -37,7 +37,7 @@ int check_search_id(const string& str, int phonebook_id)
 	if ((id > 7 || id < 0) 
         || (phonebook_id == 0 || id > (phonebook_id - 1) % 8))
         {
-		    cout << OUT_OF_RANGE_ID << endl;
+		    std::cout << OUT_OF_RANGE_ID << std::endl;
             return (-1);
         }
     return (id);
@@ -47,17 +47,17 @@ int PhoneBook:: index = 0, status = 0;
 
 void	PhoneBook::add_contact()
 {
-	string name, lastname, nickname, number, secret;
+	std::string name, lastname, nickname, number, secret;
 
-    if ((cout << FIRST_NAME) &&!getline(cin, name))
+    if ((std::cout << FIRST_NAME) &&!getline(std::cin, name))
         return ;
-    if ((cout << LAST_NAME) && !getline(cin, lastname))
+    if ((std::cout << LAST_NAME) && !getline(std::cin, lastname))
         return ;
-    if ((cout << NICKNAME) && !getline(cin, nickname))
+    if ((std::cout << NICKNAME) && !getline(std::cin, nickname))
         return ;
-    if ((cout << PHONE_NUMBER) && !getline(cin, number))
+    if ((std::cout << PHONE_NUMBER) && !getline(std::cin, number))
         return ;
-    if ((cout << DARKEST_SECRET) && !getline(cin, secret))
+    if ((std::cout << DARKEST_SECRET) && !getline(std::cin, secret))
         return ;
 	contacts[index % 8] = Contact (name, lastname, nickname, number, secret);
 	index++;
@@ -65,17 +65,17 @@ void	PhoneBook::add_contact()
 
 void	PhoneBook::search_contact()
 {
-	string		input;
+	std::string		input;
 	long int	id_print;
 
     id_print = -1;
-    cout << endl << PHONEBOOK_HEADER << endl << COLUMNS << endl;
+    std::cout << std::endl << PHONEBOOK_HEADER << std::endl << COLUMNS << std::endl;
 	for (int i = 0; i < 8; i++)
 		contacts[i].print_column(i);
 	while (true)
 	{
-		cout << SEARCH_PROMPT;
-		if (!getline(cin, input))
+		std::cout << SEARCH_PROMPT;
+		if (!getline(std::cin, input))
             return ;
         if (input == "BACK")
             return ;
@@ -91,14 +91,14 @@ void	PhoneBook::search_contact()
 int	main()
 {
 	PhoneBook   phonebook;
-	string      input;
+	std::string      input;
 
 	while (true)
 	{
-        if (cin.eof())
+        if (std::cin.eof())
             return (exit_phonebook(1));
-		cout << PROMPT;
-		if (!getline(cin, input))
+		std::cout << PROMPT;
+		if (!getline(std::cin, input))
             return (exit_phonebook(1));
 		if (input == "EXIT")
 			return (exit_phonebook(0));

@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/04 13:50:50 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/07 08:00:15 by ktoivola         ###   ########.fr       */
+/*   Created: 2024/10/07 11:09:26 by ktoivola          #+#    #+#             */
+/*   Updated: 2024/10/07 11:10:03 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_HPP
-# define CONTACT_HPP
+#ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
 
-# include "PhoneBook.hpp"
+# include <iostream>    // input and output
 
-class	Contact 
-{
-	std::string  first_name, last_name, nickname;
-	std::string	phone_number;
-	std::string  darkest_secret;
-	
-public:
-	void	print_column(int id);
-	void    print_contact_info(int id);
-	Contact (std::string a, std::string b, std::string c, std::string d, std::string e);
-    Contact ();
-};
-
-#endif
+# endif

@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:00:30 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/06 15:46:17 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/07 08:02:36 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define PHONEBOOK_HPP
 
 # include <iostream>    // input and output
-# include <string>      // strings
 # include <cctype>      // character modifications
 # include <limits>      // limits
 # include "Contact.hpp" // contact class definitions
@@ -33,8 +32,6 @@
 # define NICKNAME           "Nickname: "
 # define PHONE_NUMBER       "Phone number: "
 # define DARKEST_SECRET     "Darkest secret: "
-
-using namespace std;
 
 class	PhoneBook
 {
