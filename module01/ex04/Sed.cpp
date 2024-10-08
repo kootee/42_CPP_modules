@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 10:11:37 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/08 16:04:04 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/08 16:12:50 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ std::string    Sed::replace_strings(std::string const &line)
     }
 }
 
-void    Sed::run_sed(void)
+int    Sed::run_sed(void)
 {
     std::stringstream   text_buffer;
     std::ifstream       in_file;
@@ -50,7 +50,11 @@ void    Sed::run_sed(void)
         out_file << this->replace_strings(text_buffer.str());
         in_file.close();
         out_file.close();
+        return (0);
     }
+    if (in_file.is_open())
+        in_file.close();
     else
-        std::cout << "outfile error" << std::endl; // handle error
+        out_file.close();
+    return (1);
 }

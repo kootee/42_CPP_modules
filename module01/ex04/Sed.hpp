@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 09:51:33 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/08 12:49:29 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/08 16:11:44 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ class Sed
     std::string s2;
 public:
     Sed         (std::string filename, std::string s1, std::string s2);
+    int         run_sed(void);
     std::string replace_strings(std::string const &line);
-    void        run_sed(void);
 };
 
 #endif
