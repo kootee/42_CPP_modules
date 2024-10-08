@@ -6,30 +6,11 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 13:48:35 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/07 08:00:15 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/08 12:42:11 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
-
-void	print_value(std::string str)
-{
-	size_t	len;
-
-	len = str.size();
-	if (len >= 10)
-	{
-        for (int i = 1; i < 10; i++)
-            std::cout << str[i];
-		std::cout << ".|";
-	}
-	else
-	{
-		for (int i = 0; i < (10 - len); i++)
-			std::cout << " ";
-		std::cout << str << "|";
-	}
-}
 
 /* Contact class parameters constructor */
 Contact::Contact (std::string a, std::string b, std::string c, std::string d, std::string e)
@@ -49,6 +30,25 @@ Contact::Contact () :
         phone_number(""), 
         darkest_secret("")
 {}
+
+void	print_value(std::string str)
+{
+	size_t	len;
+
+	len = str.size();
+	if (len >= 10)
+	{
+        for (int i = 1; i < 10; i++)
+            std::cout << str[i];
+		std::cout << ".|";
+	}
+	else
+	{
+		for (int i = 0; i < (10 - len); i++)
+			std::cout << " ";
+		std::cout << str << "|";
+	}
+}
 
 void	Contact::print_column(int idx)
 {

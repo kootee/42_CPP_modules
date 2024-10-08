@@ -1,16 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.cpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:01:10 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/07 08:02:07 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/08 12:41:19 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
+
+int PhoneBook:: index = 0, status = 0;
 
 int exit_phonebook(int exit_value)
 {
@@ -42,8 +44,6 @@ int check_search_id(const std::string& str, int phonebook_id)
         }
     return (id);
 }
-
-int PhoneBook:: index = 0, status = 0;
 
 void	PhoneBook::add_contact()
 {

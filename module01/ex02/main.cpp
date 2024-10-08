@@ -6,11 +6,10 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:13:17 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/07 14:41:24 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/08 09:48:56 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string>
 #include <iostream>
 
 int main()
