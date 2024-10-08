@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 10:11:37 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/08 12:47:16 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/08 12:59:52 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ std::string    Sed::replace_strings(std::string const &line)
     while (true)
     {
         found = line.find(s1);
-        if (found == -1)
+        if (found == std::string::npos)
             break ;
         replaced << line.substr(current_idx, found - current_idx);
         replaced << s2;
