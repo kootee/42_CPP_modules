@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:18:32 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/09 14:03:43 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/09 14:04:27 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ int main()
     complainer_harl.complain("NONEXISTENT");
     complainer_harl.complain("123");
     complainer_harl.complain("");
+    
     return (0);
 }
