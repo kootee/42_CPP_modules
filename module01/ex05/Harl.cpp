@@ -6,24 +6,46 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:19:09 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/08 16:51:12 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/09 14:02:44 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 
-void    Harl::complain(std::string level)
+Harl::Harl ()
 {
-    int complaint_level = std::stoi(level);
+    levels[0] = "DEBUG";
+    levels[1] = "INFO";
+    levels[2] = "WARNING";
+    levels[3] = "ERROR";
 
-    void    (Harl::*complaints[4])();
-    
     complaints[0] = &Harl::debug;
     complaints[1] = &Harl::info;
     complaints[2] = &Harl::warning;
     complaints[3] = &Harl::error;
+}
+
+int get_complaint_lvl(std::string level, Harl current_harl)
+{
+    int lvl = 0;
     
-    (this->*(complaints[complaint_level]))();
+    while (lvl < 4)
+    {
+        if (current_harl.levels[lvl] == level)
+            return (lvl);
+        lvl++;
+    }
+    return (-1);
+}
+
+void    Harl::complain(std::string level)
+{
+    int complaint_level = get_complaint_lvl(level, *this);
+    
+    if (complaint_level < 0)
+        std::cout << INVALID_LEVEL << std::endl;
+    else
+        (this->*(complaints[complaint_level]))();
 }
 
 void    Harl::debug(void)

@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:18:43 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/08 16:47:57 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/09 14:02:17 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # define INFO "I cannot believe adding extra bacon costs more money. You didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!"
 # define WARNING "I think I deserve to have some extra bacon for free. I’ve been coming for years whereas you started working here since last month."
 # define ERROR "This is unacceptable! I want to speak to the manager now."
+# define INVALID_LEVEL "Invalid complaint level"
 
 class Harl
 {
@@ -29,8 +30,10 @@ private:
     void    warning(void);
     void    error(void);
 public:
-    Harl    () {};
-    void    complain(std::string level);
+    Harl        ();
+    std::string levels[4];
+    void        (Harl::*complaints[4])();
+    void        complain(std::string level);
 };
 
 #endif
