@@ -6,19 +6,13 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 09:59:16 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/07 08:00:15 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/10 09:53:43 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "megaphone.hpp"
+#include <iostream>
 
-# include <iostream>
-# include <std::string>
-# include <cctype>
-
-# define DEFAULT_MSG "* LOUD AND UNBEARABLE FEEDBACK NOISE *"
-
-using namespace std;
+#define DEFAULT_MSG "* LOUD AND UNBEARABLE FEEDBACK NOISE *"
 
 int main(int argc, char **argv)
 {

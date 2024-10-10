@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:00:30 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/07 13:16:09 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/10 10:26:21 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <iostream>    // input and output
 # include "Contact.hpp" // contact class definitions
 
-# define PROMPT             "Enter phonebook command: "
+# define PROMPT             "Enter phonebook command (ADD/SEARCH/EXIT): "
 # define EXIT_MSG           "Exiting phonebook"
 # define PHONEBOOK_HEADER   "**********    PHONEBOOK CONTACTS   **********"
 # define COLUMNS            "|     INDEX|FIRST NAME| LAST NAME|  NICKNAME|"
@@ -36,7 +36,6 @@ class	PhoneBook
 	Contact	contacts[8];
 public:
 	static int	index;
-    int         status;
 	void        search_contact();
 	void        add_contact(); 
 };

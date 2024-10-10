@@ -6,11 +6,12 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 13:48:35 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/08 12:42:11 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/10 10:07:47 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
+#include "Contact.hpp"
 
 /* Contact class parameters constructor */
 Contact::Contact (std::string a, std::string b, std::string c, std::string d, std::string e)
@@ -38,13 +39,13 @@ void	print_value(std::string str)
 	len = str.size();
 	if (len >= 10)
 	{
-        for (int i = 1; i < 10; i++)
+        for (int i = 0; i < 9; i++)
             std::cout << str[i];
 		std::cout << ".|";
 	}
 	else
 	{
-		for (int i = 0; i < (10 - len); i++)
+		for (size_t i = 0; i < (10 - len); i++)
 			std::cout << " ";
 		std::cout << str << "|";
 	}
