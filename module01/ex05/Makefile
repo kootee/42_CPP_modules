@@ -29,7 +29,7 @@ ${NAME}: ${OBJS}
 	${CC} ${CPPFLAGS} -c $< -o $@
 
 clean:
-	rm -f ${OBJS} ${NAME}
+	rm -f ${OBJS}
 
 fclean: clean
 	rm -rf ${NAME}
