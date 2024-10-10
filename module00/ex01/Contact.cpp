@@ -38,7 +38,7 @@ void	print_value(std::string str)
 	len = str.size();
 	if (len >= 10)
 	{
-        for (int i = 1; i < 10; i++)
+        for (int i = 0; i < 10; i++)
             std::cout << str[i];
 		std::cout << ".|";
 	}
