@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
+#include "Contact.hpp"
 
 /* Contact class parameters constructor */
 Contact::Contact (std::string a, std::string b, std::string c, std::string d, std::string e)
