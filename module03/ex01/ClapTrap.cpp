@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 11:35:31 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/14 14:10:10 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/14 14:29:52 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 /* Constructors */
 ClapTrap::ClapTrap () : _name(""), _hp(10), _ep(10), _at(0)
 {
-	std::cout << "Constructor called" << std::endl;
+	std::cout << "ClapTrap default constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap (std::string name) : _name(name), _hp(10), _ep(10), _at(0)
 {
-	std::cout << "ClapTrap constructor called" << std::endl;
+	std::cout << "ClapTrap parameterized constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap (const ClapTrap &obj)
