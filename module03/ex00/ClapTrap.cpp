@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 11:35:31 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/14 12:24:34 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/14 12:30:44 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,19 +53,19 @@ ClapTrap::~ClapTrap ()
 /* Class member functions */
 void    ClapTrap::attack(const std::string &target)
 {
-	std::cout << "ClapTrap " << _name << "attacks" << target << ", causing" << _at << " points of damage" << std::endl;
+	if (_ep > 0)
+	{
+		_ep--;
+			std::cout << "ClapTrap " << _name << "attacks" << target << ", causing" << _at << " points of damage" << std::endl;
+	}
+	else
+		std::cout << "ClapTrap " << _name << "is out of energy points" << std::endl;
 }
 
 void    ClapTrap::takeDamage(unsigned int amount)
 {
-	if (_ep > 0)
-	{
-		_hp -= amount;
-		_ep--;
-		std::cout << "ClapTrap " << _name << "took" << amount << " points of damage" << std::endl;
-	}
-	else
-		std::cout << "ClapTrap " << _name << "is out of energy points" << std::endl;
+	_hp -= amount;
+	std::cout << "ClapTrap " << _name << "took" << amount << " points of damage" << std::endl;
 }
 
 void    ClapTrap::beRepaired(unsigned int amount)
