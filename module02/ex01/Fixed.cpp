@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 09:53:03 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/14 10:35:47 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/14 10:52:02 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,16 @@
 const int Fixed:: _bits = 8;
 
 Fixed::Fixed () : _fixed_pt(0) {std::cout << "Default constructor called" << std::endl;};
+
+Fixed::Fixed (const int int_value) : _fixed_pt(int_value) 
+{
+    std::cout << "Int constructor called" << std::endl;
+}
+
+Fixed::Fixed (const float float_value) : _fixed_pt(float_value) 
+{
+    std::cout << "Float constructor called" << std::endl;
+}
 
 Fixed::Fixed (const Fixed& copy) : _fixed_pt(copy._fixed_pt) {std::cout << "Copy constructor called" << std::endl;};
 
