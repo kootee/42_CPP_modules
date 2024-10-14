@@ -1,14 +1,14 @@
 CC = c++
 
-CPPFLAGS := -Wall -Wextra -Werror
+CPPFLAGS := -Wall -Wextra -Werror -std=c++11
 DBFLAGS = -g
 
 debug   ?= 0
 
-NAME = fixed
+NAME = claptrack
 
 # Source files
-SRCS = main.cpp Fixed.cpp
+SRCS = main.cpp
 
 # Object files
 OBJS = ${SRCS:.cpp=.o}
