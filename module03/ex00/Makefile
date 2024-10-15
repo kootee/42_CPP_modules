@@ -5,7 +5,7 @@ DBFLAGS = -g
 
 debug   ?= 0
 
-NAME = claptrack
+NAME = claptrap
 
 # Source files
 SRCS = main.cpp

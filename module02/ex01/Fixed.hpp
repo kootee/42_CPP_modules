@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 09:54:50 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/14 11:21:29 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/15 12:36:13 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ public:
 		Fixed& operator= (const Fixed&);
 		Fixed& operator<< (std::ostream &);
 		
-		// Class functions
+		// Class member functions
 		int		getRawBits(void) const;
 		void	setRawBits(int const raw);
 		float	toFloat(void) const;
