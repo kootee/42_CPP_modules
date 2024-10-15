@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:11:31 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/07 14:39:40 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/15 16:02:17 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,5 @@ int main()
     {
         testhorde[i].announce();
     }
-
     delete[] testhorde;
 }

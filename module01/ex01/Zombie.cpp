@@ -6,25 +6,24 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 13:27:36 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/07 14:37:53 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/15 15:56:31 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-/* Announce function */
+Zombie::Zombie () : _name("") {}
+
+Zombie::Zombie (std::string str) : _name(str) {}
+
+Zombie::~Zombie () { std::cout << this->_name << DESTROY << std::endl; }
+
 void	Zombie::announce(void)
 {
-	std::cout << this->name << BRAINS << std::endl;
+	std::cout << this->_name << BRAINS << std::endl;
 }
 
 void	Zombie::init_zombie(std::string name)
 {
-	this->name = name;
+	this->_name = name;
 }
-
-/* Zombie constructor */
-Zombie::Zombie (std::string str) : name(str) {}
-
-/* Zombie default constructor */
-Zombie::Zombie () : name("") {}
