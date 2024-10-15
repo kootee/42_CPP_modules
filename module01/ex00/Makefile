@@ -1,14 +1,14 @@
 CC = c++
 
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98
+CPPFLAGS = -Wall -Wextra -Werror -std=c++11
 DBFLAGS = -g
 
 debug   ?= 0
 
-NAME = zombie
+NAME = zombies
 
 # Source files
-SRCS = main.cpp newZombie.cpp randomChump.cpp
+SRCS = main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
 
 # Object files
 OBJS = ${SRCS:.cpp=.o}
