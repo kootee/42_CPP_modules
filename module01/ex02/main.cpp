@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:13:17 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/08 09:48:56 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/16 10:52:57 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int main()
 {
-    std::string         brain = "HI THIS IS BRAIN";
-    std::string         *stringPTR = &brain;
-    std::string const&  stringREF = brain;
+    std::string         brain = "HI THIS IS BRAIN"; 
+    std::string         *stringPTR = &brain;    // String pointer to address of brain
+    std::string const&  stringREF = brain;      // const reference to brain
     
     std::cout << "Address of string     " << &brain << std::endl;
     std::cout << "Address of stringPTR  " << stringPTR << std::endl;

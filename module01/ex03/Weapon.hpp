@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:05:20 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/07 17:18:50 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/16 11:03:59 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,15 @@
 
 class Weapon
 {
-    std::string         type;
-public:
-    Weapon              (std::string type);
-    void                setType(std::string weapon_type);
-    std::string const&  getType();
+    private:
+        std::string         _type;
+    public:
+        Weapon              ();
+        Weapon              (std::string);
+        
+        // Class member functions
+        void                setType(std::string);
+        std::string const&  getType();
 };
 
 #endif

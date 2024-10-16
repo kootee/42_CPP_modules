@@ -6,23 +6,16 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:03:40 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/07 17:43:50 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/16 11:21:57 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Weapon.hpp"
 
-Weapon::Weapon (std::string str) : type(str) {}
+Weapon::Weapon () : _type("") {}
 
-const   std::string & Weapon::getType()
-{
-	if (this->type == "")
-		std::cout << "bare hands";
-    return (type);
-}
+Weapon::Weapon (std::string str) : _type(str) {}
 
-void	Weapon::setType(std::string weapon_type)
-{
-	type = weapon_type;
-}
+const   std::string & Weapon::getType() { return (_type); }
 
+void	Weapon::setType(std::string weapon_type) { _type = weapon_type; }

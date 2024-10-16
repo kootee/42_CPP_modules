@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:18:43 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/09 14:02:17 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/16 12:15:31 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define HARL_HPP
 
 # include <iostream>
-# include <string>
 
 # define DEBUG "I love having extra bacon for my 7XL-double-cheese-triple-pickle-special- ketchup burger. I really do!"
 # define INFO "I cannot believe adding extra bacon costs more money. You didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!"
@@ -30,10 +29,11 @@ private:
     void    warning(void);
     void    error(void);
 public:
-    Harl        ();
+    Harl        (); // Default constructor
+    
     std::string levels[4];
+    void        complain(std::string);
     void        (Harl::*complaints[4])();
-    void        complain(std::string level);
 };
 
 #endif

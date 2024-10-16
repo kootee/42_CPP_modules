@@ -15,7 +15,7 @@ OBJS = ${SRCS:.cpp=.o}
 
 # Set debug
 ifeq (${debug}, 1)
-    CPPFLAGS := ${CPPFLAGS} ${DBFLAGS}
+    CPPFLAGS += ${DBFLAGS}
 endif
 
 all: ${NAME}

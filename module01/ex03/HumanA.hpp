@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:14:24 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/07 17:02:04 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/16 11:14:09 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,14 @@
 
 class HumanA
 {
-    std::string name;
-    Weapon      &weapon;
-public:
-    void        attack();
-    HumanA      (std::string name, Weapon &weapon);
+    private:
+        std::string _name;
+        Weapon      &_weapon;
+    public:
+        HumanA      (std::string, Weapon &);
+        
+        // Class member functions
+        void        attack();
 };
 
 #endif

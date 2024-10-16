@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:18:43 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/09 15:11:25 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/16 12:16:24 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,11 @@ private:
     void    warning(void);
     void    error(void);
 public:
-    Harl        ();
+    Harl        (); // Default constructor
+    
     std::string levels[4];
+    void        complain(std::string);
     void        (Harl::*complaints[4])();
-    void        complain(std::string level);
 };
 
 #endif

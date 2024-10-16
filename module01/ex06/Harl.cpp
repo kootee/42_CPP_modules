@@ -52,12 +52,18 @@ void    Harl::complain(std::string level)
     {
         case 0:
             (this->*(complaints[0]))();
+            // fall through
         case 1:
             (this->*(complaints[1]))();
+            // fall through
         case 2:
             (this->*(complaints[2]))();
+            // fall through
         case 3:
             (this->*(complaints[3]))();
+            break;
+        default:
+            break;
     }
 }
 

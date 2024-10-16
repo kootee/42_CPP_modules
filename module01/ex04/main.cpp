@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 09:50:12 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/08 16:14:59 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/16 12:05:13 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ int main(int argc, char **argv)
     else
     {
         Sed sed_inst(argv[1], argv[2], argv[3]);
-        if (sed_inst.run_sed() > 0)
-            std::cout << "error opening files" << std::endl;
-        else
-            std::cout << "successfully created " << argv[1] << ".replace" << std::endl;
+        if (sed_inst.run_sed() == 0)
+        {
+            std::cout << "successfully created " << argv[1] 
+            << ".replace" << std::endl;
+        }
     }
 }

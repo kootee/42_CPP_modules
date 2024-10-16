@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:19:21 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/07 17:36:30 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/16 11:31:01 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@
 
 class HumanB
 {
-    std::string name;
-    Weapon      *weapon;
+    std::string _name;
+    Weapon      *_weapon;
 public:
+    HumanB      (std::string);
+
+    // Class member functions
     void        attack();
-    void        setWeapon(Weapon& weapon);
-    HumanB      (std::string name);
+    void        setWeapon(Weapon&);
 };
 
 #endif
