@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 09:54:50 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/17 12:19:22 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/17 13:18:49 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,10 @@ class Fixed
 			bool	operator==(const Fixed&) const;
 			bool	operator!=(const Fixed&) const;
 			// Arithmetic operator overloads
+			Fixed	operator+(const Fixed&) const;
+			Fixed	operator-(const Fixed&) const;
+			Fixed	operator*(const Fixed&) const;
+			Fixed	operator/(const Fixed&) const;
 };
 
 std::ostream& operator<< (std::ostream &, const Fixed &); // Output operator overload

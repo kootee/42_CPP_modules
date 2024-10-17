@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 09:53:03 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/17 12:26:01 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/17 14:00:33 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,12 @@ bool Fixed::operator>(const Fixed& compare_to) const
 
 bool Fixed::operator<=(const Fixed& compare_to) const
 {
-    return (*this < compare_to);
+    return (!(*this > compare_to));
 }
 
 bool Fixed::operator>=(const Fixed& compare_to) const
 {
-    return (*this > compare_to);
+    return (!(*this < compare_to));
 }
 
 bool Fixed::operator==(const Fixed& compare_to) const
@@ -88,4 +88,30 @@ bool Fixed::operator==(const Fixed& compare_to) const
 bool Fixed::operator!=(const Fixed& compare_to) const
 {
     return (!(*this == compare_to));
+}
+
+/* Arithmetic operator overloads */
+Fixed Fixed::operator+(const Fixed& add_val) const 
+{
+    Fixed   res;
+    res.setRawBits((*this)._fixed_pt + add_val._fixed_pt);
+    return (res);
+}
+Fixed Fixed::operator-(const Fixed& sub_val) const 
+{
+    Fixed res;
+    res.setRawBits((*this)._fixed_pt - sub_val._fixed_pt);
+    return (res);
+}
+Fixed Fixed::operator*(const Fixed& mult_val) const
+{
+    Fixed res;
+    res.setRawBits(((*this)._fixed_pt * mult_val._fixed_pt) >> _bits);
+    return (res);
+}
+Fixed Fixed::operator/(const Fixed& div_val) const
+{
+    Fixed res;
+    res.setRawBits(((*this)._fixed_pt << _bits) / div_val._fixed_pt);
+    return (res);
 }
