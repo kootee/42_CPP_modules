@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 09:53:03 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/17 12:04:27 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/17 12:26:01 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,3 +58,34 @@ void    Fixed::setRawBits(int const raw) { _fixed_pt = raw; }
 float   Fixed::toFloat(void) const { return ((float)((_fixed_pt) / (1 << _bits))); }
 
 int     Fixed::toInt(void) const { return (_fixed_pt >> _bits); }
+
+/* Comparison operator overloads */
+bool    Fixed::operator<(const Fixed& compare_to) const
+{
+    return (this->_fixed_pt < compare_to._fixed_pt);
+}
+
+bool Fixed::operator>(const Fixed& compare_to) const
+{
+    return (this->_fixed_pt > compare_to._fixed_pt);
+}
+
+bool Fixed::operator<=(const Fixed& compare_to) const
+{
+    return (*this < compare_to);
+}
+
+bool Fixed::operator>=(const Fixed& compare_to) const
+{
+    return (*this > compare_to);
+}
+
+bool Fixed::operator==(const Fixed& compare_to) const
+{
+    return (this->_fixed_pt == compare_to._fixed_pt);
+}
+
+bool Fixed::operator!=(const Fixed& compare_to) const
+{
+    return (!(*this == compare_to));
+}

@@ -6,27 +6,33 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 09:53:03 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/14 11:02:45 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/17 11:57:07 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-const int Fixed:: _bits = 8;
+/* Constructors */
+Fixed::Fixed () : _fixed_pt(0) { std::cout << DEFAULT_CONST << std::endl; };
 
-Fixed::Fixed () : _fixed_pt(0) {std::cout << "Default constructor called" << std::endl;};
-
-Fixed::Fixed (const Fixed& copy) : _fixed_pt(copy._fixed_pt) {std::cout << "Copy constructor called" << std::endl;};
-
-Fixed::~Fixed () {std::cout << "Destructor called" << std::endl;};
-
-Fixed& Fixed::operator= (const Fixed& fixed)
+Fixed::Fixed (const Fixed& copy) : _fixed_pt(copy._fixed_pt) 
 {
-    std::cout << "Copy assignment operator called" << std::endl;
-    _fixed_pt = fixed._fixed_pt;
-    return *this;
+    _fixed_pt = copy.getRawBits();
+    std::cout << COPY_CONST << std::endl;
 }
 
+Fixed::~Fixed () { std::cout << DESTRUCTOR << std::endl; };
+
+/* Operator overloads */
+Fixed& Fixed::operator= (const Fixed& og_obj)
+{
+    if (this != &og_obj)
+        _fixed_pt = og_obj.getRawBits();
+    std::cout << COPY_ASSIGN << std::endl;
+    return (*this);
+}
+
+/* Class member functions */
 int     Fixed::getRawBits(void) const
 {
     std::cout << "Get raw bits called" << std::endl;

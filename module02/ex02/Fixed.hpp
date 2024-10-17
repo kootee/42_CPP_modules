@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 09:54:50 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/17 12:03:57 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/17 12:19:22 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,21 @@ class Fixed
 			Fixed(const Fixed&);	// Copy constructor
 			~Fixed();				// Destructor
 			
-			Fixed& 			operator= (const Fixed&); // Assignment operator overload
+			Fixed&	operator=(const Fixed&); // Assignment operator overload
 			
 			// Class member functions
 			int		getRawBits(void) const;
 			void	setRawBits(int const);
 			float	toFloat(void) const;
 			int		toInt(void) const;
+			// Comparison operator overloads
+			bool	operator<(const Fixed&) const;
+			bool	operator>(const Fixed&) const;
+			bool	operator<=(const Fixed&) const;
+			bool	operator>=(const Fixed&) const;
+			bool	operator==(const Fixed&) const;
+			bool	operator!=(const Fixed&) const;
+			// Arithmetic operator overloads
 };
 
 std::ostream& operator<< (std::ostream &, const Fixed &); // Output operator overload
