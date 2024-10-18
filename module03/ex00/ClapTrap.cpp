@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 11:35:31 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/16 16:07:34 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/18 12:23:50 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ ClapTrap::~ClapTrap ()
 /* Class member functions */
 void    ClapTrap::attack(const std::string &target)
 {
-	if (_ep > 0)
+	if (_ep > 0 && _hp > 0)
 	{
 		_ep--;
 		std::cout << "ClapTrap " << _name << " attacks" 
