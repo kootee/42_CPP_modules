@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 09:53:03 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/18 13:41:54 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/18 14:10:06 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ Fixed::Fixed () : _fixed_pt(0) { std::cout << DEFAULT_CONST << std::endl; }
 
 Fixed::Fixed (const int int_value) 
 {
-    _fixed_pt = int_value << _bits;
+    _fixed_pt = int_value << Fixed::_bits;
     std::cout << INT_CONST << std::endl;
 }
 
 Fixed::Fixed (const float float_value)
 {
-    _fixed_pt = roundf(float_value * (1 << _bits));
+    _fixed_pt = roundf(float_value * (1 << Fixed::_bits));
     std::cout << FLOAT_CONST << std::endl;
 }
 
@@ -59,4 +59,4 @@ void    Fixed::setRawBits(int const raw) { _fixed_pt = raw; }
 
 float   Fixed::toFloat(void) const { return ((float)((_fixed_pt) / (1 << _bits))); }
 
-int     Fixed::toInt(void) const { return (_fixed_pt >> _bits); }
+int     Fixed::toInt(void) const { return (_fixed_pt >> Fixed::_bits); }

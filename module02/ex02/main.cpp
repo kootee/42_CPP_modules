@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 16:25:59 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/18 13:36:33 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/18 16:12:24 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,42 @@
 
 void runTest(const Fixed& num1, const Fixed& num2) 
 {
+
+    std::cout << "RUNNING TEST ON VALUES: ";
+    
+    std::cout << num1.toFloat() << " " << num2.toFloat() << std::endl;
+    
     // Addition
     Fixed sum = num1.operator+(num2);
-    std::cout << num1.toFloat() << " + " << num2.toFloat() << " = " << sum.toFloat() << std::endl;
+    std::cout << num1.toFloat() << " + " << num2.toFloat() << " = " 
+    << sum.toFloat() << std::endl;
 
     // Subtraction
     Fixed diff = num1.operator-(num2);
-    std::cout << num1.toFloat() << " - " << num2.toFloat() << " = " << diff.toFloat() << std::endl;
+    std::cout << num1.toFloat() << " - " << num2.toFloat() << " = " 
+    << diff.toFloat() << std::endl;
 
     // Multiplication
     Fixed prod = num1.operator*(num2);
-    std::cout << num1.toFloat() << " * " << num2.toFloat() << " = " << prod.toFloat() << std::endl;
+    std::cout << num1.toFloat() << " * " << num2.toFloat() << " = " 
+    << prod.toFloat() << std::endl;
 
     // Division
     if (num2.toFloat() != 0) { // Prevent division by zero
         Fixed quot = num1.operator/(num2);
-        std::cout << num1.toFloat() << " / " << num2.toFloat() << " = " << quot.toFloat() << std::endl;
+        std::cout << num1.toFloat() << " / " << num2.toFloat() << " = " 
+        << quot.toFloat() << std::endl;
     } else {
-        std::cout << "Division by zero is undefined for " << num1.toFloat() << " / " << num2.toFloat() << std::endl;
+        std::cout << "Division by zero is undefined for " 
+        << num1.toFloat() << " / " << num2.toFloat() 
+        << std::endl;
     }
 } 
 
 int main(void)
 {
     {
+        std::cout << "Test 1: " << std::endl;
         Fixed a;
         Fixed const b(Fixed(5.05f).operator*(Fixed(2)));
         std::cout << a << std::endl;
@@ -50,6 +62,7 @@ int main(void)
         std::cout << Fixed::max( a, b ) << std::endl;
     }
     {
+        std::cout << "Test 2: " << std::endl;
         Fixed a(2);
         Fixed b(3.5f);
 
@@ -65,6 +78,7 @@ int main(void)
         std::cout << "a / b = " << quot << std::endl;
     }
     {
+        std::cout << "Test 3: " << std::endl;
         Fixed a(2);           // Represents 2.0
         Fixed b(3.5f);       // Represents 3.5
         Fixed c(0.5f);       // Represents 0.5
@@ -115,23 +129,23 @@ int main(void)
         std::cout << "d - c = " << mixedDiff.toFloat() << " (Expected: 0.5)" << std::endl;
     }
     {
+        float input1;
+        float input2;
         
-    }
-    
-    float input1;
-    float input2;
-    
-    while (true)
-    {
-        std::cout << "Input first (float or int) number:"; 
-        std::cin >> input1;
-        std::cout << "Input first (float or int) number:"; 
-        std::cin >> input2;
+        while (true)
+        {
+            if (std::cin.eof())
+                break ;
+            std::cout << "Input first (float or int) number: "; 
+            std::cin >> input1;
+            std::cout << "Input second (float or int) number: "; 
+            std::cin >> input2;
 
-        Fixed fixed1(input1);
-        Fixed fixed2(input2);
-        
-        runTest(fixed1, fixed2);
+            Fixed fixed1(input1);
+            Fixed fixed2(input2);
+            
+            runTest(fixed1, fixed2);
+        }
     }
     return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 09:53:03 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/18 13:41:42 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/18 16:12:41 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ Fixed::Fixed () : _fixed_pt(0) { std::cout << DEFAULT_CONST << std::endl; }
 
 Fixed::Fixed (const int int_value) 
 {
-    _fixed_pt = int_value << _bits;
+    _fixed_pt = int_value << Fixed::_bits;
     std::cout << INT_CONST << std::endl;
 }
 
 Fixed::Fixed (const float float_value)
 {
-    _fixed_pt = roundf(float_value * (1 << _bits));
+    _fixed_pt = roundf(float_value * (1 << Fixed::_bits));
     std::cout << FLOAT_CONST << std::endl;
 }
 
@@ -57,9 +57,9 @@ int     Fixed::getRawBits(void) const { return (_fixed_pt); }
 
 void    Fixed::setRawBits(int const raw) { _fixed_pt = raw; }
 
-float   Fixed::toFloat(void) const { return ((float)((_fixed_pt) / (1 << _bits))); }
+float   Fixed::toFloat(void) const { return ((float)((float)((_fixed_pt) / (float)(1 << Fixed::_bits)))); }
 
-int     Fixed::toInt(void) const { return (_fixed_pt >> _bits); }
+int     Fixed::toInt(void) const { return (_fixed_pt >> Fixed::_bits); }
 
 /* Comparison operator overloads */
 bool    Fixed::operator<(const Fixed& compare_to) const
@@ -108,12 +108,14 @@ Fixed Fixed::operator-(const Fixed& sub_val) const
 Fixed Fixed::operator*(const Fixed& mult_val) const
 {
     Fixed res;
-    res.setRawBits(((*this)._fixed_pt * mult_val._fixed_pt) >> _bits);
+    res.setRawBits(((*this)._fixed_pt * mult_val._fixed_pt) >> Fixed::_bits);
     return (res);
 }
 Fixed Fixed::operator/(const Fixed& div_val) const
 {
     Fixed res;
+    if (div_val._fixed_pt == 0)
+        throw std::runtime_error("division by zero");
     res.setRawBits(((*this)._fixed_pt << _bits) / div_val._fixed_pt);
     return (res);
 }
@@ -143,4 +145,25 @@ Fixed	Fixed::operator--(int) // Post-decrement
     Fixed temp(*this);
     --(*this);
     return (temp);
+}
+
+/* Min max overload member functions */
+Fixed& Fixed::min(Fixed& fixed1, Fixed& fixed2)
+{
+    return (fixed1.getRawBits() < fixed2.getRawBits()) ? fixed1 : fixed2;
+}
+
+const Fixed& Fixed::min(const Fixed& fixed1, const Fixed& fixed2)
+{
+    return (fixed1.getRawBits() < fixed2.getRawBits()) ? fixed1 : fixed2;
+}
+
+Fixed& Fixed::max(Fixed& fixed1, Fixed& fixed2)
+{
+    return (fixed1.getRawBits() > fixed2.getRawBits()) ? fixed1 : fixed2;
+}
+
+const Fixed& Fixed::max(const Fixed& fixed1, const Fixed& fixed2)
+{
+    return (fixed1.getRawBits() > fixed2.getRawBits()) ? fixed1 : fixed2;
 }

@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 09:54:50 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/18 13:41:08 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/18 15:53:00 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,11 @@ class Fixed
 			Fixed&	operator--();
 			Fixed	operator++(int);
 			Fixed	operator--(int);
+			// Min max overload member functions
+			static Fixed& min(Fixed&, Fixed&);
+			static Fixed& max(Fixed&, Fixed&);
+			static const Fixed& min(const Fixed&, const Fixed&);
+			static const Fixed& max(const Fixed&, const Fixed&);
 };
 
 std::ostream& operator<< (std::ostream &, const Fixed &); // Output operator overload
