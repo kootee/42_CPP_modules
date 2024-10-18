@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 16:25:59 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/17 14:15:00 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/18 13:36:33 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,20 @@
 void runTest(const Fixed& num1, const Fixed& num2) 
 {
     // Addition
-    Fixed sum = num1 + num2;
+    Fixed sum = num1.operator+(num2);
     std::cout << num1.toFloat() << " + " << num2.toFloat() << " = " << sum.toFloat() << std::endl;
 
     // Subtraction
-    Fixed diff = num1 - num2;
+    Fixed diff = num1.operator-(num2);
     std::cout << num1.toFloat() << " - " << num2.toFloat() << " = " << diff.toFloat() << std::endl;
 
     // Multiplication
-    Fixed prod = num1 * num2;
+    Fixed prod = num1.operator*(num2);
     std::cout << num1.toFloat() << " * " << num2.toFloat() << " = " << prod.toFloat() << std::endl;
 
     // Division
     if (num2.toFloat() != 0) { // Prevent division by zero
-        Fixed quot = num1 / num2;
+        Fixed quot = num1.operator/(num2);
         std::cout << num1.toFloat() << " / " << num2.toFloat() << " = " << quot.toFloat() << std::endl;
     } else {
         std::cout << "Division by zero is undefined for " << num1.toFloat() << " / " << num2.toFloat() << std::endl;
@@ -40,7 +40,7 @@ int main(void)
 {
     {
         Fixed a;
-        Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
+        Fixed const b(Fixed(5.05f).operator*(Fixed(2)));
         std::cout << a << std::endl;
         std::cout << ++a << std::endl;
         std::cout << a << std::endl;
@@ -105,7 +105,7 @@ int main(void)
         }
 
         // Additional cases
-        Fixed mixed = d + c;   // 1.0 + 0.5 = 1.5
+        Fixed mixed = d.operator+(c);   // d + c OR 1.0 + 0.5 = 1.5
         std::cout << "d + c = " << mixed.toFloat() << " (Expected: 1.5)" << std::endl;
 
         Fixed mixedProd = c * b; // 0.5 * 3.5 = 1.75
@@ -114,8 +114,13 @@ int main(void)
         Fixed mixedDiff = d - c; // 1.0 - 0.5 = 0.5
         std::cout << "d - c = " << mixedDiff.toFloat() << " (Expected: 0.5)" << std::endl;
     }
+    {
+        
+    }
+    
     float input1;
     float input2;
+    
     while (true)
     {
         std::cout << "Input first (float or int) number:"; 

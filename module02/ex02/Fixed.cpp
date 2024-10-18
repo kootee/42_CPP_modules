@@ -6,13 +6,15 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 09:53:03 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/17 14:00:33 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/18 13:41:42 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
 /* Constructors */
+const int Fixed::_bits = 8;
+
 Fixed::Fixed () : _fixed_pt(0) { std::cout << DEFAULT_CONST << std::endl; }
 
 Fixed::Fixed (const int int_value) 
@@ -114,4 +116,31 @@ Fixed Fixed::operator/(const Fixed& div_val) const
     Fixed res;
     res.setRawBits(((*this)._fixed_pt << _bits) / div_val._fixed_pt);
     return (res);
+}
+
+/* Increment/decrement operator overloads */
+Fixed&	Fixed::operator++() // Pre-increment
+{
+    _fixed_pt += 1;
+    return (*this);
+}
+
+Fixed&	Fixed::operator--() // Pre-decrement
+{
+    _fixed_pt -= 1;
+    return (*this);
+}
+
+Fixed	Fixed::operator++(int) // Post-increment
+{
+    Fixed temp(*this);
+    ++(*this);
+    return (temp);
+}
+
+Fixed	Fixed::operator--(int) // Post-decrement
+{
+    Fixed temp(*this);
+    --(*this);
+    return (temp);
 }

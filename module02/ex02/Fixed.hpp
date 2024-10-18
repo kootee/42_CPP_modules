@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 09:54:50 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/17 13:18:49 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/18 13:41:08 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class Fixed
 {
 	private:
 			int					_fixed_pt;
-			static const int	_bits = 8;
+			static const int	_bits;
 	public:
 			Fixed();				// Default constructor
 			Fixed(const int);		// Integer constructor
@@ -54,6 +54,11 @@ class Fixed
 			Fixed	operator-(const Fixed&) const;
 			Fixed	operator*(const Fixed&) const;
 			Fixed	operator/(const Fixed&) const;
+			// Increment/decrement operator overloads
+			Fixed&	operator++();
+			Fixed&	operator--();
+			Fixed	operator++(int);
+			Fixed	operator--(int);
 };
 
 std::ostream& operator<< (std::ostream &, const Fixed &); // Output operator overload
