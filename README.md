@@ -1,12 +1,12 @@
 # 42_CPP_modules
 Repository for C++ module exercises of Hive, 42 school of Helsinki.
 
-- Module 00
+- Module 00:
   Introduction to classes
   - ex00 Megaphone
   - ex01 Phonebook
 - Module 01
-- Module 02
+- Module 02:
   Fixed point numbers and operator overloads
   - ex00 Fixed point class
   - ex01 Fixed point member functions
