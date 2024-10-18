@@ -5,7 +5,14 @@ Repository for C++ module exercises of Hive, 42 school of Helsinki.
   Introduction to classes
   - ex00 Megaphone
   - ex01 Phonebook
-- Module 01
+- Module 01: More classes
+  - ex00
+  - ex01
+  - ex02
+  - ex03
+  - ex04
+  - ex05
+  - ex06
 - Module 02:
   Fixed point numbers and operator overloads
   - ex00 Fixed point class
