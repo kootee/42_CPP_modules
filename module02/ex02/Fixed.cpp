@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 09:53:03 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/18 16:12:41 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/21 11:15:00 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,33 @@
 /* Constructors */
 const int Fixed::_bits = 8;
 
-Fixed::Fixed () : _fixed_pt(0) { std::cout << DEFAULT_CONST << std::endl; }
+Fixed::Fixed () : _fixed_pt(0) 
+{ 
+    // std::cout << DEFAULT_CONST << std::endl; 
+}
 
 Fixed::Fixed (const int int_value) 
 {
     _fixed_pt = int_value << Fixed::_bits;
-    std::cout << INT_CONST << std::endl;
+    // std::cout << INT_CONST << std::endl;
 }
 
 Fixed::Fixed (const float float_value)
 {
     _fixed_pt = roundf(float_value * (1 << Fixed::_bits));
-    std::cout << FLOAT_CONST << std::endl;
+    // std::cout << FLOAT_CONST << std::endl;
 }
 
 Fixed::Fixed (const Fixed& copy) 
 {
     _fixed_pt = copy.getRawBits();
-    std::cout << COPY_CONST << std::endl;
+    // std::cout << COPY_CONST << std::endl;
 }
 
-Fixed::~Fixed () {std::cout << DESTRUCTOR << std::endl;};
+Fixed::~Fixed () 
+{
+    // std::cout << DESTRUCTOR << std::endl;
+}
 
 /* Operator overloads */
 Fixed& Fixed::operator= (const Fixed& og_obj)
@@ -62,34 +68,34 @@ float   Fixed::toFloat(void) const { return ((float)((float)((_fixed_pt) / (floa
 int     Fixed::toInt(void) const { return (_fixed_pt >> Fixed::_bits); }
 
 /* Comparison operator overloads */
-bool    Fixed::operator<(const Fixed& compare_to) const
+bool    Fixed::operator<(const Fixed& comp_val) const
 {
-    return (this->_fixed_pt < compare_to._fixed_pt);
+    return (this->_fixed_pt < comp_val._fixed_pt);
 }
 
-bool Fixed::operator>(const Fixed& compare_to) const
+bool Fixed::operator>(const Fixed& comp_val) const
 {
-    return (this->_fixed_pt > compare_to._fixed_pt);
+    return (this->_fixed_pt > comp_val._fixed_pt);
 }
 
-bool Fixed::operator<=(const Fixed& compare_to) const
+bool Fixed::operator<=(const Fixed& comp_val) const
 {
-    return (!(*this > compare_to));
+    return (!(*this > comp_val));
 }
 
-bool Fixed::operator>=(const Fixed& compare_to) const
+bool Fixed::operator>=(const Fixed& comp_val) const
 {
-    return (!(*this < compare_to));
+    return (!(*this < comp_val));
 }
 
-bool Fixed::operator==(const Fixed& compare_to) const
+bool Fixed::operator==(const Fixed& comp_val) const
 {
-    return (this->_fixed_pt == compare_to._fixed_pt);
+    return (this->_fixed_pt == comp_val._fixed_pt);
 }
 
-bool Fixed::operator!=(const Fixed& compare_to) const
+bool Fixed::operator!=(const Fixed& comp_val) const
 {
-    return (!(*this == compare_to));
+    return (!(*this == comp_val));
 }
 
 /* Arithmetic operator overloads */

@@ -6,18 +6,47 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 16:25:59 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/18 16:12:24 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/21 10:46:11 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+#include <limits>
 #include <iostream>
+
+void runTestFloat(float num1, float num2) 
+{  
+    std::cout << num1 << " " << num2 << std::endl;
+    
+    // Addition
+    float sum = num1 + num2;
+    std::cout << num1 << " + " << num2 << " = " 
+    << sum << std::endl;
+
+    // Subtraction
+    float diff = num1 - num2;
+    std::cout << num1 << " - " << num2 << " = " 
+    << diff << std::endl;
+
+    // Multiplication
+    float prod = num1 * num2;
+    std::cout << num1 << " * " << num2 << " = " 
+    << prod << std::endl;
+
+    // Division
+    if (num2 != 0) { // Prevent division by zero
+        float quot = num1 / num2;
+        std::cout << num1 << " / " << num2 << " = " 
+        << quot << std::endl;
+    } else {
+        std::cout << "Division by zero is undefined for " 
+        << num1 << " / " << num2 
+        << std::endl;
+    }
+}
 
 void runTest(const Fixed& num1, const Fixed& num2) 
 {
-
-    std::cout << "RUNNING TEST ON VALUES: ";
-    
     std::cout << num1.toFloat() << " " << num2.toFloat() << std::endl;
     
     // Addition
@@ -129,6 +158,13 @@ int main(void)
         std::cout << "d - c = " << mixedDiff.toFloat() << " (Expected: 0.5)" << std::endl;
     }
     {
+        float minfloat = std::numeric_limits<float>::min();
+        float lowfloat = std::numeric_limits<float>::lowest();
+        float maxfloat = std::numeric_limits<float>::max();
+        std::cout << "Min pos float val: " << minfloat << std::endl;
+        std::cout << "Lowest float val: " << lowfloat << std::endl; 
+        std::cout << "Max float val: " << maxfloat << std::endl; 
+        
         float input1;
         float input2;
         
@@ -144,7 +180,10 @@ int main(void)
             Fixed fixed1(input1);
             Fixed fixed2(input2);
             
+            std::cout << "RUNNING TEST ON FIXED POINT VALUES: ";
             runTest(fixed1, fixed2);
+            std::cout << "RUNNING TEST ON FLOAT VALUES: ";
+            runTestFloat(input1, input2);
         }
     }
     return 0;
