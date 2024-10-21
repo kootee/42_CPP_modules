@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 09:53:03 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/21 11:19:44 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/21 15:11:37 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int     Fixed::getRawBits(void) const { return (_fixed_pt); }
 
 void    Fixed::setRawBits(int const raw) { _fixed_pt = raw; }
 
-float   Fixed::toFloat(void) const { return ((float)((float)((_fixed_pt) / (float)(1 << Fixed::_bits)))); }
+float   Fixed::toFloat(void) const { return (_fixed_pt / (float)(1 << Fixed::_bits)); }
 
 int     Fixed::toInt(void) const { return (_fixed_pt >> Fixed::_bits); }
 

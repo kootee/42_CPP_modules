@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 16:25:59 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/21 11:20:35 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/21 15:41:34 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,19 +78,94 @@ void runTest(const Fixed& num1, const Fixed& num2)
 int main(void)
 {
     {
-        std::cout << "Test 1: " << std::endl;
+        std::cout << "Test Comparison Operators: " << std::endl;
+
         Fixed a;
-        Fixed const b(Fixed(5.05f).operator*(Fixed(2)));
-        std::cout << a << std::endl;
-        std::cout << ++a << std::endl;
-        std::cout << a << std::endl;
-        std::cout << a++ << std::endl;
-        std::cout << a << std::endl;
-        std::cout << b << std::endl;
-        std::cout << Fixed::max( a, b ) << std::endl;
+        Fixed const b(Fixed(5.05f).operator*(Fixed(2))); // b = 10.1
+        Fixed const c(10.1f);
+        Fixed const d(5.0f);
+        Fixed e(10.1f);
+        
+        std::cout << "a: " << a << std::endl;
+        std::cout << "b: " << b << std::endl;
+        std::cout << "c: " << c << std::endl;
+        std::cout << "d: " << d << std::endl;
+
+        std::cout << "\nComparing a and b:" << std::endl;
+        std::cout << "a < b: " << (a < b) << std::endl; // Expected true
+        std::cout << "a > b: " << (a > b) << std::endl; // Expected false
+        std::cout << "a <= b: " << (a <= b) << std::endl; // Expected true
+        std::cout << "a >= b: " << (a >= b) << std::endl; // Expected false
+
+        std::cout << "\nComparing b and c (b == c):" << std::endl;
+        std::cout << "b < c: " << (b < c) << std::endl; // Expected false
+        std::cout << "b > c: " << (b > c) << std::endl; // Expected false
+        std::cout << "b <= c: " << (b <= c) << std::endl; // Expected true
+        std::cout << "b >= c: " << (b >= c) << std::endl; // Expected true
+
+        std::cout << "\nComparing d and b:" << std::endl;
+        std::cout << "d < b: " << d.operator<(b) << std::endl; // Expected true
+        std::cout << "d > b: " << (d > b) << std::endl; // Expected false
+        std::cout << "d <= b: " << (d <= b) << std::endl; // Expected true
+        std::cout << "d >= b: " << (d >= b) << std::endl; // Expected false
+
+        std::cout << "\nComparing c and d:" << std::endl;
+        std::cout << "c < d: " << (c < d) << std::endl; // Expected false
+        std::cout << "c > d: " << (c > d) << std::endl; // Expected true
+        std::cout << "c <= d: " << (c <= d) << std::endl; // Expected false
+        std::cout << "c >= d: " << (c >= d) << std::endl; // Expected true
+
+        std::cout << "\nComparing b and c (b == c):" << std::endl;
+        std::cout << "b == c: " << (b == c) << std::endl; // Expected true
+        std::cout << "b != c: " << (b != c) << std::endl; // Expected false
+
+        std::cout << "\nComparing c and d:" << std::endl;
+        std::cout << "c == d: " << (c == d) << std::endl; // Expected false
+        std::cout << "c != d: " << (c != d) << std::endl; // Expected true
+
+        std::cout << "\nComparing c and e (c == e):" << std::endl;
+        std::cout << "c == e: " << (c == e) << std::endl; // Expected true
+        std::cout << "c != e: " << (c != e) << std::endl; // Expected false
     }
     {
-        std::cout << "Test 2: " << std::endl;
+        std::cout << "Test increment and decrement: " << std::endl;
+        Fixed a;
+        Fixed const b(Fixed(5.05f).operator*(Fixed(2)));
+        Fixed c = Fixed(25.45f);
+        
+            // Print the initial value of 'a'
+        std::cout << "Initial value of a: " << a << std::endl;
+
+        // Pre-increment 'a' (++a)
+        std::cout << "Pre-increment ++a: " << ++a << " (a is now incremented before printing)" << std::endl;
+
+        // Print the value of 'a' after pre-increment
+        std::cout << "Value of a after pre-increment: " << a << std::endl;
+
+        // Post-increment 'a' (a++)
+        std::cout << "Post-increment a++: " << a++ << " (a is printed, then incremented)" << std::endl;
+
+        // Print the value of 'a' after post-increment
+        std::cout << "Value of a after post-increment: " << a << std::endl;
+
+        // Print the value of 'b'
+        std::cout << "Value of b: " << b << " (b was initialized to 5.05 * 2)" << std::endl;
+
+        // Pre-decrement 'c' (--c)
+        std::cout << "Pre-decrement --c: " << --c << " (c is decremented before printing)" << std::endl;
+
+        // Post-decrement 'c' (c--)
+        std::cout << "Post-decrement c--: " << c-- << " (c is printed, then decremented)" << std::endl;
+
+        // Print the value of 'c' after post-decrement
+        std::cout << "Value of c after post-decrement: " << c << std::endl;
+
+        // Print the max value between 'a' and 'b'
+        std::cout << "Max of a and b: " << Fixed::max(a, b) << std::endl;
+
+    }
+    {
+        std::cout << "Test arithmetic operations: " << std::endl;
         Fixed a(2);
         Fixed b(3.5f);
 

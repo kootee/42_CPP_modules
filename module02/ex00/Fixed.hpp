@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 09:54:50 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/18 13:42:05 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/21 14:40:46 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # define COPY_CONST		"Copy constructor called"
 # define DESTRUCTOR		"Destructor called"
 # define COPY_ASSIGN	"Copy assignment operator called"
-# define GET_RAW_BITS	"Get raw bits called"
-# define SET_RAW_BITS	"Set raw bits called"
+# define GET_RAW_BITS	"getRawBits member function called"
+# define SET_RAW_BITS	"setRawBits member function called"
 
 class Fixed
 {
@@ -32,7 +32,7 @@ class Fixed
 			Fixed(const Fixed& copy);	// Copy constructor
 			~Fixed(); 					// Destructor
 			
-			Fixed& operator= (const Fixed& fixed);	// Assignment operator overload
+			Fixed& operator= (const Fixed& fixed);	// Copy assignment operator overload
 			
 			// Class member functions
 			int		getRawBits(void) const;

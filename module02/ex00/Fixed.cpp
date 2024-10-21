@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 09:53:03 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/18 13:42:11 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/21 14:42:15 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ Fixed& Fixed::operator= (const Fixed& og_obj)
 /* Class member functions */
 int     Fixed::getRawBits(void) const
 {
-    std::cout << "Get raw bits called" << std::endl;
+    std::cout << GET_RAW_BITS << std::endl;
     return (_fixed_pt);
 }
 
 void    Fixed::setRawBits(int const raw)
 {
-    std::cout << "Set raw bits called" << std::endl;
+    std::cout << SET_RAW_BITS << std::endl;
     _fixed_pt = raw;
 }
