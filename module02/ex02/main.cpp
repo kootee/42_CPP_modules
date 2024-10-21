@@ -6,12 +6,11 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 16:25:59 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/21 10:46:11 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/21 11:20:35 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
-#include <limits>
 #include <iostream>
 
 void runTestFloat(float num1, float num2) 
@@ -157,14 +156,7 @@ int main(void)
         Fixed mixedDiff = d - c; // 1.0 - 0.5 = 0.5
         std::cout << "d - c = " << mixedDiff.toFloat() << " (Expected: 0.5)" << std::endl;
     }
-    {
-        float minfloat = std::numeric_limits<float>::min();
-        float lowfloat = std::numeric_limits<float>::lowest();
-        float maxfloat = std::numeric_limits<float>::max();
-        std::cout << "Min pos float val: " << minfloat << std::endl;
-        std::cout << "Lowest float val: " << lowfloat << std::endl; 
-        std::cout << "Max float val: " << maxfloat << std::endl; 
-        
+    {        
         float input1;
         float input2;
         
