@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 09:53:03 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/21 15:11:37 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/22 18:02:21 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,38 +17,38 @@ const int Fixed::_bits = 8;
 
 Fixed::Fixed () : _fixed_pt(0) 
 { 
-    std::cout << DEFAULT_CONST << std::endl; 
+    // std::cout << DEFAULT_CONST << std::endl; 
 }
 
 Fixed::Fixed (const int int_value) 
 {
+    // std::cout << INT_CONST << std::endl;
     _fixed_pt = int_value << Fixed::_bits;
-    std::cout << INT_CONST << std::endl;
 }
 
 Fixed::Fixed (const float float_value)
 {
+    // std::cout << FLOAT_CONST << std::endl;
     _fixed_pt = roundf(float_value * (1 << Fixed::_bits));
-    std::cout << FLOAT_CONST << std::endl;
 }
 
 Fixed::Fixed (const Fixed& copy) 
 {
+    // std::cout << COPY_CONST << std::endl;
     _fixed_pt = copy.getRawBits();
-    std::cout << COPY_CONST << std::endl;
 }
 
 Fixed::~Fixed () 
 {
-    std::cout << DESTRUCTOR << std::endl;
+    // std::cout << DESTRUCTOR << std::endl;
 }
 
 /* Operator overloads */
 Fixed& Fixed::operator= (const Fixed& og_obj)
 {
+    // std::cout << COPY_ASSIGN << std::endl;
     if (this != &og_obj)
         _fixed_pt = og_obj.getRawBits();
-    std::cout << COPY_ASSIGN << std::endl;
     return (*this);
 }
 

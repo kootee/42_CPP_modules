@@ -6,12 +6,11 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 16:25:59 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/22 11:18:09 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/22 18:05:21 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
-#include <iostream>
 
 void runTestFloat(float num1, float num2) 
 {  
@@ -42,9 +41,8 @@ void runTestFloat(float num1, float num2)
         << num1 << " / " << num2 
         << std::endl;
     }
-
+    
     std::cout << "Max of num1 and num2: " << Fixed::max(num1, num2) << std::endl;
-
     std::cout << "Min of num1 and num2: " << Fixed::min(num1, num2) << std::endl;
 }
 
@@ -79,7 +77,6 @@ void runTest(const Fixed& num1, const Fixed& num2)
     }
 
     std::cout << "Max of num1 and num2: " << Fixed::max(num1, num2) << std::endl;
-
     std::cout << "Min of num1 and num2: " << Fixed::min(num1, num2) << std::endl;
 } 
 
@@ -99,39 +96,32 @@ int main(void)
         std::cout << "c: " << c << std::endl;
         std::cout << "d: " << d << std::endl;
 
-        std::cout << "\nComparing a and b:" << std::endl;
         std::cout << "a < b: " << (a < b) << std::endl; // Expected true
         std::cout << "a > b: " << (a > b) << std::endl; // Expected false
         std::cout << "a <= b: " << (a <= b) << std::endl; // Expected true
         std::cout << "a >= b: " << (a >= b) << std::endl; // Expected false
 
-        std::cout << "\nComparing b and c (b == c):" << std::endl;
         std::cout << "b < c: " << (b < c) << std::endl; // Expected false
         std::cout << "b > c: " << (b > c) << std::endl; // Expected false
         std::cout << "b <= c: " << (b <= c) << std::endl; // Expected true
         std::cout << "b >= c: " << (b >= c) << std::endl; // Expected true
 
-        std::cout << "\nComparing d and b:" << std::endl;
         std::cout << "d < b: " << d.operator<(b) << std::endl; // Expected true
         std::cout << "d > b: " << (d > b) << std::endl; // Expected false
         std::cout << "d <= b: " << (d <= b) << std::endl; // Expected true
         std::cout << "d >= b: " << (d >= b) << std::endl; // Expected false
 
-        std::cout << "\nComparing c and d:" << std::endl;
         std::cout << "c < d: " << (c < d) << std::endl; // Expected false
         std::cout << "c > d: " << (c > d) << std::endl; // Expected true
         std::cout << "c <= d: " << (c <= d) << std::endl; // Expected false
         std::cout << "c >= d: " << (c >= d) << std::endl; // Expected true
-
-        std::cout << "\nComparing b and c (b == c):" << std::endl;
+;
         std::cout << "b == c: " << (b == c) << std::endl; // Expected true
         std::cout << "b != c: " << (b != c) << std::endl; // Expected false
 
-        std::cout << "\nComparing c and d:" << std::endl;
         std::cout << "c == d: " << (c == d) << std::endl; // Expected false
         std::cout << "c != d: " << (c != d) << std::endl; // Expected true
 
-        std::cout << "\nComparing c and e (c == e):" << std::endl;
         std::cout << "c == e: " << (c == e) << std::endl; // Expected true
         std::cout << "c != e: " << (c != e) << std::endl; // Expected false
     }
