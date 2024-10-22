@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 16:25:59 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/21 15:41:34 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/22 11:18:09 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,10 @@ void runTestFloat(float num1, float num2)
         << num1 << " / " << num2 
         << std::endl;
     }
+
+    std::cout << "Max of num1 and num2: " << Fixed::max(num1, num2) << std::endl;
+
+    std::cout << "Min of num1 and num2: " << Fixed::min(num1, num2) << std::endl;
 }
 
 void runTest(const Fixed& num1, const Fixed& num2) 
@@ -73,6 +77,10 @@ void runTest(const Fixed& num1, const Fixed& num2)
         << num1.toFloat() << " / " << num2.toFloat() 
         << std::endl;
     }
+
+    std::cout << "Max of num1 and num2: " << Fixed::max(num1, num2) << std::endl;
+
+    std::cout << "Min of num1 and num2: " << Fixed::min(num1, num2) << std::endl;
 } 
 
 int main(void)
@@ -133,7 +141,7 @@ int main(void)
         Fixed const b(Fixed(5.05f).operator*(Fixed(2)));
         Fixed c = Fixed(25.45f);
         
-            // Print the initial value of 'a'
+        // Print the initial value of 'a'
         std::cout << "Initial value of a: " << a << std::endl;
 
         // Pre-increment 'a' (++a)
@@ -163,6 +171,8 @@ int main(void)
         // Print the max value between 'a' and 'b'
         std::cout << "Max of a and b: " << Fixed::max(a, b) << std::endl;
 
+        // Print the max value between 'a' and 'b'
+        std::cout << "Min of a and b: " << Fixed::min(a, b) << std::endl;
     }
     {
         std::cout << "Test arithmetic operations: " << std::endl;
