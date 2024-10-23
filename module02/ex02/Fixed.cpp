@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 09:53:03 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/22 18:02:21 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/23 09:42:41 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,36 +17,36 @@ const int Fixed::_bits = 8;
 
 Fixed::Fixed () : _fixed_pt(0) 
 { 
-    // std::cout << DEFAULT_CONST << std::endl; 
+    std::cout << DEFAULT_CONST << std::endl; 
 }
 
 Fixed::Fixed (const int int_value) 
 {
-    // std::cout << INT_CONST << std::endl;
+    std::cout << INT_CONST << std::endl;
     _fixed_pt = int_value << Fixed::_bits;
 }
 
 Fixed::Fixed (const float float_value)
 {
-    // std::cout << FLOAT_CONST << std::endl;
+    std::cout << FLOAT_CONST << std::endl;
     _fixed_pt = roundf(float_value * (1 << Fixed::_bits));
 }
 
 Fixed::Fixed (const Fixed& copy) 
 {
-    // std::cout << COPY_CONST << std::endl;
+    std::cout << COPY_CONST << std::endl;
     _fixed_pt = copy.getRawBits();
 }
 
 Fixed::~Fixed () 
 {
-    // std::cout << DESTRUCTOR << std::endl;
+    std::cout << DESTRUCTOR << std::endl;
 }
 
 /* Operator overloads */
 Fixed& Fixed::operator= (const Fixed& og_obj)
 {
-    // std::cout << COPY_ASSIGN << std::endl;
+    std::cout << COPY_ASSIGN << std::endl;
     if (this != &og_obj)
         _fixed_pt = og_obj.getRawBits();
     return (*this);
@@ -101,29 +101,22 @@ bool Fixed::operator!=(const Fixed& comp_val) const
 /* Arithmetic operator overloads */
 Fixed Fixed::operator+(const Fixed& add_val) const 
 {
-    Fixed   res;
-    res.setRawBits((*this)._fixed_pt + add_val._fixed_pt);
-    return (res);
+    return (this->toFloat() + add_val.toFloat());
 }
 Fixed Fixed::operator-(const Fixed& sub_val) const 
 {
-    Fixed res;
-    res.setRawBits((*this)._fixed_pt - sub_val._fixed_pt);
-    return (res);
+    return ((*this).toFloat() - sub_val.toFloat());
 }
+
 Fixed Fixed::operator*(const Fixed& mult_val) const
 {
-    Fixed res;
-    res.setRawBits(((*this)._fixed_pt * mult_val._fixed_pt) >> Fixed::_bits);
-    return (res);
+    return (this->toFloat() * mult_val.toFloat());
 }
 Fixed Fixed::operator/(const Fixed& div_val) const
 {
-    Fixed res;
     if (div_val._fixed_pt == 0)
         throw std::runtime_error("division by zero");
-    res.setRawBits(((*this)._fixed_pt << _bits) / div_val._fixed_pt);
-    return (res);
+    return (this->toFloat() / div_val.toFloat());
 }
 
 /* Increment/decrement operator overloads */

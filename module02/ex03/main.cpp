@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 16:25:59 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/22 17:53:41 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/23 09:41:45 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int main(void)
         << " (Expected: false)" << std::endl;
 
         Point pointSlightlyInside(0.9999f, 0.999f);
-        std::cout << "Test Case 10 (Slightly Inside): " << (bsp(a, b, c, pointSlightlyInside)   ? "true" : "false")
+        std::cout << "Test Case 10 (Inside): " << (bsp(a, b, c, pointSlightlyInside)   ? "true" : "false")
         << " (Expected: true)" << std::endl;
 
         Point pointLargeNeg(-5452.5f, 692.5f);
