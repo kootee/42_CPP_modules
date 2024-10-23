@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:12:07 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/14 14:49:02 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/23 18:55:28 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include "ClapTrap.cpp"
 
 /* Derived class from ClapTrap class */
-class ScavTrap: public ClapTrap
+class ScavTrap: virtual public ClapTrap
 {
 public:
     ScavTrap(std::string);

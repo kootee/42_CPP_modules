@@ -6,14 +6,13 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 11:32:47 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/16 16:11:48 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/23 18:33:13 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLAPTRAP_HPP
-# define CLAPTRAP_HPP
+#pragma once
 
-# include <iostream>
+#include <iostream>
 
 class ClapTrap 
 {
@@ -26,13 +25,12 @@ class ClapTrap
 			ClapTrap(); 					// Default constructor
 			ClapTrap(std::string); 			// Parameterized constructor
 			ClapTrap(const ClapTrap &); 	// Copy constructor
-			ClapTrap &operator= (const ClapTrap &); // Copy assignment operator
 			~ClapTrap(); 					// Destructor
 
+			ClapTrap &operator= (const ClapTrap &); // Copy assignment operator overload
+			
 			// Class member functions
 			void	attack(const std::string &target);
 			void	takeDamage(unsigned int amount);
 			void	beRepaired(unsigned int amount);
 };
-
-#endif

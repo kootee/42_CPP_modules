@@ -6,15 +6,15 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 12:00:35 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/23 13:06:39 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/23 17:28:55 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
-Cat::Cat () : type("Cat") { std::cout << DEF_ANIMAL << type << std::endl; }
+Cat::Cat () : Animal("Cat") { std::cout << DEF_ANIMAL << type << std::endl; }
 
-Cat::Cat (const Cat &to_copy) : Animal ("Default")
+Cat::Cat (const Cat &to_copy) : Animal (to_copy.type)
 {
     this->type = to_copy.type;
     std::cout << this->type << COPY_ANIMAL << std::endl;

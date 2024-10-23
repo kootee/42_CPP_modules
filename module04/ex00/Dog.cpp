@@ -6,15 +6,15 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:14:57 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/23 13:11:32 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/23 17:29:42 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
-Dog::Dog () : type("Dog") { std::cout << DEF_ANIMAL << type << std::endl; }
+Dog::Dog () : Animal("Dog") { std::cout << DEF_ANIMAL << type << std::endl; }
 
-Dog::Dog (const Dog &to_copy) : Animal("Default")
+Dog::Dog (const Dog &to_copy) : Animal(to_copy.type)
 {
     this->type = to_copy.type;
     std::cout << this->type << COPY_ANIMAL << std::endl;

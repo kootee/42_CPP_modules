@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:12:09 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/14 15:12:41 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/23 17:45:11 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ ScavTrap::~ScavTrap()
 }
 
 /* Member functions */
-void    ScavTrap::attack(std::string &target)
+void    ScavTrap::attack(const std::string &target)
 {
 	if (_ep > 0)
 	{

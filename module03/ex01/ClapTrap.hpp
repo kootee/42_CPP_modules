@@ -6,13 +6,13 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 11:32:47 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/14 14:20:23 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/23 17:15:42 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-# include <iostream>
+#include <iostream>
 
 /* Base class ClapTrap */
 class ClapTrap {

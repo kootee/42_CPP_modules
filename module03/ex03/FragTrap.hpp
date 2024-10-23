@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 15:16:27 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/18 12:15:53 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/23 18:55:13 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 #include <iostream>
 
-class FragTrap: public ClapTrap
+class FragTrap: virtual public ClapTrap
 {
 	public:
 			FragTrap(std::string);
