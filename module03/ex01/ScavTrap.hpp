@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:12:07 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/23 17:43:56 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/24 14:57:37 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ class ScavTrap: public ClapTrap
         
         ScavTrap& operator=(const ScavTrap&);
     
-    // Member functions
-    void    attack(const std::string &);
-    void    guardGate();
+        // Member functions
+        void    attack(const std::string &);
+        void    guardGate();
 };
 
