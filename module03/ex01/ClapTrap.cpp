@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 11:35:31 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/25 10:42:58 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/25 12:41:12 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,8 @@ void    ClapTrap::beRepaired(unsigned int amount)
 	{
 		_hp += amount;
 		std::cout << "ClapTrap " << _name << " repaired itself for " 
-		<< amount << " points\n";
+		<< amount << " points\n(" << _name << " now has " 
+		<< _hp << " hit points left)\n";
 	}
 	else if (_hp == 0)
 		std::cout << "Cannot repair, ClapTrap " << _name 
