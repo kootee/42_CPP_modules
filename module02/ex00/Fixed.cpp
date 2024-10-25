@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 09:53:03 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/23 09:44:49 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/24 10:35:26 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,20 @@ const int Fixed::_bits = 8;
 
 Fixed::Fixed () : _fixed_pt(0) { std::cout << DEFAULT_CONST << std::endl; };
 
-Fixed::Fixed (const Fixed& copy) : _fixed_pt(copy._fixed_pt) 
+Fixed::Fixed (const Fixed& to_copy) : _fixed_pt(to_copy._fixed_pt) 
 {
     std::cout << COPY_CONST << std::endl;
-    _fixed_pt = copy.getRawBits();
+    _fixed_pt = to_copy.getRawBits();
 }
 
 Fixed::~Fixed () { std::cout << DESTRUCTOR << std::endl; };
 
 /* Operator overloads */
-Fixed& Fixed::operator= (const Fixed& og_obj)
+Fixed& Fixed::operator= (const Fixed& to_copy)
 {
     std::cout << COPY_ASSIGN << std::endl;
-    if (this != &og_obj)
-        _fixed_pt = og_obj.getRawBits();
+    if (this != &to_copy)
+        _fixed_pt = to_copy.getRawBits();
     return (*this);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 09:53:03 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/21 15:10:12 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/24 10:36:18 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,20 @@ Fixed::Fixed (const float float_value)
     _fixed_pt = roundf(float_value * (1 << Fixed::_bits));
 }
 
-Fixed::Fixed (const Fixed& copy) 
+Fixed::Fixed (const Fixed& to_copy) 
 {
     std::cout << COPY_CONST << std::endl;
-    _fixed_pt = copy.getRawBits();
+    _fixed_pt = to_copy.getRawBits();
 }
 
 Fixed::~Fixed () {std::cout << DESTRUCTOR << std::endl;};
 
 /* Operator overloads */
-Fixed& Fixed::operator= (const Fixed& other)
+Fixed& Fixed::operator= (const Fixed& to_copy)
 {
     std::cout << COPY_ASSIGN << std::endl;
-    if (this != &other)
-        _fixed_pt = other.getRawBits();
+    if (this != &to_copy)
+        _fixed_pt = to_copy.getRawBits();
     return (*this);
 }
 

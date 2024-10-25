@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 09:53:03 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/23 09:42:41 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/24 10:38:22 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ Fixed::Fixed (const float float_value)
     _fixed_pt = roundf(float_value * (1 << Fixed::_bits));
 }
 
-Fixed::Fixed (const Fixed& copy) 
+Fixed::Fixed (const Fixed& to_copy) 
 {
     std::cout << COPY_CONST << std::endl;
-    _fixed_pt = copy.getRawBits();
+    _fixed_pt = to_copy.getRawBits();
 }
 
 Fixed::~Fixed () 
@@ -44,18 +44,18 @@ Fixed::~Fixed ()
 }
 
 /* Operator overloads */
-Fixed& Fixed::operator= (const Fixed& og_obj)
+Fixed& Fixed::operator= (const Fixed& to_copy)
 {
     std::cout << COPY_ASSIGN << std::endl;
-    if (this != &og_obj)
-        _fixed_pt = og_obj.getRawBits();
+    if (this != &to_copy)
+        _fixed_pt = to_copy.getRawBits();
     return (*this);
 }
 
-std::ostream& operator<< (std::ostream &os_obj, const Fixed &fixed_pt)
+std::ostream& operator<< (std::ostream &other, const Fixed &fixed_pt)
 {
-    os_obj << fixed_pt.toFloat();
-    return (os_obj);
+    other << fixed_pt.toFloat();
+    return (other);
 }
 
 /* Class member functions */

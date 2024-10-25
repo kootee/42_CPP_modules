@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 11:32:47 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/24 14:55:45 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/25 10:00:20 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@
 class ClapTrap 
 {
 	protected:
-			std::string _name;
-			int			_hp; // Hit points
-			int			_ep; // Energy points
-			int			_at; // Attack damage
+			std::string 	_name;
+			unsigned int	_hp; // Hit points
+			unsigned int	_ep; // Energy points
+			unsigned int	_at; // Attack damage
 	public:
 			ClapTrap(); 				// Default constructor
 			ClapTrap(std::string); 		// Parameterized constructor
