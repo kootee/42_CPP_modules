@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:12:07 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/25 11:56:40 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/28 13:05:20 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@
 class ScavTrap: public ClapTrap
 {
     public:
-        ScavTrap();
-        ScavTrap(std::string);
-        ~ScavTrap();
-        ScavTrap(const ScavTrap&); // Copy constructor
+        ScavTrap();                 // Default constructor        
+        ScavTrap(std::string);      // Parameterized constructor
+        ScavTrap(const ScavTrap&);  // Copy constructor
+        ~ScavTrap();                // Destructor
         
         ScavTrap& operator=(const ScavTrap&);
     

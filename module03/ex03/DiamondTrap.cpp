@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 12:33:37 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/28 12:17:57 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/28 13:15:47 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ DiamondTrap::DiamondTrap(std::string name)
         ScavTrap(name), 
         FragTrap(name)
 {
-    _name = name;
     ClapTrap::_name = name + "_clap_trap";
+    _name = name;
     _hp = FragTrap::_hp;
     _ep = ScavTrap::_ep;
     _at = FragTrap::_at;
@@ -36,12 +36,15 @@ DiamondTrap::DiamondTrap(std::string name)
     
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap& to_copy)
-    :   ClapTrap(to_copy), 
-        ScavTrap(to_copy),
-        FragTrap(to_copy)
+DiamondTrap::DiamondTrap(const DiamondTrap& obj)
+    :   ClapTrap(obj), 
+        ScavTrap(obj),
+        FragTrap(obj)
 {
-    _name = to_copy._name;
+    _name = obj._name;
+	_hp = obj._hp;
+	_ep = obj._ep;
+	_at = obj._at;
     std::cout << _name << DT_COPY_CONST << std::endl;
 }
 
@@ -54,7 +57,7 @@ DiamondTrap& DiamondTrap::operator= (const DiamondTrap &obj)
 		_ep = obj._ep;
 		_at = obj._at;
 	}
-	std::cout << obj._name << DT_COPY_ASSIGN << std::endl;
+	std::cout << _name << DT_COPY_ASSIGN << std::endl;
 	return (*this);
 }
 

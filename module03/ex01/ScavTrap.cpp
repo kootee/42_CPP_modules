@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:12:09 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/28 11:28:24 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/28 12:54:04 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ ScavTrap::ScavTrap () : ClapTrap()
 
 ScavTrap::ScavTrap (std::string name) : ClapTrap(name)
 {
-	_name = name;
     _hp = 100;
     _ep = 50;
     _at = 20;

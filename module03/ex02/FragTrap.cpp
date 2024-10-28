@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 15:20:05 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/28 12:04:36 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/28 13:07:42 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 FragTrap::FragTrap () : ClapTrap()
 {
-	_name = "Default";
     _hp = 100;
     _ep = 100;
     _at = 30;
@@ -23,7 +22,6 @@ FragTrap::FragTrap () : ClapTrap()
 
 FragTrap::FragTrap (std::string name) : ClapTrap(name)
 {
-	_name = name;
     _hp = 100;
     _ep = 100;
     _at = 30;
