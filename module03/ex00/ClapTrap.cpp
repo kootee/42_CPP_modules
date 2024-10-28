@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 11:35:31 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/28 10:02:32 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/28 14:22:35 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ ClapTrap::ClapTrap (const ClapTrap &obj)
 	std::cout << obj._name <<  COPY_CONST << std::endl;
 }
 
-ClapTrap::~ClapTrap () { std::cout << _name << DESTRUCTOR << std::endl; }
-
 ClapTrap& ClapTrap::operator= (const ClapTrap &obj)
 {
 	if (this != &obj)
@@ -47,6 +45,8 @@ ClapTrap& ClapTrap::operator= (const ClapTrap &obj)
 	return (*this);
 }
 
+ClapTrap::~ClapTrap () { std::cout << _name << DESTRUCTOR << std::endl; }
+
 /* Class member functions */
 void    ClapTrap::attack(const std::string &target)
 {
@@ -58,10 +58,12 @@ void    ClapTrap::attack(const std::string &target)
 	}
 	else if (_hp == 0)
 	{
-		std::cout << "ClapTrap " << _name << " is out of hit points\n";
+		std::cout << "Cannot attack, ClapTrap " << _name 
+		<< " is out of hit points\n";
 	}
 	else
-		std::cout << "ClapTrap " << _name << " is out of energy points\n";
+		std::cout << "Cannot attack, ClapTrap " << _name 
+		<< " is out of energy points\n";
 }
 
 void    ClapTrap::takeDamage(unsigned int amount)
@@ -74,10 +76,10 @@ void    ClapTrap::takeDamage(unsigned int amount)
 	}
 	else
 	{
-		std::cout << "ClapTrap " << _name << " took " << amount 
-		<< " points of damage\n" << _name << " now has " 
-		<< _ep << " points left" << std::endl;
 		_hp -= amount;
+		std::cout << "ClapTrap " << _name << " took " << amount 
+		<< " points of damage\n(" << _name << " now has " 
+		<< _hp << " hit points left)\n";
 	}
 }
 
@@ -86,14 +88,14 @@ void    ClapTrap::beRepaired(unsigned int amount)
 	if (_hp > 0 && _ep > 0 && _ep--)
 	{
 		_hp += amount;
-		std::cout << "ClapTrap " << _name << "repaired itself for " 
-		<< amount << " points\n" << _name << " now has " 
-		<< _ep << " energy points left" << std::endl;
+		std::cout << "ClapTrap " << _name << " repaired itself for " 
+		<< amount << " points\n(" << _name << " now has " 
+		<< _hp << " hit points left)\n";
 	}
 	else if (_hp == 0)
-		std::cout << "ClapTrap " << _name << " is out of hit points" 
-		<< std::endl;
+		std::cout << "Cannot repair, ClapTrap " << _name 
+		<< " is out of hit points\n";
 	else
-		std::cout << "ClapTrap " << _name << " is out of energy points" 
-		<< std::endl;
+		std::cout << "Cannot repair, ClapTrap " << _name 
+		<< " is out of energy points\n";
 }

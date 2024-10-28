@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 11:35:31 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/28 12:15:02 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/28 14:51:30 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ ClapTrap::ClapTrap () : _name("Default"), _hp(10), _ep(10), _at(0)
 
 ClapTrap::ClapTrap (std::string name) : _name(name), _hp(10), _ep(10), _at(0)
 {
-	std::cout << this->_name << PARAM_CONST << std::endl;
+	std::cout << this->_name + "_clap_trap" << PARAM_CONST << std::endl;
 }
 
 ClapTrap::ClapTrap (const ClapTrap &obj)
