@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 11:32:25 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/25 12:44:37 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/28 10:04:16 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ int main(void)
         warrior.attack("Knight");
         knight.takeDamage(8);
         knight.beRepaired(50);  // Knight repairs itself
-        std::cout << std::endl;
 
         // Test for excessive damage (test if ClapTrap can "die" or go to 0 HP)
         rogue.attack("Warrior");
@@ -70,8 +69,6 @@ int main(void)
         healer.attack("Knight");
         knight.takeDamage(30);
         knight.beRepaired(200);
-        std::cout << std::endl;
-
         warrior.attack("Knight");
         
         std::cout << "\n--- Testing ScavTrap Guard gate ---" << std::endl;
@@ -83,23 +80,27 @@ int main(void)
         // Testing copy assignment operator
         std::cout << "\n--- More tests ---" << std::endl;
         
-        ClapTrap knight("Knight Jr");
-        ClapTrap archer("Archer");  
+        ClapTrap mage_copy("Mage_copy");
+        ClapTrap mage_copy2("Mage_copy2");  
         ScavTrap rogue("Rogue Jr");
         ScavTrap healer("Healer Jr");
 
         std::cout << "\n--- Creating copies ---" << std::endl;
-        ClapTrap mage(knight);
-        archer = knight;
+        
+        ClapTrap mage(mage_copy);
+        mage_copy2 = mage_copy;
+        
         ScavTrap bard("Bard");  
-        ScavTrap assasin("Assasin");
-        bard = assasin;
-        ScavTrap wizard = ScavTrap("Wizard");
-        ScavTrap wizard2(ScavTrap("Wizard 2"));
+        ScavTrap bard_copy("Bard_copy");
+        bard = bard_copy;
+        ScavTrap bard_copy2(bard_copy);
+        
+        ScavTrap wizard ("Wizard");
+        ScavTrap wizard_copy(wizard);
         
         std::cout << "\n--- Testing class functions ---" << std::endl;
 
-        archer.attack("Rogue Jr");
+        mage_copy2.attack("Rogue Jr");
         rogue.takeDamage(10);
         std::cout << std::endl;
         mage.attack("Healer");
@@ -108,7 +109,7 @@ int main(void)
 
         // Further attacks and healing after copying
         mage.beRepaired(25);
-        archer.beRepaired(10);
+        bard_copy.beRepaired(10);
         std::cout << std::endl;
 
         // Testing copy constructor
@@ -120,7 +121,7 @@ int main(void)
         bard.beRepaired(25); 
         rogue.beRepaired(10);
         
-        std::cout << "\n--- End of scope ---" << std::endl;
+        std::cout << "\n--- End of scope... destroying traps ---" << std::endl;
     }
     
     return (0);

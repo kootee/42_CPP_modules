@@ -6,48 +6,58 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 15:20:05 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/23 17:53:26 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/28 12:04:36 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
-
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap(std::string name)
+FragTrap::FragTrap () : ClapTrap()
 {
-    ClapTrap new_inst = name;
+	_name = "Default";
     _hp = 100;
     _ep = 100;
     _at = 30;
-    std::cout << "FragTrap constructor called" << std::endl;
+    std::cout << FT_DEFAULT_CONST << std::endl;
+}
+
+FragTrap::FragTrap (std::string name) : ClapTrap(name)
+{
+	_name = name;
+    _hp = 100;
+    _ep = 100;
+    _at = 30;
+    std::cout << _name << FT_PARAM_CONST << std::endl;
+}
+
+FragTrap::FragTrap (const FragTrap &obj) : ClapTrap(obj)
+{
+	_name = obj._name;
+	_hp = obj._hp;
+	_ep = obj._ep;
+	_at = obj._at;
+	std::cout << obj._name <<  FT_COPY_CONST << std::endl;
 }
 
 FragTrap::~FragTrap()
 {
-    std::cout << "FragTrap destructor called" << std::endl;
+    std::cout << _name << FT_DESTRUCTOR << std::endl;
+}
+
+FragTrap& FragTrap::operator= (const FragTrap &obj)
+{
+	if (this != &obj)
+	{
+		_name = obj._name;
+		_hp = obj._hp;
+		_ep = obj._ep;
+		_at = obj._at;
+	}
+	std::cout << obj._name << FT_COPY_ASSIGN << std::endl;
+	return (*this);
 }
 
 void    FragTrap::highFivesGuys(void)
 {
-    std::cout << "Let's high five!!!" << std::endl;
-}
-
-/* Member functions */
-void    FragTrap::attack(const std::string &target)
-{
-    ClapTrap::attack(target);
-    
-	if (_ep > 0)
-	{
-		_ep--;
-		std::cout << "ScavTrap " << _name << "attacks" << target
-        << ", causing" << _at << " points of damage" 
-        << std::endl;
-	}
-	else
-    {
-		std::cout << "ScavTrap " << _name << "is out of energy points" 
-        << std::endl;
-    }
+    std::cout << "I'm " << _name << ", let's high five!!!\n";
 }

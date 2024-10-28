@@ -6,23 +6,34 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:12:07 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/23 18:55:28 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/28 11:09:04 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-# include "ClapTrap.cpp"
+#include "ClapTrap.hpp"
+#include <iostream>
+
+#define ST_DEFAULT_CONST    "ScavTrap default constructor called"
+#define ST_PARAM_CONST		" was created by ScavTrap constructor"
+#define ST_COPY_CONST		" was copied by the ScavTrap copy constructor"
+#define ST_COPY_ASSIGN		" was copied by the ScavTrap copy assignment operator"
+#define ST_DESTRUCTOR		" was destroyed by the ScavTrap destructor"
 
 /* Derived class from ClapTrap class */
 class ScavTrap: virtual public ClapTrap
 {
-public:
-    ScavTrap(std::string);
-    ~ScavTrap();
+    public:
+        ScavTrap();
+        ScavTrap(std::string);
+        ScavTrap(const ScavTrap&); // Copy constructor
+        virtual ~ScavTrap();
+        
+        ScavTrap& operator=(const ScavTrap&);
     
-    // Member functions
-    void    attack(std::string &);
-    void    guardGate();
+        // Member functions
+        void    attack(const std::string &target);
+        void    guardGate();
 };
 

@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 11:32:47 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/24 14:35:29 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/28 09:44:33 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ class ClapTrap
 			unsigned int	_ep; // Energy points
 			unsigned int	_at; // Attack damage
 	public:
-			ClapTrap(); 					// Default constructor
-			ClapTrap(std::string); 			// Parameterized constructor
-			ClapTrap(const ClapTrap &); 	// Copy constructor
-			~ClapTrap(); 					// Destructor
+			ClapTrap(); 				// Default constructor
+			ClapTrap(std::string); 		// Parameterized constructor
+			ClapTrap(const ClapTrap &);	// Copy constructor
+			~ClapTrap();				// Destructor
 
 			ClapTrap &operator= (const ClapTrap &); // Copy assignment operator overload
 			

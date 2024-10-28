@@ -8,7 +8,7 @@ debug   ?= 0
 NAME = claptrap
 
 # Source files
-SRCS = main.cpp
+SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
 
 # Object files
 OBJS = ${SRCS:.cpp=.o}

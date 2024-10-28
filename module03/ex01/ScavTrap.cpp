@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:12:09 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/25 10:42:13 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/28 11:28:24 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ ScavTrap::ScavTrap () : ClapTrap()
 
 ScavTrap::ScavTrap (std::string name) : ClapTrap(name)
 {
+	_name = name;
     _hp = 100;
     _ep = 50;
     _at = 20;
@@ -30,7 +31,7 @@ ScavTrap::ScavTrap (std::string name) : ClapTrap(name)
 
 ScavTrap::~ScavTrap() { std::cout << _name << ST_DESTRUCTOR << std::endl; }
 
-ScavTrap::ScavTrap (const ScavTrap &obj)
+ScavTrap::ScavTrap (const ScavTrap &obj) : ClapTrap(obj)
 {
 	_name = obj._name;
 	_hp = obj._hp;
@@ -74,5 +75,5 @@ void    ScavTrap::attack(const std::string &target)
 void    ScavTrap::guardGate()
 {
     std::cout << "ScavTrap " << _name 
-    << "is now in Gate keeper mode" << std::endl;
+    << " is now in Gate keeper mode" << std::endl;
 }
