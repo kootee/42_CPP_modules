@@ -6,15 +6,19 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 12:00:35 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/23 17:28:55 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/28 16:51:31 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
-Cat::Cat () : Animal("Cat") { std::cout << DEF_ANIMAL << type << std::endl; }
+Cat::Cat () : Animal() 
+{ 
+    type = "Cat";
+    std::cout << DEF_ANIMAL << type << std::endl; 
+}
 
-Cat::Cat (const Cat &to_copy) : Animal (to_copy.type)
+Cat::Cat (const Cat &to_copy) : Animal(to_copy)
 {
     this->type = to_copy.type;
     std::cout << this->type << COPY_ANIMAL << std::endl;
@@ -30,3 +34,5 @@ Cat& Cat::operator=(const Cat &to_copy)
     this->type = to_copy.type;
     return (*this);
 }
+
+void    Cat::makeSound(void) { std::cout << "Meow!" << std::endl; }

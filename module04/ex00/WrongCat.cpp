@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 10:14:57 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/28 16:51:27 by ktoivola         ###   ########.fr       */
+/*   Created: 2024/10/28 17:00:30 by ktoivola          #+#    #+#             */
+/*   Updated: 2024/10/28 17:02:08 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#include "WrongCat.hpp"
 
-Dog::Dog () : Animal() 
-{
-    type = "Dog";
-    std::cout << DEF_ANIMAL << type << std::endl; 
+WrongCat::WrongCat () : WrongAnimal() 
+{ 
+    type = "WrongCat";
+    std::cout << type << "created" << std::endl; 
 }
 
-Dog::Dog (const Dog &to_copy) : Animal(to_copy)
+WrongCat::WrongCat (const WrongCat &to_copy) : WrongAnimal(to_copy)
 {
     this->type = to_copy.type;
-    std::cout << this->type << COPY_ANIMAL << std::endl;
+    std::cout << this->type << "copied" << std::endl;
 }
 
-Dog::~Dog () { std::cout << DESTR_ANIMAL << this->type << std::endl; }
+WrongCat::~WrongCat () { std::cout << "destroyed" << this->type << std::endl; }
 
-Dog& Dog::operator=(const Dog &to_copy)
+WrongCat& WrongCat::operator=(const WrongCat &to_copy)
 {
-    std::cout << to_copy.type << ASSIGN_ANIMAL << std::endl;
+    std::cout << to_copy.type << "assigned" << std::endl;
     if (this == &to_copy)
         return (*this);
     this->type = to_copy.type;
     return (*this);
 }
 
-void    Dog::makeSound(void) { std::cout << "Woof woof!" << std::endl; }
+void    WrongCat::makeSound(void) { std::cout << "Meow!" << std::endl; }
