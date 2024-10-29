@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 16:52:55 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/28 16:54:55 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/29 09:36:05 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ class WrongAnimal
 
         WrongAnimal& operator=(const WrongAnimal&);
 
-        void    makeSound(void);
+        void        makeSound(void) const;
+        std::string getType(void) const;
 };

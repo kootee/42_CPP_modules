@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 09:56:02 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/28 16:50:26 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/29 09:34:06 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,6 @@ Animal &Animal::operator=(const Animal& to_copy)
 }
 
 /* Class member functions */
-void    Animal::makeSound(void) { std::cout << "Default animal noises" << std::endl; }
+void    Animal::makeSound(void) const { std::cout << DEF_NOISES << std::endl; }
 
-std::string	Animal::getType(void) { return (this->type); }
+std::string	Animal::getType(void) const { return (this->type); }

@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:07:58 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/28 16:45:01 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/29 09:39:48 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,5 @@ class Dog: public Animal
 
 			Dog& operator=(const Dog&);
 
-			void	makeSound(void);
+			void	makeSound(void) const override;
 };

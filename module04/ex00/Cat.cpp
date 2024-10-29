@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 12:00:35 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/28 16:51:31 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/29 09:39:13 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,4 @@ Cat& Cat::operator=(const Cat &to_copy)
     return (*this);
 }
 
-void    Cat::makeSound(void) { std::cout << "Meow!" << std::endl; }
+void    Cat::makeSound(void) const { std::cout << "Meow!" << std::endl; }

@@ -6,13 +6,13 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 16:58:57 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/28 17:00:19 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/29 09:43:35 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include "WrongAnimal.cpp"
+#include "WrongAnimal.hpp"
 
 class WrongCat: public WrongAnimal
 {
@@ -25,5 +25,5 @@ class WrongCat: public WrongAnimal
 
 			WrongCat& operator=(const WrongCat&);
 
-			void	makeSound(void);
+			void	makeSound(void) const;
 };

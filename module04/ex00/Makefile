@@ -8,7 +8,7 @@ debug   ?= 0
 NAME = animals
 
 # Source files
-SRCS = main.cpp Animal.cpp Dog.cpp Cat.cpp
+SRCS = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp
 
 # Object files
 OBJS = ${SRCS:.cpp=.o}

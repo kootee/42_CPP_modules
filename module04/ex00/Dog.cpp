@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:14:57 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/28 16:51:27 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/29 09:39:40 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,4 @@ Dog& Dog::operator=(const Dog &to_copy)
     return (*this);
 }
 
-void    Dog::makeSound(void) { std::cout << "Woof woof!" << std::endl; }
+void    Dog::makeSound(void) const { std::cout << "Woof woof!" << std::endl; }
