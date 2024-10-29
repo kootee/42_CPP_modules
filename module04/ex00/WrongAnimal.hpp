@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 16:52:55 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/29 09:36:05 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/29 11:02:16 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ class WrongAnimal
 {
     protected:
         std::string type;
+        WrongAnimal(std::string type);
     public:
         WrongAnimal();
         WrongAnimal(const WrongAnimal&);

@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 09:55:58 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/29 09:49:34 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/29 11:03:10 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,12 @@
 class Animal
 {
     protected:
-                std::string type;
+                std::string _type;
     public:
-                Animal();               // Default constructor
-                Animal(const Animal&);  // Copy constructor
-                virtual ~Animal();              // Destructor
+                Animal();                   // Default constructor
+                Animal(std::string type);   // Parameterised constructor
+                Animal(const Animal&);      // Copy constructor
+                virtual ~Animal();          // Destructor
 
 				Animal& operator=(const Animal&); // Assignment operator overload
 				

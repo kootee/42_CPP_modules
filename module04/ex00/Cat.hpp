@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 11:52:42 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/29 09:39:02 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/29 10:32:17 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 
 class Cat: public Animal
 {
-	private:
-			std::string type;
 	public:
 			Cat();
 			Cat(const Cat&);

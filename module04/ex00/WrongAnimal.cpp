@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 16:54:56 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/29 09:56:20 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/29 10:29:43 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,12 @@
 
 WrongAnimal::WrongAnimal() : type("Wrong")
 {
-    std::cout << "Wrong animal created" << std::endl;
+    std::cout << "Default wrong animal created" << std::endl;
+}
+
+WrongAnimal::WrongAnimal(std::string type) : type(type) 
+{
+        std::cout << "Wrong animal created" << std::endl;
 }
 
 WrongAnimal::~WrongAnimal()

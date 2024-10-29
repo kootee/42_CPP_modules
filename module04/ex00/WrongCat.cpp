@@ -6,22 +6,20 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 17:00:30 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/29 09:58:38 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/29 10:31:08 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "WrongCat.hpp"
 
-WrongCat::WrongCat () : WrongAnimal() 
+WrongCat::WrongCat () : WrongAnimal("WrongCat") 
 { 
-    type = "WrongCat";
-    std::cout << type << " created" << std::endl; 
+    std::cout << "WrongCat created" << std::endl; 
 }
 
 WrongCat::WrongCat (const WrongCat &to_copy) : WrongAnimal(to_copy)
 {
-    this->type = to_copy.type;
-    std::cout << this->type << " copied" << std::endl;
+    std::cout << "WrongCat copied" << std::endl;
 }
 
 WrongCat::~WrongCat () 

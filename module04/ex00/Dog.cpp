@@ -6,32 +6,31 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:14:57 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/29 09:39:40 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/29 10:59:17 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
-Dog::Dog () : Animal() 
+Dog::Dog () : Animal("Dog") 
 {
-    type = "Dog";
-    std::cout << DEF_ANIMAL << type << std::endl; 
+    std::cout << "Dog created" << std::endl; 
 }
 
 Dog::Dog (const Dog &to_copy) : Animal(to_copy)
 {
-    this->type = to_copy.type;
-    std::cout << this->type << COPY_ANIMAL << std::endl;
+    this->_type = to_copy._type;
+    std::cout << this->_type << COPY_ANIMAL << std::endl;
 }
 
-Dog::~Dog () { std::cout << DESTR_ANIMAL << this->type << std::endl; }
+Dog::~Dog () { std::cout << DESTR_ANIMAL << this->_type << std::endl; }
 
 Dog& Dog::operator=(const Dog &to_copy)
 {
-    std::cout << to_copy.type << ASSIGN_ANIMAL << std::endl;
+    std::cout << to_copy._type << ASSIGN_ANIMAL << std::endl;
     if (this == &to_copy)
         return (*this);
-    this->type = to_copy.type;
+    this->_type = to_copy._type;
     return (*this);
 }
 

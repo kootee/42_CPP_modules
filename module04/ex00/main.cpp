@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 11:51:37 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/29 09:55:50 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/29 11:01:47 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,18 @@ int main()
         delete i;
     }
     {
-        const WrongAnimal* wa = new WrongAnimal();
-        const WrongCat* wc = new WrongCat();
-        std::cout << wa->getType() << " type animal is hanging around" << std::endl;
-        std::cout << wc->getType() << " type animal is hanging around" << std::endl;
-        wa->makeSound();
-        wc->makeSound();
-        delete wa;
-        delete wc;
+        const WrongAnimal* meta = new WrongAnimal();
+        const WrongAnimal* cat = new WrongCat();
+        std::cout << meta->getType() << " type animal is hanging around" << std::endl;
+        std::cout << cat->getType() << " type animal is hanging around" << std::endl;
+        
+        std::cout << meta->getType() << " type animal is making ";
+        meta->makeSound();
+        
+        std::cout << cat->getType() << " type animal is making ";
+        cat->makeSound();
+        delete meta;
+    delete cat;
     }
     
     return 0;
