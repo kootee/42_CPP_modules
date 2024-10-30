@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 09:55:58 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/30 11:03:51 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/30 11:27:58 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ class AAnimal
 
 				AAnimal& operator=(const AAnimal&); // Assignment operator overload
 				
-				virtual void	makeSound(void) const = 0; // Pure virtual class function
-				std::string     getType(void) const;
+				virtual void	    makeSound(void) const = 0; // Pure virtual class function
+				virtual std::string getType(void) const = 0;
 };

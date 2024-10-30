@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 09:56:02 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/30 10:53:00 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/30 11:28:10 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,3 @@ AAnimal &AAnimal::operator=(const AAnimal& to_copy)
 	this->_type = to_copy._type;
 	return (*this);       
 }
-
-/* Class member functions */
-void    AAnimal::makeSound(void) const { std::cout << DEF_NOISES << std::endl; }
-
-std::string	AAnimal::getType(void) const { return (this->_type); }
