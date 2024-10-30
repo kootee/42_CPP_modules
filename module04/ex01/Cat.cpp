@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 12:00:35 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/30 10:28:03 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/30 10:44:33 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ Cat& Cat::operator=(const Cat &to_copy)
     std::cout << "Cat " << ASSIGN_ANIMAL << std::endl;
     if (this == &to_copy)
         return (*this);
-    Animal::operator=(to_copy);
     delete _brain;
     _brain = new Brain(*to_copy._brain);
     return (*this);
