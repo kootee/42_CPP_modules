@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 09:55:58 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/29 11:03:10 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/30 10:33:26 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 #include <iostream>
 
-#define DEF_ANIMAL		"The default constructor created an animal of type "
-#define DESTR_ANIMAL	"The destructor destroyed an animal of type "
+#define DEF_ANIMAL		"The default constructor created an Animal"
+#define DESTR_ANIMAL	"The destructor destroyed an Animal"
 #define ASSIGN_ANIMAL	" was created using copy assignment constructor"
 #define COPY_ANIMAL		" was created using copy constructor"
 #define DEF_NOISES      "Default animal noises"

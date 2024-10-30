@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 11:05:32 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/29 16:41:38 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/30 10:35:58 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,10 @@ Brain::~Brain() { std::cout << "Brain destroyed\n"; }
 
 void    Brain::setIdea(std::string newIdea)
 {
-    if (_ideaCount == 100)
+    if (_ideaCount == 100) {
+        std::cout << "Brain overloaded... resetting...\n";
         _ideaCount = 0;
+    }
     _ideas[_ideaCount++] = newIdea;
 }
 

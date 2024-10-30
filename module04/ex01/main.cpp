@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 11:51:37 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/30 10:20:25 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/30 10:39:45 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,21 +41,21 @@ int main() {
     }
     
     // Checks last animal and fills its brains with a hundred ideas
-    std::cout << "Adding 100 ideas to the last animal...\n";
+    std::cout << "Adding lots of ideas to the last animal...\n";
     if (auto dog = dynamic_cast<const Dog*>(animals[numAnimals - 1])) {
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 50; i++)
                 const_cast<Dog*>(dog)->setIdea("Woof!");
     }
     else
         std::cout << "Not a dog, \"dog\" points to " << dog << std::endl;
     if (auto cat = dynamic_cast<const Cat*>(animals[numAnimals - 1])) {
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < 50; i++)
             const_cast<Cat*>(cat)->setIdea("Purrrrr....");
     }
     else
         std::cout << "Not a cat, \"cat\" points to " << cat << std::endl;
-    
     // Read mind of all animals
+    std::cout << "Reading minds of all animals...\n";
     for (int i = 0; i < numAnimals; i++) {
         if (auto dog = dynamic_cast<const Dog*>(animals[i]))
             const_cast<Dog*>(dog)->readMind();
@@ -66,10 +66,11 @@ int main() {
     // Delete all elements in the array
     std::cout << "Deleting all animals in array...\n";
     for (int i = 0; i < numAnimals; i++) {
-        std::cout << "Deleted animal " << i << std::endl;
+        std::cout << "Deleting animal " << i << std::endl;
         delete animals[i]; // Deletes each Dog or Cat as an Animal
     }
     
+    std::cout << "A few more tests...\n";
     const Animal* j = new Dog();
     const Animal* i = new Cat();
 
@@ -101,5 +102,6 @@ int main() {
     std::cout << "\nIdeas in newDog's Brain after originalDog's modification (should remain unchanged):\n";
     newDog.readMind();
     
+    std::cout << std::endl;
     return (0);
 }
