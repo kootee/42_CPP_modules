@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   AAnimal.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 09:55:58 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/30 10:46:21 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/30 11:03:51 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,18 @@
 #define COPY_ANIMAL		" was created using copy constructor"
 #define DEF_NOISES      "Default animal noises"
 
-class Animal
+class AAnimal
 {
     protected:
                 std::string _type;
     public:
-                Animal();                   // Default constructor
-                Animal(std::string type);   // Parameterised constructor
-                Animal(const Animal&);      // Copy constructor
-                virtual ~Animal();          // Destructor
+                AAnimal();                   // Default constructor
+                AAnimal(std::string type);   // Parameterised constructor
+                AAnimal(const AAnimal&);     // Copy constructor
+                virtual ~AAnimal() = 0;      // Pure virtual Destructor
 
-				Animal& operator=(const Animal&); // Assignment operator overload
+				AAnimal& operator=(const AAnimal&); // Assignment operator overload
 				
-				virtual void	makeSound(void) const;
+				virtual void	makeSound(void) const = 0; // Pure virtual class function
 				std::string     getType(void) const;
 };
