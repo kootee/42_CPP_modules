@@ -23,6 +23,7 @@ all: ${NAME}
 # Link object files to create the executable
 ${NAME}: ${OBJS}
 	${CC} ${CPPFLAGS} -o ${NAME} ${OBJS}
+	@echo "\033[1;3;32mFinished building executable!\033[0m"
 
 # Compile source cpp files into object files
 %.o: %.cpp

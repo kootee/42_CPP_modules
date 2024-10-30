@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 11:51:37 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/29 16:38:27 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/30 10:20:25 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,17 @@
 #include "Cat.hpp"
 
 int main() {
-    const int numAnimals = 8;  // For example, 4 animals total (2 dogs, 2 cats)
+    const int numAnimals = 4;
     const Animal* animals[numAnimals];
 
-    // Fill half the array with Dog objects and the other half with Cat objects
-    for (int i = 0; i < numAnimals / 2; i++) {
+    // Fill half the array with Dogs and half with Cats
+    for (int i = 0; i < numAnimals / 2; i++)
         animals[i] = new Dog();
-    }
-    for (int i = numAnimals / 2; i < numAnimals; i++) {
+    for (int i = numAnimals / 2; i < numAnimals; i++)
         animals[i] = new Cat();
-    }
-
-    for (int i = 0; i < numAnimals; i++)
-    {
+    
+    // Add ideas
+    for (int i = 0; i < numAnimals; i++) {
         if (auto dog = dynamic_cast<const Dog*>(animals[i])) {
             const_cast<Dog*>(dog)->setIdea("I'm a good boy");
             const_cast<Dog*>(dog)->setIdea("Poop is tasty");
@@ -41,44 +39,67 @@ int main() {
             const_cast<Cat*>(cat)->setIdea("Can I come inside?");
         }
     }
-
-    // Demonstrate the creation and deletion of individual Animal objects
+    
+    // Checks last animal and fills its brains with a hundred ideas
+    std::cout << "Adding 100 ideas to the last animal...\n";
+    if (auto dog = dynamic_cast<const Dog*>(animals[numAnimals - 1])) {
+            for (int i = 0; i < 100; i++)
+                const_cast<Dog*>(dog)->setIdea("Woof!");
+    }
+    else
+        std::cout << "Not a dog, \"dog\" points to " << dog << std::endl;
+    if (auto cat = dynamic_cast<const Cat*>(animals[numAnimals - 1])) {
+        for (int i = 0; i < 100; i++)
+            const_cast<Cat*>(cat)->setIdea("Purrrrr....");
+    }
+    else
+        std::cout << "Not a cat, \"cat\" points to " << cat << std::endl;
+    
+    // Read mind of all animals
+    for (int i = 0; i < numAnimals; i++) {
+        if (auto dog = dynamic_cast<const Dog*>(animals[i]))
+            const_cast<Dog*>(dog)->readMind();
+        else if (auto cat = dynamic_cast<const Cat*>(animals[i]))
+            const_cast<Cat*>(cat)->readMind();
+    }
+    
+    // Delete all elements in the array
+    std::cout << "Deleting all animals in array...\n";
+    for (int i = 0; i < numAnimals; i++) {
+        std::cout << "Deleted animal " << i << std::endl;
+        delete animals[i]; // Deletes each Dog or Cat as an Animal
+    }
+    
     const Animal* j = new Dog();
     const Animal* i = new Cat();
 
-    delete j; // Deletes the Dog, calls Dog's destructor, then Animal's
-    delete i; // Deletes the Cat, calls Cat's destructor, then Animal's
+    delete j;
+    delete i;
 
-    // Delete all elements in the array
-    for (int i = 0; i < numAnimals; i++) {
-        delete animals[i]; // Deletes each Dog or Cat as an Animal
-    }
+    std::cout << "\n------- Testing deep copying -------" << std::endl;
+    // Create an original Dog and add ideas to its Brain
+    Dog originalDog;
+    originalDog.setIdea("Chase the ball");
+    originalDog.setIdea("Dig a hole");
+    
+    // Copy-assign originalDog to a newDog
+    Dog newDog;
+    newDog = originalDog;
 
-    {
-        std::cout << "\n------- Testing deep copying -------" << std::endl;
-        // Create an original Dog and add ideas to its Brain
-        Dog originalDog;
-        originalDog.setIdea("Chase the ball");
-        originalDog.setIdea("Dig a hole");
+    std::cout << "Ideas in originalDog's Brain before modification:\n";
+    originalDog.readMind();
 
-        // Copy-assign originalDog to a newDog
-        Dog newDog;
-        newDog = originalDog;
+    std::cout << "\nIdeas in newDog's Brain (copied from originalDog):\n";
+    newDog.readMind();
 
-        std::cout << "Ideas in originalDog's Brain before modification:\n";
-        originalDog.readMind();
+    // Modify ideas in originalDog to see if newDog's ideas are unaffected
+    originalDog.setIdea("Chew on the slipper");
 
-        std::cout << "\nIdeas in newDog's Brain (copied from originalDog):\n";
-        newDog.readMind();
+    std::cout << "\nIdeas in originalDog's Brain after modification:\n";
+    originalDog.readMind();
 
-        // Modify ideas in originalDog to see if newDog's ideas are unaffected
-        originalDog.setIdea("Chew on the slipper");
-
-        std::cout << "\nIdeas in originalDog's Brain after modification:\n";
-        originalDog.readMind();
-
-        std::cout << "\nIdeas in newDog's Brain after originalDog's modification (should remain unchanged):\n";
-        newDog.readMind();
-    }
-    return 0;
+    std::cout << "\nIdeas in newDog's Brain after originalDog's modification (should remain unchanged):\n";
+    newDog.readMind();
+    
+    return (0);
 }
