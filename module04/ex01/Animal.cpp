@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 09:56:02 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/29 10:35:17 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/29 16:41:07 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ Animal::Animal(const Animal& to_copy)
 /* Operator overloads */
 Animal &Animal::operator=(const Animal& to_copy)
 {
-	std::cout << ASSIGN_ANIMAL << this->_type << std::endl;
+	std::cout << _type << ASSIGN_ANIMAL << std::endl;
 	if (this == &to_copy)
 		return (*this);
 	this->_type = to_copy._type;

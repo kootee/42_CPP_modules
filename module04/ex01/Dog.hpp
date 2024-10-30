@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:07:58 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/29 11:08:42 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/29 16:18:34 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 class Dog: public Animal
 {
 	private:
-		Brain *_brain;
+			Brain *_brain;
 	public:
 			Dog();
 			Dog(const Dog&);
@@ -28,4 +28,6 @@ class Dog: public Animal
 			Dog& operator=(const Dog&);
 
 			void	makeSound(void) const override;
+			void    setIdea(std::string);
+			void	readMind(void);
 };
