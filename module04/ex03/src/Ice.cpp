@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 11:34:04 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/30 14:06:18 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/31 09:18:52 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,16 @@ Ice::Ice(const Ice& to_copy) : AMateria(to_copy) { std::cout << "Ice materia cop
 Ice::~Ice() { std::cout << "Ice materia destroyed\n"; }
 
 Ice& Ice::operator=(const Ice &to_copy) {
-   std::cout << "Ice materia copied with assign operator\n";
-    (void)to_copy;
-    return (*this); 
+	std::cout << "Ice materia copied with assign operator\n";
+	(void)to_copy;
+	return (*this);
 }
 
 Ice* Ice::clone(void) const { 
-    std::cout << "Cloned Ice materia\n";
-    return (new Ice(*this)); 
+	std::cout << "Cloned Ice materia\n";
+	return (new Ice(*this)); 
 }
 
-void    Ice::use(ICharacter &target) {
-    std::cout << "* shoots an ice bolt at " << target.getName() << " *\n";
+void Ice::use(ICharacter &target) {
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *\n";
 }
