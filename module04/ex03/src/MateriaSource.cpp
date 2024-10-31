@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 10:26:45 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/31 14:58:40 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/31 15:18:40 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,11 @@ void    MateriaSource::learnMateria(AMateria *m) {
     for (int i = 0; i < 4; i++) {
         if (!_materiaInventory[i]) {
             _materiaInventory[i] = m->clone();
+            delete m;
             return ;
         }
     }
-    delete m; // necessary?
+    delete m;
     std::cout << "No space left in inventory, materia deleted\n";
 }
 

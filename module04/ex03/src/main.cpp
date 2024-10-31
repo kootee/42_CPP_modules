@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 14:11:06 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/31 15:09:03 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/31 15:19:59 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 int main() {
     
     IMateriaSource* src = new MateriaSource(); 
-    
+    IMateriaSource* src2 = new MateriaSource(); 
+
     std::cout << "------- Learning 4 new materias -------\n";
 
     src->learnMateria(new Ice()); 
@@ -53,7 +54,6 @@ int main() {
     ICharacter* bob = new Character("bob");
 
     std::cout << "------- Using materias on bob -------\n";
-
     me->use(0, *bob);
     me->use(1, *bob);
     me->use(2, *bob);
@@ -73,6 +73,7 @@ int main() {
     delete bob; 
     delete me; 
     delete src;
+    delete src2;
 
     return 0; 
 }
