@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 14:12:07 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/31 10:21:03 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/31 13:51:17 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include <iostream>
 #include "ICharacter.hpp"
-#include "oldMateria.hpp"
+#include "OldMateriaList.hpp"
 
 /*  Concrete Class derived from abstract class ICharacter. 
     It has to override the following (pure virtual) base class functions:
@@ -28,7 +28,7 @@ class Character : public ICharacter {
     private:
         std::string         _name;
         AMateria*           _inventory[4];
-        oldMateriaList      _oldMateria;
+        OldMateriaList      _oldMateria;
     public:
         Character(std::string);
         Character(const Character&);

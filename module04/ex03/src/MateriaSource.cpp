@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 10:26:45 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/31 10:41:43 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/31 14:58:40 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,21 @@ MateriaSource::MateriaSource(const MateriaSource &to_copy) {
     }
 }
 
+MateriaSource& MateriaSource::operator=(const MateriaSource &to_copy) {
+    if (this == &to_copy)
+        return (*this);
+    for (int i = 0; i < 4; i++) {
+        if (_materiaInventory[i])
+            delete _materiaInventory[i];
+        if (to_copy._materiaInventory[i])
+            _materiaInventory[i] = to_copy._materiaInventory[i]->clone();
+        else
+            _materiaInventory[i] = nullptr;
+    }
+    std::cout << "MateriaSource copied with assign operator\n";
+    return (*this);
+}
+
 MateriaSource::~MateriaSource() {
     for (int i = 0; i < 4; i++) {
         if (_materiaInventory[i]) {
@@ -38,6 +53,7 @@ MateriaSource::~MateriaSource() {
             _materiaInventory[i] = nullptr;
         }
     }
+    std::cout << "Materia source deleted\n";
 }
 
 void    MateriaSource::learnMateria(AMateria *m) {
@@ -53,9 +69,12 @@ void    MateriaSource::learnMateria(AMateria *m) {
 
 AMateria *MateriaSource::createMateria(std::string const &materiaName) {
     for (int i = 0; i < 4; i++) {
-        if (!_materiaInventory[i] && _materiaInventory[i]->getType() == materiaName) {
-            return (_materiaInventory[i]->clone());
+        if (_materiaInventory[i] != nullptr) {
+            if ( _materiaInventory[i]->getType() == materiaName) {
+                return (_materiaInventory[i]->clone());
+            }
         }
     }
-    std::cout << "No suh materia learnt, can't create materia\n";
+    std::cout << "No such materia learnt, can't create materia\n";
+    return nullptr;
 }

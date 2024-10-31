@@ -6,13 +6,13 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 11:34:04 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/31 09:18:52 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/31 13:40:03 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Ice.hpp"
 
-Ice::Ice () : AMateria("Ice") { std::cout << "Ice materia created\n"; }
+Ice::Ice () : AMateria("ice") { std::cout << "Ice materia created\n"; }
 
 Ice::Ice(const Ice& to_copy) : AMateria(to_copy) { std::cout << "Ice materia copied\n"; }
 

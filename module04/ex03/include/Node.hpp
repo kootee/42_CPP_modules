@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   oldMateria.hpp                                     :+:      :+:    :+:   */
+/*   Node.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/31 09:37:48 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/31 10:44:59 by ktoivola         ###   ########.fr       */
+/*   Created: 2024/10/31 13:49:54 by ktoivola          #+#    #+#             */
+/*   Updated: 2024/10/31 14:05:14 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,8 @@
 #include "AMateria.hpp"
 
 class Node {
-	private:
-		AMateria*   _materia;
 	public:
+		AMateria*   _materia;
 		Node*       _next;
 		Node();
 		Node(AMateria *m);
@@ -28,19 +27,3 @@ class Node {
 
 		void	deleteNode();
 };
-
-class oldMateriaList {
-	private:
-		Node*	_head;
-	public:
-		oldMateriaList();
-		~oldMateriaList();
-		oldMateriaList(const oldMateriaList&);
-
-		oldMateriaList &operator=(const oldMateriaList &);
-
-		void	insertMateria(AMateria *m);
-		void	deleteAllMateria();
-};
-
-
