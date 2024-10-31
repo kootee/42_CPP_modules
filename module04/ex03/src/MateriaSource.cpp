@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 10:26:45 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/31 15:18:40 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/31 15:26:32 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ MateriaSource& MateriaSource::operator=(const MateriaSource &to_copy) {
 
 MateriaSource::~MateriaSource() {
     for (int i = 0; i < 4; i++) {
-        if (_materiaInventory[i]) {
+        if (_materiaInventory[i] != nullptr) {
             delete _materiaInventory[i];
             _materiaInventory[i] = nullptr;
         }
@@ -58,7 +58,7 @@ MateriaSource::~MateriaSource() {
 
 void    MateriaSource::learnMateria(AMateria *m) {
     for (int i = 0; i < 4; i++) {
-        if (!_materiaInventory[i]) {
+        if (_materiaInventory[i] == nullptr) {
             _materiaInventory[i] = m->clone();
             delete m;
             return ;
