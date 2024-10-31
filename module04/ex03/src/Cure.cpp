@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 14:02:36 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/30 14:06:22 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/31 09:19:05 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ Cure* Cure::clone(void) const {
     return (new Cure(*this)); 
 }
 
-void    Cure::use(ICharacter &target) {
+void Cure::use(ICharacter &target) {
     std::cout << "* heals " << target.getName() << "'s wounds *\n";
 }
