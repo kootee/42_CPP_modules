@@ -5,10 +5,10 @@ DBFLAGS = -g
 
 debug   ?= 0
 
-NAME = animals
+NAME = materia
 
 # Source files
-SRCS = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp
+SRCS = src/main.cpp src/AMateria.cpp src/Character.cpp src/Cure.cpp	src/Ice.cpp	src/ICharacter.cpp src/IMateriaSource.cpp 
 
 # Object files
 OBJS = ${SRCS:.cpp=.o}
