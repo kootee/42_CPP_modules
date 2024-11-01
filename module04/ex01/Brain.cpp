@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 11:05:32 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/30 10:35:58 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/11/01 09:51:48 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,21 @@ Brain::Brain() : _ideaCount(0) { std::cout << "Fresh brain created\n"; }
 
 Brain::Brain(const Brain& to_copy)
 {
+    for(unsigned int i = 0; i < to_copy._ideaCount; i++) {
+            _ideas[i] = to_copy._ideas[i];
+    }
+    _ideaCount = to_copy._ideaCount;
     std::cout << "Brain was copied\n"; 
-    *this = to_copy;
 }
 
 Brain &Brain::operator=(const Brain& to_copy)
 {
-    std::cout << "Brain was copied with assignment operator\n";
     if (this == &to_copy)
         return (*this);
     for(unsigned int i = 0; i < to_copy._ideaCount; i++)
         _ideas[i] = to_copy._ideas[i];
     _ideaCount = to_copy._ideaCount;
+    std::cout << "Brain was copied with assignment operator\n";
     return *this;
 }
 

@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 09:55:58 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/30 11:27:58 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/11/01 09:58:41 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 #include <iostream>
 
-#define DEF_ANIMAL		"Animal created"
-#define DESTR_ANIMAL	"Animal destroyed"
-#define ASSIGN_ANIMAL	" was created using copy assignment constructor"
-#define COPY_ANIMAL		" was created using copy constructor"
+#define DEF_ANIMAL		"The default constructor created an animal"
+#define TYPE_ANIMAL     "The animal constructor created an animal of type "
+#define DESTR_ANIMAL	"The destructor destroyed an animal of type "
+#define ASSIGN_ANIMAL	"The assign operator copied a "
+#define COPY_ANIMAL		"The copy constructor copied a "
 #define DEF_NOISES      "Default animal noises"
 
 class AAnimal
@@ -33,5 +34,5 @@ class AAnimal
 				AAnimal& operator=(const AAnimal&); // Assignment operator overload
 				
 				virtual void	    makeSound(void) const = 0; // Pure virtual class function
-				virtual std::string getType(void) const = 0;
+				std::string         getType(void) const;
 };

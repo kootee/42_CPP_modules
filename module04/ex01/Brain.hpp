@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 11:05:18 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/29 16:21:52 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/11/01 09:52:12 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,5 @@ class Brain
             Brain& operator=(const Brain&);
 
             void    readMind();
-            void    setIdea(std::string);
-            
+            void    setIdea(std::string);          
 };
