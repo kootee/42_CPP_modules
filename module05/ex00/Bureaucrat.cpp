@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 16:30:37 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/11/04 17:33:23 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/11/04 17:38:05 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &to_copy)
 {
     if (this == &to_copy)
         return (*this);
-    _name = to_copy.getName();
-    _grade = to_copy.getGrade(); 
 }
 
 Bureaucrat::~Bureaucrat() { std::cout << "Bureaucrat destroyed\n"; }
