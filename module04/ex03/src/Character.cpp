@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 14:34:56 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/31 10:25:47 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/11/03 08:59:52 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void    Character::equip(AMateria *m) {
 void    Character::use(int idx, ICharacter& target) {
     if (idx < 0 || idx >= 4 || !_inventory[idx])
         std::cout << "Invalid materia index\n";
-    else
+    else    
         _inventory[idx]->use(target);
 }
 
