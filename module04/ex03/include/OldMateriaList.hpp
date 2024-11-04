@@ -1,15 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ICharacter.cpp                                     :+:      :+:    :+:   */
+/*   OldMateriaList.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/30 12:10:32 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/30 12:13:52 by ktoivola         ###   ########.fr       */
+/*   Created: 2024/10/31 09:37:48 by ktoivola          #+#    #+#             */
+/*   Updated: 2024/10/31 13:50:24 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ICharacter.hpp"
+#pragma once
 
-ICharacter::~ICharacter () { std::cout << "ICharacter destroyed"; }
+#include "AMateria.hpp"
+#include "Node.hpp"
+
+class OldMateriaList {
+	private:
+		Node*	_head;
+	public:
+		OldMateriaList();
+		~OldMateriaList();
+		OldMateriaList(const OldMateriaList&);
+
+		OldMateriaList &operator=(const OldMateriaList &);
+
+		void	insertMateria(AMateria *m);
+		void	deleteAllMateria();
+};

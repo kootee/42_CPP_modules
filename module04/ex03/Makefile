@@ -8,7 +8,16 @@ debug   ?= 0
 NAME = materia
 
 # Source files
-SRCS = src/main.cpp src/AMateria.cpp src/Character.cpp src/Cure.cpp	src/Ice.cpp	src/ICharacter.cpp src/IMateriaSource.cpp 
+SRCS = src/main.cpp \
+	src/AMateria.cpp \
+	src/Character.cpp \
+	src/Cure.cpp \
+	src/Ice.cpp \
+	src/MateriaSource.cpp \
+	src/OldMateriaList.cpp \
+	src/Node.cpp
+
+HEADERS = -I ./include
 
 # Object files
 OBJS = ${SRCS:.cpp=.o}
@@ -27,7 +36,7 @@ ${NAME}: ${OBJS}
 
 # Compile source cpp files into object files
 %.o: %.cpp
-	${CC} ${CPPFLAGS} -c $< -o $@
+	${CC} ${CPPFLAGS} ${HEADERS} -c $< -o $@
 
 clean:
 	rm -f ${OBJS}

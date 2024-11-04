@@ -6,13 +6,13 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 14:02:36 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/31 09:19:05 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/31 13:40:18 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cure.hpp"
 
-Cure::Cure () : AMateria("Cure") { std::cout << "Cure materia created\n"; }
+Cure::Cure () : AMateria("cure") { std::cout << "Cure materia created\n"; }
 
 Cure::Cure(const Cure& to_copy) : AMateria(to_copy) { std::cout << "Cure materia copied\n"; }
 

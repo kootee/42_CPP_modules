@@ -6,9 +6,11 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 14:02:12 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/30 15:37:43 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/10/31 11:29:33 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#pragma once
 
 #include <iostream>
 #include "AMateria.hpp"
@@ -29,5 +31,5 @@ class Cure : public AMateria {
         Cure& operator=(const Cure&);
         
         Cure *clone() const override;
-        void use(ICharacter &) override;
+        void use(ICharacter &target) override;
 };
