@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:11:31 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/10/15 16:02:17 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/11/04 15:01:06 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 int main()
 {
-    int horde_size = 8;
-    
-    Zombie *testhorde = zombieHorde(horde_size, "tyyne");
+	int horde_size = 8;
 
-    for (int i = 0; i < horde_size; i++)
-    {
-        testhorde[i].announce();
-    }
-    delete[] testhorde;
+	Zombie *testhorde = zombieHorde(horde_size, "tyyne");
+
+	for (int i = 0; i < horde_size; i++)
+	{
+		testhorde[i].announce();
+	}
+	delete[] testhorde;
 }

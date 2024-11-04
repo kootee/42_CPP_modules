@@ -6,19 +6,23 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 16:29:53 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/11/04 16:40:08 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/11/04 17:04:36 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <string>
+#include <iostream>
+#include <exception>
 
-/*  Default Constructor
-    Parameterized Constructor
-    Copy Constructor
-    Assignment Operator
-    Destructor      */
+/*  
+    Orthodox canonical form:
+        Default Constructor
+        Parameterized Constructor
+        Copy Constructor
+        Assignment Operator
+        Destructor      */
 
 class Bureaucrat
 {
@@ -41,4 +45,4 @@ public:
     void        decrementGrade();
 };
 
-std::ostream& operator<< (std::ostream &, const Fixed &); // Output operator overload
+std::ostream& operator<< (std::ostream &, const Bureaucrat &); // Output operator overload

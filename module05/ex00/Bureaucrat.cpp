@@ -6,28 +6,70 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 16:30:37 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/11/04 16:43:03 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/11/04 17:14:22 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(int grade)
+Bureaucrat::Bureaucrat() : _grade(150), _name("Default") 
 {
-    if (grade < 1 || grade > 150)
-        throw this->GradeTooHigh();
+    std::cout << "Bureaucrat created by default constructor\n";
 }
 
-Bureaucrat::~Bureaucrat()
+Bureaucrat::Bureaucrat(int grade)
 {
+    if (grade < 1)
+        throw Bureaucrat::GradeTooHigh;
+    else if (grade > 150)
+        throw Bureaucrat::GradeTooLow;
+    std::cout << "Bureaucrat created with parameterized constructor\n";
 }
+
+Bureaucrat::Bureaucrat(const Bureaucrat &to_copy) 
+    : _grade(to_copy._grade), _name(to_copy._name) 
+{
+    std::cout << "Bureaucrat copied with copy constructor\n";
+}
+
+Bureaucrat::~Bureaucrat() { std::cout << "Bureaucrat destroyed\n"; }
 
 
 void    Bureaucrat::GradeTooHigh() 
 {
-    
+    std::cout << "Error thrown; grade too high (highest is 1)\n";
 }
 
-void    Bureaucrat::GradeTooLow() {
+void    Bureaucrat::GradeTooLow() 
+{
+    std::cout << "Error thrown; grade too low (lowest is 150)\n";
+}
+
+std::string Bureaucrat::getName(void) { return (_name); }
+
+int Bureaucrat::getGrade(void) {return (_grade); }
+
+void    Bureaucrat::incrementGrade(void)
+{
+    int temp = _grade - 1;
+    
+    if (temp < 1)
+        throw Bureaucrat::GradeTooHigh;
+    else
+        _grade = temp;
+}
+
+void    Bureaucrat::decrementGrade(void)
+{
+    int temp = _grade + 1;
+    
+    if (temp > 150)
+        throw Bureaucrat::GradeTooLow;
+    else
+        _grade = temp;
+}
+
+std::ostream & operator<<(std::ostream &os_object, const Bureaucrat &object)
+{
     
 }
