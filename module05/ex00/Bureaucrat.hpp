@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 16:29:53 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/11/04 17:04:36 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/11/05 15:54:21 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,35 +14,44 @@
 
 #include <string>
 #include <iostream>
-#include <exception>
 
 /*  
-    Orthodox canonical form:
-        Default Constructor
-        Parameterized Constructor
-        Copy Constructor
-        Assignment Operator
-        Destructor      */
+	Orthodox canonical form:
+		Default Constructor
+		Parameterized Constructor
+		Copy Constructor
+		Assignment Operator
+		Destructor      */
 
 class Bureaucrat
 {
 private:
-    std::string const   _name;
-    int                 _grade;
+	int                 _grade;
+	std::string const   _name;
 public:
-    Bureaucrat();
-    Bureaucrat(int grade);
-    Bureaucrat(const Bureaucrat&);
-    ~Bureaucrat();
+	Bureaucrat();
+	Bureaucrat(std::string name, int grade);
+	Bureaucrat(const Bureaucrat&);
+	~Bureaucrat();
 
-    Bureaucrat& operator=(const Bureaucrat&);
+	Bureaucrat& operator=(const Bureaucrat&);
 
-    void        GradeTooHigh();
-    void        GradeTooLow();
-    std::string getName();
-    int         getGrade();
-    void        incrementGrade();
-    void        decrementGrade();
+	std::string	getName() const;
+	int			getGrade() const;
+	void		incrementGrade();
+	void		decrementGrade();
+
+	class GradeTooHigh : public std::exception
+	{
+		public:
+			const char* what() const noexcept override;
+	};
+
+	class GradeTooLow : public std::exception
+	{
+		public:
+			const char* what() const noexcept override;
+	};
 };
 
 std::ostream& operator<< (std::ostream &, const Bureaucrat &); // Output operator overload
