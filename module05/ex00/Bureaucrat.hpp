@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 16:29:53 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/11/06 08:44:10 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/11/06 08:46:54 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 #include <string>
 #include <iostream>
+#include <exception>
 
 #define EXCEPTION_HIGH	"grade too high (highest is 1)"
 #define EXCEPTION_LOW	"grade too low (lowest is 150)"

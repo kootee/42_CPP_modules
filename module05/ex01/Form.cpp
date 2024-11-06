@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 08:37:28 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/11/06 08:41:01 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/11/06 08:51:13 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,20 @@ Form::Form() : _name("Your average form"), _signed(false)
     std::cout << "Form created by default constructor\n";
 }
 
-Form::Form(std::string name, int grade) : _name(name), _signed(false)
+Form::Form(std::string name, int sign_grade, int exec_grade) 
+    :   _name(name), 
+        _signed(false), 
+        _sign_grade(sign_grade), 
+        _exec_grade(exec_grade)
 {
-    if (grade < 1)
+    if (sign_grade < 1)
         throw Form::GradeTooHigh();
-    else if (grade > 150)
+    else if (sign_grade > 150)
         throw Form::GradeTooLow();
-    else
-        _grade = grade;
+    if (exec_grade < 1)
+        throw Form::GradeTooHigh();
+    else if (exec_grade > 150)
+        throw Form::GradeTooLow();
     std::cout << "Form created with parameterized constructor\n";
 }
 
