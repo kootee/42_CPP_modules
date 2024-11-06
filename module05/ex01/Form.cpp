@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 08:37:28 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/11/06 08:51:13 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/11/06 15:07:52 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,10 @@ Form::Form(std::string name, int sign_grade, int exec_grade)
 }
 
 Form::Form(const Form &to_copy) 
-    : _name(to_copy._name), _signed(to_copy._signed)
+    :    _name(to_copy._name), 
+        _signed(to_copy._signed), 
+        _sign_grade(to_copy._sign_grade), 
+        _exec_grade(to_copy._exec_grade)
 {
     std::cout << "Form copied with copy constructor\n";
 }
@@ -50,3 +53,22 @@ Form &Form::operator=(const Form &to_copy)
 
 Form::~Form() { std::cout << "Form destroyed\n"; }
 
+/* Class functions */
+bool    Form::isSigned() { return (_signed); }
+
+std::string Form::getName() const { return (_name); }
+
+int Form::getSignGrade() const {return (_sign_grade); }
+
+int Form::getExecGrade() const {return (_exec_grade); }
+
+std::ostream & operator<<(std::ostream &os_object, Form const &object)
+{
+    std::string is_signed;
+    object. ? is_signed = ""
+    os_object << object.getName() << " form has a sign grade of " 
+    << object.getSignGrade() 
+    << " and a excecute grade of " << object.getExecGrade()
+    << "\n";
+    return (os_object);
+}

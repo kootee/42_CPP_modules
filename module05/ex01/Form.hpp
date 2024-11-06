@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 08:33:05 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/11/06 08:49:33 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/11/06 14:58:16 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,13 @@ public:
 	Form(std::string, int, int);
 	Form(const Form&);
 	~Form();
-
-	int			getSignGrade() const;
-	int			getExecGrade() const;
+/* Same as before, write getters for all attributes and an overload 
+of the insertion («) operator that prints all the 
+form’s informations. */
+	bool	    isSigned();
+	std::string	getName()       const;
+	int			getSignGrade()  const;
+	int			getExecGrade()  const;
 
 	Form& operator=(const Form&);
 
