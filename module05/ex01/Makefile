@@ -8,7 +8,7 @@ debug   ?= 0
 NAME = bureaucrat
 
 # Source files
-SRCS = main.cpp Bureaucrat.cpp
+SRCS = main.cpp Bureaucrat.cpp Form.cpp
 
 # Object files
 OBJS = ${SRCS:.cpp=.o}

@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 16:29:53 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/11/06 08:44:00 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/11/06 16:23:29 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 #include <string>
 #include <iostream>
+#include "Form.hpp"
 
 #define EXCEPTION_HIGH	"grade too high (highest is 1)"
 #define EXCEPTION_LOW	"grade too low (lowest is 150)"
@@ -25,6 +26,8 @@
 		Copy Constructor
 		Assignment Operator
 		Destructor      */
+
+class Form;
 
 class Bureaucrat {
 private:
@@ -38,11 +41,14 @@ public:
 
 	Bureaucrat& operator=(const Bureaucrat&);
 
+	/* Class functions */
 	std::string	getName() const;
 	int			getGrade() const;
 	void		incrementGrade();
 	void		decrementGrade();
 	
+	void		signForm(Form &);
+
 	/* Exceptions */
 	class GradeTooHigh : public std::exception
 	{
@@ -51,7 +57,6 @@ public:
     			return(EXCEPTION_LOW);	
 			}
 	};
-	
 	class GradeTooLow : public std::exception
 	{
 		public:

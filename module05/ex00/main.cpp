@@ -6,11 +6,9 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 08:19:32 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/11/06 08:31:00 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/11/06 16:03:59 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "Bureaucrat.hpp"
 
 #include <iostream>
 #include "Bureaucrat.hpp"

@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 08:33:05 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/11/06 14:58:16 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/11/06 16:25:13 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 #include <string>
 #include <iostream>
 #include <exception>
+#include "Bureaucrat.hpp"
 
 #define EXCEPTION_HIGH	"grade too high (highest is 1)"
 #define EXCEPTION_LOW	"grade too low (lowest is 150)"
 
-class Form
-{
+class Bureaucrat;
+
+class Form {
 private:
     std::string const   _name;
     bool                _signed;
@@ -31,24 +33,25 @@ public:
 	Form(std::string, int, int);
 	Form(const Form&);
 	~Form();
-/* Same as before, write getters for all attributes and an overload 
-of the insertion («) operator that prints all the 
-form’s informations. */
-	bool	    isSigned();
-	std::string	getName()       const;
-	int			getSignGrade()  const;
-	int			getExecGrade()  const;
 
 	Form& operator=(const Form&);
+	
+	/* Class functions */
+	std::string	getName()       const;
+	bool	    isSigned()		const;
+	int			getSignGrade()  const;
+	int			getExecGrade()  const;
+	
+	void		beSigned(Bureaucrat const &);
 
-    	class GradeTooHigh : public std::exception
+	/* Exceptions */
+    class GradeTooHigh : public std::exception
 	{
 		public:
 			const char* what() const noexcept override {
     			return(EXCEPTION_LOW);	
 			}
 	};
-	/* Exceptions */
 	class GradeTooLow : public std::exception
 	{
 		public:
