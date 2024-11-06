@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 16:29:53 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/11/05 15:54:21 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/11/06 08:24:19 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 #include <string>
 #include <iostream>
+
+#define EXCEPTION_HIGH	"grade too high (highest is 1)"
+#define EXCEPTION_LOW	"grade too low (lowest is 150)"
 
 /*  
 	Orthodox canonical form:
@@ -23,8 +26,7 @@
 		Assignment Operator
 		Destructor      */
 
-class Bureaucrat
-{
+class Bureaucrat {
 private:
 	int                 _grade;
 	std::string const   _name;
@@ -44,14 +46,18 @@ public:
 	class GradeTooHigh : public std::exception
 	{
 		public:
-			const char* what() const noexcept override;
+			const char* what() const noexcept override {
+    			return(EXCEPTION_LOW);	
+			}
 	};
-
+	
 	class GradeTooLow : public std::exception
 	{
 		public:
-			const char* what() const noexcept override;
+			const char* what() const noexcept override {
+    			return(EXCEPTION_HIGH);
+			}
 	};
 };
 
-std::ostream& operator<< (std::ostream &, const Bureaucrat &); // Output operator overload
+std::ostream& operator<< (std::ostream &, const Bureaucrat &);
