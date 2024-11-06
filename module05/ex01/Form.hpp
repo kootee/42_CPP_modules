@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 16:29:53 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/11/06 08:44:10 by ktoivola         ###   ########.fr       */
+/*   Created: 2024/11/06 08:33:05 by ktoivola          #+#    #+#             */
+/*   Updated: 2024/11/06 08:43:52 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,43 +15,29 @@
 #include <string>
 #include <iostream>
 
-#define EXCEPTION_HIGH	"grade too high (highest is 1)"
-#define EXCEPTION_LOW	"grade too low (lowest is 150)"
-
-/*  
-	Orthodox canonical form:
-		Default Constructor
-		Parameterized Constructor
-		Copy Constructor
-		Assignment Operator
-		Destructor      */
-
-class Bureaucrat {
+class Form
+{
 private:
-	int                 _grade;
-	std::string const   _name;
+    std::string const   _name;
+    bool                _signed;
+    int const           _sign_level;
+    int const           _exec_level;
 public:
-	Bureaucrat();
-	Bureaucrat(std::string name, int grade);
-	Bureaucrat(const Bureaucrat&);
-	~Bureaucrat();
+    Form();
+	Form(std::string name, int grade);
+	Form(const Form&);
+	~Form();
 
-	Bureaucrat& operator=(const Bureaucrat&);
+	Form& operator=(const Form&);
 
-	std::string	getName() const;
-	int			getGrade() const;
-	void		incrementGrade();
-	void		decrementGrade();
-
-	/* Exceptions */
-	class GradeTooHigh : public std::exception
+    	class GradeTooHigh : public std::exception
 	{
 		public:
 			const char* what() const noexcept override {
     			return(EXCEPTION_LOW);	
 			}
 	};
-	
+	/* Exceptions */
 	class GradeTooLow : public std::exception
 	{
 		public:
@@ -61,4 +47,10 @@ public:
 	};
 };
 
-std::ostream& operator<< (std::ostream &, const Bureaucrat &);
+Form::Form(/* args */)
+{
+}
+
+Form::~Form()
+{
+}
