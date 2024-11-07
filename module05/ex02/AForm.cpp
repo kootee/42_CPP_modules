@@ -38,7 +38,7 @@ AForm::AForm(std::string name, int sign_grade, int exec_grade, std::string targe
 		throw AForm::GradeTooHigh();
 	else if (exec_grade > 150)
 		throw AForm::GradeTooLow();
-	std::cout << "AForm created with parameterized constructor\n";
+	std::cout << "Form created with parameterized constructor\n";
 }
 
 AForm::AForm(const AForm &to_copy) 
@@ -48,10 +48,10 @@ AForm::AForm(const AForm &to_copy)
 		_exec_grade(to_copy._exec_grade),
 		_signed(to_copy._signed)
 {
-	std::cout << "AForm copied with copy constructor\n";
+	std::cout << "Form copied with copy constructor\n";
 }
 
-AForm::~AForm() { std::cout << "AForm destroyed\n"; }
+AForm::~AForm() { std::cout << "Form destroyed\n"; }
 
 /* Class functions */
 std::string AForm::getName() const { return (_name); }
@@ -76,10 +76,11 @@ std::ostream & operator<<(std::ostream &os_object, AForm const &object)
 {
 	std::string signed_status = (object.isSigned()) ? "signed" : "unsigned";
 	
-	os_object << "This " << signed_status << object.getName() 
+	os_object 
+	<< "This " << signed_status << " " << object.getName() 
 	<< " has a sign grade of " << object.getSignGrade() 
 	<< " and a excecute grade of " << object.getExecGrade()
-	<< " and with the target " << object.getTarget()
+	<< " and has the target " << object.getTarget()
 	<< std::endl;
 	return (os_object);
 }
