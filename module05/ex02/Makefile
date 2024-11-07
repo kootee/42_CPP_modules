@@ -8,7 +8,12 @@ debug   ?= 0
 NAME = bureaucrat
 
 # Source files
-SRCS = main.cpp Bureaucrat.cpp Form.cpp
+SRCS = main.cpp \
+	Bureaucrat.cpp \
+	AForm.cpp \
+	PresidentialPardonForm.cpp \
+	ShrubberyCreationForm.cpp \
+	RobotomyRequestForm.cpp
 
 # Object files
 OBJS = ${SRCS:.cpp=.o}

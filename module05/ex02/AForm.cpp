@@ -14,20 +14,21 @@
 #include "Bureaucrat.hpp"
 
 AForm::AForm() 
-	: 	_name("Default Form"), 
-		_signed(false), 
+	: 	_name("Default Form"),
+		_target("Default target"),
 		_sign_grade(1), 
-		_exec_grade(1)
+		_exec_grade(1),
+		_signed(false) 
 {
 	std::cout << "Form created by default constructor\n";
 }
 
 AForm::AForm(std::string name, int sign_grade, int exec_grade, std::string target) 
 	:   _name(name), 
-		_signed(false), 
+		_target(target),
 		_sign_grade(sign_grade), 
 		_exec_grade(exec_grade),
-		_target(target)
+		_signed(false)
 {
 	if (sign_grade < 1)
 		throw AForm::GradeTooHigh();
@@ -42,9 +43,10 @@ AForm::AForm(std::string name, int sign_grade, int exec_grade, std::string targe
 
 AForm::AForm(const AForm &to_copy) 
 	:    _name(to_copy._name), 
-		_signed(to_copy._signed), 
+		_target(to_copy._target),
 		_sign_grade(to_copy._sign_grade), 
-		_exec_grade(to_copy._exec_grade)
+		_exec_grade(to_copy._exec_grade),
+		_signed(to_copy._signed)
 {
 	std::cout << "AForm copied with copy constructor\n";
 }
@@ -74,8 +76,7 @@ std::ostream & operator<<(std::ostream &os_object, AForm const &object)
 {
 	std::string signed_status = (object.isSigned()) ? "signed" : "unsigned";
 	
-	os_object << "This " << signed_status 
-	<< " AForm called " << object.getName() 
+	os_object << "This " << signed_status << object.getName() 
 	<< " has a sign grade of " << object.getSignGrade() 
 	<< " and a excecute grade of " << object.getExecGrade()
 	<< " and with the target " << object.getTarget()

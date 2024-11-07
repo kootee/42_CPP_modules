@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 16:29:53 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/11/07 15:30:09 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/11/07 16:33:59 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 #include <iostream>
 #include "AForm.hpp"
 
-#define EXCEPTION_HIGH	"grade too high (highest is 1)"
-#define EXCEPTION_LOW	"grade too low (lowest is 150)"
+#define EXCEPTION_HIGH	"grade too high"
+#define EXCEPTION_LOW	"grade too low"
 
 /*  
 	Orthodox canonical form:
@@ -27,7 +27,7 @@
 		Assignment Operator
 		Destructor      */
 
-class Form;
+class AForm;
 
 class Bureaucrat {
 private:
@@ -47,22 +47,22 @@ public:
 	void		incrementGrade();
 	void		decrementGrade();
 	
-	void		signForm(Form &);
-	void		executeForm(AForm const & form);
+	void		signForm(AForm &);
+	void		executeForm(AForm const &);
 
 	/* Exceptions */
 	class GradeTooHigh : public std::exception
 	{
 		public:
 			const char* what() const noexcept override {
-    			return(EXCEPTION_LOW);	
+    			return(EXCEPTION_HIGH);	
 			}
 	};
 	class GradeTooLow : public std::exception
 	{
 		public:
 			const char* what() const noexcept override {
-    			return(EXCEPTION_HIGH);
+    			return(EXCEPTION_LOW);
 			}
 	};
 };

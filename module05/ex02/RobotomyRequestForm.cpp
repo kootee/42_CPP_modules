@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:12:51 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/11/07 15:23:44 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/11/07 16:25:16 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,11 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &t
 	return (*this);
 }
 
-void    RobotomyRequestForm::execute(Bureaucrat const &executor)
+void    RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
-    bool success = false;
+	if (executor.getGrade() > this->getExecGrade())
+		throw Bureaucrat::GradeTooLow();
+    static bool success = false;
     std::cout << "*BRRRRRRRR* *BRRRRRRR*\n";
     if (success)
         std::cout << this->getTarget() << " has been succesfully robotomized\n";

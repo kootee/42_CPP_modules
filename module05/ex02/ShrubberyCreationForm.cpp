@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 14:09:56 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/11/07 15:22:39 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/11/07 16:25:39 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,10 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 	return (*this);
 }
 
-void    ShrubberyCreationForm::execute(Bureaucrat const &executor)
+void    ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
+    if (executor.getGrade() > this->getExecGrade())
+		throw Bureaucrat::GradeTooLow();
     std::ofstream out(this->getTarget());
     out <<  "  *     *     *     *     *     *     *  \n"
             " ***   ***   ***   ***   ***   ***   *** \n"

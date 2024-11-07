@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:09:59 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/11/07 15:14:00 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/11/07 16:04:24 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,5 @@ public:
     RobotomyRequestForm& operator=(const RobotomyRequestForm&);
 
     /* Class member functions */
-    void    execute(Bureaucrat const &);
+    void    execute(Bureaucrat const &) const override;
 };

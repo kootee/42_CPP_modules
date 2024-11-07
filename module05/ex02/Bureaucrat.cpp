@@ -6,11 +6,11 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 16:30:37 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/11/07 14:09:26 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/11/07 15:54:19 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat() : _grade(150), _name("Default") 
@@ -69,7 +69,7 @@ void    Bureaucrat::decrementGrade(void)
         _grade = temp;
 }
 
-void    Bureaucrat::signForm(Form &form) 
+void    Bureaucrat::signForm(AForm &form)
 {
     try
     {
@@ -82,6 +82,23 @@ void    Bureaucrat::signForm(Form &form)
         std::cerr 
         << "Bureaucrat " << this->getName()
         << " could not sign form " << form.getName() 
+        << " because: " << e.what() << std::endl;
+    }
+}
+
+void    Bureaucrat::executeForm(AForm const &form) 
+{
+    try
+    {
+        form.execute(*this);
+        std::cout << this->getName() << " executed "
+        << form.getName() << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr 
+        << "Bureaucrat " << this->getName()
+        << " could not execute form " << form.getName() 
         << " because: " << e.what() << std::endl;
     }
 }

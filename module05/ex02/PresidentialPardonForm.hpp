@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:25:59 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/11/07 15:27:38 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/11/07 16:03:54 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,5 @@ public:
     PresidentialPardonForm& operator=(const PresidentialPardonForm&);
 
     /* Class member functions */
-    void    execute(Bureaucrat const &);
+    void    execute(Bureaucrat const &) const override;
 };

@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:27:08 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/11/07 15:28:46 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/11/07 16:25:26 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,11 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPard
 	return (*this);
 }
 
-void    PresidentialPardonForm::execute(Bureaucrat const &executor)
+void    PresidentialPardonForm::execute(Bureaucrat const &executor) const
 {
-    std::cout << this->getTarget() << " has been pardoned by Zaphod Beeblebrox\n";
+    if (executor.getGrade() > this->getExecGrade())
+		throw Bureaucrat::GradeTooLow();
+    std::cout << this->getTarget() << 
+    " has been pardoned by Zaphod Beeblebrox upon the request of " 
+    << executor.getName() << std::endl;
 }

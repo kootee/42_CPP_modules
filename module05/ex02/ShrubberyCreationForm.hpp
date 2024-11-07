@@ -6,13 +6,14 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 21:23:51 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/11/07 15:11:36 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/11/07 16:23:01 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include "AForm.hpp"
+#include <fstream>
 
 #define SHRUBFORM "ShrubberyCreationForm"
 
@@ -34,5 +35,5 @@ public:
     ShrubberyCreationForm& operator=(const ShrubberyCreationForm&);
 
     /* Class member functions */
-    void    execute(Bureaucrat const &);
+    void    execute(Bureaucrat const &) const override;
 };

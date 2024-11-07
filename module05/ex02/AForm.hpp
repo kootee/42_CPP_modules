@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 08:33:05 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/11/07 14:53:47 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/11/07 16:34:08 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,10 @@
 #include <string>
 #include <iostream>
 #include <exception>
-#include <fstream>
 #include "Bureaucrat.hpp"
 
-#define EXCEPTION_HIGH	"grade too high (highest is 1)"
-#define EXCEPTION_LOW	"grade too low (lowest is 150)"
+#define EXCEPTION_HIGH	"grade too high"
+#define EXCEPTION_LOW	"grade too low"
 
 class Bureaucrat;
 
@@ -47,23 +46,23 @@ public:
 	
 	void		beSigned(Bureaucrat const &);
 
-	virtual void	execute(Bureaucrat const &) const = 0;
+	virtual void	execute(Bureaucrat const &executor) const = 0;
 
 	/* Exceptions */
     class GradeTooHigh : public std::exception
 	{
 		public:
 			const char* what() const noexcept override {
-    			return(EXCEPTION_LOW);	
+    			return(EXCEPTION_HIGH);	
 			}
 	};
 	class GradeTooLow : public std::exception
 	{
 		public:
 			const char* what() const noexcept override {
-    			return(EXCEPTION_HIGH);
+    			return(EXCEPTION_LOW);
 			}
 	};
 };
 
-std::ostream& operator<< (std::ostream &, const Form &);
+std::ostream& operator<< (std::ostream &, const AForm &);
