@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 16:06:45 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/11/26 16:19:44 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/11/26 16:44:03 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,30 @@ void ScalarConverter::convert(const std::string &to_convert)
 	char	charValue;
 	int		intValue;
 	float	floatValue; 
-	double	doubleValue; 
+	double	doubleValue;
 	
-	if (to_convert.size() > 1)
-	{
-		std::cout << "incorrect argument\n";
-		return;
-	}
+	long double	conversion;
+	int			i = 0;
 
-	charValue = to_convert[0];
-	intValue = to_convert[0];
-	floatValue = to_convert[0];
-	doubleValue = to_convert[0];
+	for (i; i < to_convert.size(); i++)
+	{
+		if (std::isalpha(to_convert[i]))
+		{
+			break;
+		}
+	}
+	if (i == to_convert.size())
+		conversion = std::stold(to_convert, 0);
+	else
+		std::cout << "Incorrect value\n";
+
+	charValue = conversion;
+	intValue = conversion;
+	floatValue = conversion;
+	doubleValue = conversion;
 	
-	std::cout << "char: " << charValue <<
-				"\nint: " << intValue <<
-				"\nfloat: " << floatValue <<
-				"\ndouble: " << doubleValue << std::endl;
+	std::cout << "char:	" << charValue <<
+				"\nint:	" << intValue <<
+				"\nfloat:	" << floatValue <<
+				"\ndouble:	" << doubleValue << std::endl;
 }

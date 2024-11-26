@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 16:06:47 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/11/26 16:18:46 by ktoivola         ###   ########.fr       */
+/*   Updated: 2024/11/26 16:38:08 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 #include <string>
 #include <iostream>
+#include <cctype>
 
 class ScalarConverter
 {
