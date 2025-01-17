@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 16:30:37 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/11/06 16:25:59 by ktoivola         ###   ########.fr       */
+/*   Updated: 2025/01/17 14:57:57 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,15 @@ std::ostream & operator<<(std::ostream &os_object, Bureaucrat const &object)
     os_object << object.getName() << ", bureaucrat grade "
     << object.getGrade() << "\n";
     return (os_object);
+}
+
+/* Exceptions */
+const char *Bureaucrat::GradeTooHigh::what() const throw () 
+{
+    return(EXCEPTION_HIGH);
+}
+
+const char *Bureaucrat::GradeTooLow::what() const throw () 
+{
+    return(EXCEPTION_LOW);
 }

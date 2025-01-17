@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 16:29:53 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/11/06 08:46:54 by ktoivola         ###   ########.fr       */
+/*   Updated: 2025/01/17 14:55:13 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,17 +48,13 @@ public:
 	class GradeTooHigh : public std::exception
 	{
 		public:
-			const char* what() const noexcept override {
-    			return(EXCEPTION_LOW);	
-			}
+			const char* what() const throw();
 	};
 	
 	class GradeTooLow : public std::exception
 	{
 		public:
-			const char* what() const noexcept override {
-    			return(EXCEPTION_HIGH);
-			}
+			const char* what() const throw();
 	};
 };
 

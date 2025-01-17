@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 16:29:53 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/11/07 19:28:51 by ktoivola         ###   ########.fr       */
+/*   Updated: 2025/01/17 15:01:42 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 #include <string>
 #include <iostream>
+#include <exception>
 #include "Form.hpp"
 
 #define EXCEPTION_HIGH	"grade too high (highest is 1)"
@@ -46,23 +47,19 @@ public:
 	int			getGrade() const;
 	void		incrementGrade();
 	void		decrementGrade();
-	
 	void		signForm(Form &);
 
 	/* Exceptions */
 	class GradeTooHigh : public std::exception
 	{
 		public:
-			const char* what() const noexcept override {
-    			return(EXCEPTION_HIGH);	
-			}
+			const char* what() const throw();
 	};
+	
 	class GradeTooLow : public std::exception
 	{
 		public:
-			const char* what() const noexcept override {
-    			return(EXCEPTION_LOW);
-			}
+			const char* what() const throw();
 	};
 };
 
