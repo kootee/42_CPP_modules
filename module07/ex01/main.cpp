@@ -22,7 +22,7 @@ int main()
 
     std::string names[] = { "123", "234", "345" };
 
-    ::iter(arr1, 4, &power_of_two); 
+    ::iter<int*, size_t, void(*)(&int)>(arr1, 4, &power_of_two); 
     // Second template parameter
     // to arrMin must be a
     // constant

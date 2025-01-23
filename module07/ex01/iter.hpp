@@ -1,12 +1,18 @@
 #include <iostream>
 #include <exception>
 
-/*  a = address of array
-    b = length of array
-    c = function to be implemented on each object */
+/*  
+    template <template parameter> (type returned by function) <T>
+    the last T means that the functin's template param is also
+    the class template param. Declaring class function templates:
+    ---> template <class T> T ClassName<T>::functionName()
 
-template <typename T> 
-void iter(T *a, size_t len, void(*f)()) 
+    This is the syntax used in the class template specialization:
+    template <> class mycontainer <char> { ... };
+*/
+
+template <typename T, size_t N, void(*func)> 
+void iter(T *a, size_t len, void(*f)(int &i)) 
 {
     for (size_t i = 0; i < len; i++) 
     {
