@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 15:25:09 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/11/26 16:13:20 by ktoivola         ###   ########.fr       */
+/*   Updated: 2025/01/28 15:36:42 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,4 @@ int main(int argc, char **argv)
     {
         ScalarConverter::convert(std::string(argv[1]));
     }
-    else
-        std::cout << "Incorrect amount of parameters\n";
 }

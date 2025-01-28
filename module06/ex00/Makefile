@@ -5,7 +5,7 @@ DBFLAGS = -g
 
 debug   ?= 0
 
-NAME = scalarconverter
+NAME = convert
 
 # Source files
 SRCS = main.cpp ScalarConverter.cpp

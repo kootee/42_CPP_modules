@@ -6,39 +6,35 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 16:06:45 by ktoivola          #+#    #+#             */
-/*   Updated: 2024/11/26 16:44:03 by ktoivola         ###   ########.fr       */
+/*   Updated: 2025/01/28 17:35:02 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
+#include <stdlib.h>
 
 // Implicit scalar converter
 void ScalarConverter::convert(const std::string &to_convert)
 {
-	char	charValue;
-	int		intValue;
-	float	floatValue; 
-	double	doubleValue;
-	
+	char		charValue;
+	int			intValue;
+	float		floatValue; 
+	double		doubleValue;
 	long double	conversion;
-	int			i = 0;
 
-	for (i; i < to_convert.size(); i++)
+	const char *str = to_convert.c_str();
+	try
 	{
-		if (std::isalpha(to_convert[i]))
-		{
-			break;
-		}
+		charValue = static_cast<char>(conversion);
+		intValue = static_cast<int>(conversion);
+		floatValue = static_cast<float>(conversion);
+		doubleValue = static_cast<double>(conversion);
+		
 	}
-	if (i == to_convert.size())
-		conversion = std::stold(to_convert, 0);
-	else
-		std::cout << "Incorrect value\n";
-
-	charValue = conversion;
-	intValue = conversion;
-	floatValue = conversion;
-	doubleValue = conversion;
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 	
 	std::cout << "char:	" << charValue <<
 				"\nint:	" << intValue <<
