@@ -6,7 +6,7 @@
 /*   By: ktoivola <ktoivola@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 16:29:53 by ktoivola          #+#    #+#             */
-/*   Updated: 2025/01/17 15:01:42 by ktoivola         ###   ########.fr       */
+/*   Updated: 2025/01/17 14:55:13 by ktoivola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,16 @@
 #define EXCEPTION_HIGH	"grade too high (highest is 1)"
 #define EXCEPTION_LOW	"grade too low (lowest is 150)"
 
+class Form;
+
 /*  
 	Orthodox canonical form:
 		Default Constructor
 		Parameterized Constructor
 		Copy Constructor
 		Assignment Operator
-		Destructor      */
-
-class Form;
+		Destructor      
+*/
 
 class Bureaucrat {
 private:
@@ -42,7 +43,6 @@ public:
 
 	Bureaucrat& operator=(const Bureaucrat&);
 
-	/* Class functions */
 	std::string	getName() const;
 	int			getGrade() const;
 	void		incrementGrade();
@@ -55,7 +55,6 @@ public:
 		public:
 			const char* what() const throw();
 	};
-	
 	class GradeTooLow : public std::exception
 	{
 		public:

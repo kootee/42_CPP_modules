@@ -16,56 +16,56 @@
 Form::Form() 
 	: 	_name("Default form"), 
 		_signed(false), 
-		_sign_grade(1), 
-		_exec_grade(1)
+		_signGrade(1), 
+		_execGrade(1)
 {
-	std::cout << "Form created by default constructor\n";
+	std::cout << "Default Form created with Sign Grade" << 1 
+			<< " and Excec Grade: " << 1 << "\n";
 }
 
-Form::Form(std::string name, int sign_grade, int exec_grade) 
+Form::Form(std::string name, int signGrade, int execGrade) 
 	:   _name(name), 
 		_signed(false), 
-		_sign_grade(sign_grade), 
-		_exec_grade(exec_grade)
+		_signGrade(signGrade), 
+		_execGrade(execGrade)
 {
-	if (sign_grade < 1)
+	if (signGrade < 1)
 		throw Form::GradeTooHigh();
-	else if (sign_grade > 150)
+	if (signGrade > 150)
 		throw Form::GradeTooLow();
-	if (exec_grade < 1)
+	if (execGrade < 1)
 		throw Form::GradeTooHigh();
-	else if (exec_grade > 150)
+	if (execGrade > 150)
 		throw Form::GradeTooLow();
-	std::cout << "Form created with parameterized constructor\n";
+	std::cout << "Form created with Name: " << name 
+			<< " | Sign Grade: " << signGrade 
+			<< " | Excec Grade: " << execGrade << "\n";
 }
 
 Form::Form(const Form &to_copy) 
-	:    _name(to_copy._name), 
+	:	_name(to_copy._name), 
 		_signed(to_copy._signed), 
-		_sign_grade(to_copy._sign_grade), 
-		_exec_grade(to_copy._exec_grade)
+		_signGrade(to_copy._signGrade), 
+		_execGrade(to_copy._execGrade)
 {
 	std::cout << "Form copied with copy constructor\n";
 }
 
-Form &Form::operator=(const Form &to_copy) 
+Form &Form::operator=(const Form &) 
 {
-	if (this == &to_copy)
-		return (*this);
-	this->_signed = to_copy._signed;
 	return (*this);
 }
 
-Form::~Form() { std::cout << "Form destroyed\n"; }
+Form::~Form() {}
 
-/* Class functions */
+/* Class methods */
 std::string Form::getName() const { return (_name); }
 
 bool	Form::isSigned() const { return (_signed); }
 
-int		Form::getSignGrade() const {return (_sign_grade); }
+int		Form::getSignGrade() const {return (_signGrade); }
 
-int		Form::getExecGrade() const {return (_exec_grade); }
+int		Form::getExecGrade() const {return (_execGrade); }
 
 void	Form::beSigned(Bureaucrat const &signee) 
 {
@@ -74,6 +74,7 @@ void	Form::beSigned(Bureaucrat const &signee)
 	_signed = true;
 }
 
+/* Insertion operator overload */
 std::ostream & operator<<(std::ostream &os_object, Form const &object)
 {
 	std::string signed_status = (object.isSigned()) ? "signed" : "unsigned";
@@ -82,6 +83,6 @@ std::ostream & operator<<(std::ostream &os_object, Form const &object)
 	<< " form called " << object.getName() 
 	<< " has a sign grade of " << object.getSignGrade() 
 	<< " and a excecute grade of " << object.getExecGrade()
-	<< std::endl;
+	<< "\n";
 	return (os_object);
 }

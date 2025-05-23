@@ -25,7 +25,8 @@
 		Parameterized Constructor
 		Copy Constructor
 		Assignment Operator
-		Destructor      */
+		Destructor      
+*/
 
 class Bureaucrat {
 private:
@@ -50,7 +51,6 @@ public:
 		public:
 			const char* what() const throw();
 	};
-	
 	class GradeTooLow : public std::exception
 	{
 		public:
