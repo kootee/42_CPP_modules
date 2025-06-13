@@ -32,8 +32,6 @@ public:
 	ShrubberyCreationForm(const ShrubberyCreationForm&);
     ~ShrubberyCreationForm();
 
-    ShrubberyCreationForm& operator=(const ShrubberyCreationForm&);
-
     /* Class member functions */
     void    execute(Bureaucrat const &) const override;
 };

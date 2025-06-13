@@ -35,9 +35,7 @@ public:
     class NoSuchForm : public std::exception
 	{
 		public:
-			const char* what() const noexcept override {
-    			return(INTERNEXCEPT);	
-			}
+			const char* what() const throw();
 	};
 };
 

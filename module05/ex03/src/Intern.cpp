@@ -47,3 +47,8 @@ AForm    *Intern::makeForm(std::string formName, std::string target) {
     << formName << " form\n";
     return (form);
 }
+
+const char *Intern::NoSuchForm::what() const throw () 
+{
+	return(INTERNEXCEPT);
+}

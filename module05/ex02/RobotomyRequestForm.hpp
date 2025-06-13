@@ -32,8 +32,6 @@ public:
 	RobotomyRequestForm(const RobotomyRequestForm&);
     ~RobotomyRequestForm();
 
-    RobotomyRequestForm& operator=(const RobotomyRequestForm&);
-
     /* Class member functions */
     void    execute(Bureaucrat const &) const override;
 };

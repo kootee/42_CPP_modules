@@ -109,3 +109,14 @@ std::ostream & operator<<(std::ostream &os_object, Bureaucrat const &object)
     << object.getGrade() << "\n";
     return (os_object);
 }
+
+/* Exceptions */
+const char *Bureaucrat::GradeTooHigh::what() const throw () 
+{
+	return(EXCEPTION_HIGH);
+}
+
+const char *Bureaucrat::GradeTooLow::what() const throw () 
+{
+	return(EXCEPTION_LOW);
+}

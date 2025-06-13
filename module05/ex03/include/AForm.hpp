@@ -33,7 +33,7 @@ public:
     AForm();
 	AForm(std::string, int, int, std::string);
 	AForm(const AForm&);
-	~AForm();
+	virtual ~AForm();
 
 	AForm& operator=(const AForm&);
 	
@@ -52,16 +52,12 @@ public:
     class GradeTooHigh : public std::exception
 	{
 		public:
-			const char* what() const noexcept override {
-    			return(EXCEPTION_HIGH);	
-			}
+			const char* what() const throw();
 	};
 	class GradeTooLow : public std::exception
 	{
 		public:
-			const char* what() const noexcept override {
-    			return(EXCEPTION_LOW);
-			}
+			const char* what() const throw();
 	};
 };
 

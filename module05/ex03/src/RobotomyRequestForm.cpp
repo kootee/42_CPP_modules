@@ -35,12 +35,6 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &to_copy)
 	std::cout << ROBOTOFORM " copied with copy constructor\n";
 }
 
-RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &to_copy) 
-{
-	(void)to_copy;
-	return (*this);
-}
-
 void    RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
 	if (executor.getGrade() > this->getExecGrade())

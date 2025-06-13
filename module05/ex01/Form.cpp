@@ -93,3 +93,14 @@ std::ostream & operator<<(std::ostream &os_object, Form const &object)
 	<< "\n";
 	return (os_object);
 }
+
+/* Exceptions */
+const char *Form::GradeTooHigh::what() const throw () 
+{
+	return(EXCEPTION_HIGH);
+}
+
+const char *Form::GradeTooLow::what() const throw () 
+{
+	return(EXCEPTION_LOW);
+}

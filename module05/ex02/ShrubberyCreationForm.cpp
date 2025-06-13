@@ -35,12 +35,6 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &to_cop
 	std::cout << SHRUBFORM " copied with copy constructor\n";
 }
 
-ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &to_copy) 
-{
-	(void)to_copy;
-	return (*this);
-}
-
 void    ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
     if (executor.getGrade() > this->getExecGrade())

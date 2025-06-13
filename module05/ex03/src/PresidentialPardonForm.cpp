@@ -36,12 +36,6 @@ PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &to_
 	std::cout << PARDONFORM " copied with copy constructor\n";
 }
 
-PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &to_copy) 
-{
-	(void)to_copy;
-	return (*this);
-}
-
 void    PresidentialPardonForm::execute(Bureaucrat const &executor) const
 {
     if (executor.getGrade() > this->getExecGrade())

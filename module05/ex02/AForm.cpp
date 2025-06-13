@@ -94,3 +94,14 @@ std::ostream & operator<<(std::ostream &os_object, AForm const &object)
 	<< std::endl;
 	return (os_object);
 }
+
+/* Exceptions */
+const char* AForm::GradeTooHigh::what() const noexcept
+{
+	return(EXCEPTION_HIGH);
+}
+
+const char* AForm::GradeTooLow::what() const noexcept
+{
+	return(EXCEPTION_LOW);
+}

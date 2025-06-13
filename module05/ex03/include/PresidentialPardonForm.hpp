@@ -31,8 +31,6 @@ public:
 	PresidentialPardonForm(const PresidentialPardonForm&);
     ~PresidentialPardonForm();
 
-    PresidentialPardonForm& operator=(const PresidentialPardonForm&);
-
     /* Class member functions */
     void    execute(Bureaucrat const &) const override;
 };
