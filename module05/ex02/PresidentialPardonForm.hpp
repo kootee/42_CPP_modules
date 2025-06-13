@@ -22,7 +22,8 @@
         _name;
         _signed;
         _sign_grade;
-        _exec_grade;    */
+        _exec_grade;    
+*/
 
 class PresidentialPardonForm : public AForm {
 public:

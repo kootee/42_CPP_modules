@@ -41,6 +41,10 @@ AForm::AForm(std::string name, int sign_grade, int exec_grade, std::string targe
 	std::cout << "Form created with parameterized constructor\n";
 }
 
+/* Destructor */
+AForm::~AForm() { std::cout << "Form destroyed\n"; }
+
+/* Copy constructors */
 AForm::AForm(const AForm &to_copy) 
 	:   _name(to_copy._name), 
 		_target(to_copy._target),
@@ -51,7 +55,13 @@ AForm::AForm(const AForm &to_copy)
 	std::cout << "Form copied with copy constructor\n";
 }
 
-AForm::~AForm() { std::cout << "Form destroyed\n"; }
+AForm &AForm::operator=(const AForm &to_copy) 
+{
+	if (this == &to_copy)
+		return (*this);
+	this->_signed = to_copy._signed;
+	return (*this);
+}
 
 /* Class functions */
 std::string AForm::getName() const { return (_name); }

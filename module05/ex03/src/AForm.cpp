@@ -51,6 +51,14 @@ AForm::AForm(const AForm &to_copy)
 	std::cout << "Form copied with copy constructor\n";
 }
 
+AForm &AForm::operator=(const AForm &to_copy) 
+{
+	if (this == &to_copy)
+		return (*this);
+	this->_signed = to_copy._signed;
+	return (*this);
+}
+
 AForm::~AForm() { std::cout << "Form destroyed\n"; }
 
 /* Class functions */

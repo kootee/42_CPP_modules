@@ -31,11 +31,12 @@ int main() {
         std::cout << "After decrementing: \n" << validBureaucrat << "\n";
 
         std::cout << "-----Creating some copies-----" << "\n";
-        Bureaucrat copy1 = validBureaucrat;
+        Bureaucrat copy1("Big Boss", 25);
+        copy1 = validBureaucrat;
         Bureaucrat copy2(copy1);
 
-        std::cout << "1st copy" << copy1;
-        std::cout << "2nd copy" << copy2;
+        std::cout << "1st copy " << copy1;
+        std::cout << "2nd copy " << copy2;
     }
     catch (const std::exception& e) {
         std::cerr << e.what() << "\n";

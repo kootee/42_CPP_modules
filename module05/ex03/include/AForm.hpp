@@ -33,9 +33,9 @@ public:
     AForm();
 	AForm(std::string, int, int, std::string);
 	AForm(const AForm&);
-	virtual ~AForm();
+	~AForm();
 
-	AForm& operator=(const AForm&) = delete;
+	AForm& operator=(const AForm&);
 	
 	/* Class functions */
 	std::string	getName()       const;

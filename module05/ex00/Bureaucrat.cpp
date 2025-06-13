@@ -37,9 +37,12 @@ Bureaucrat::Bureaucrat(const Bureaucrat &to_copy)
 	std::cout << "Bureaucrat copied with copy constructor\n";
 }
 
-Bureaucrat &Bureaucrat::operator=(const Bureaucrat &) 
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &to_copy) 
 {
-	return (*this);
+    if (this == &to_copy)
+        return (*this);
+    this->_grade = to_copy._grade;
+    return (*this);
 }
 
 /* Destructor */

@@ -13,6 +13,7 @@
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
 
+/* Constructors */
 Form::Form() 
 	: 	_name("Default form"), 
 		_signed(false), 
@@ -42,6 +43,7 @@ Form::Form(std::string name, int signGrade, int execGrade)
 			<< " | Excec Grade: " << execGrade << "\n";
 }
 
+/* Copy constructors */
 Form::Form(const Form &to_copy) 
 	:	_name(to_copy._name), 
 		_signed(to_copy._signed), 
@@ -51,14 +53,18 @@ Form::Form(const Form &to_copy)
 	std::cout << "Form copied with copy constructor\n";
 }
 
-Form &Form::operator=(const Form &) 
+Form &Form::operator=(const Form &to_copy) 
 {
+	if (this == &to_copy)
+		return (*this);
+	this->_signed = to_copy._signed;
 	return (*this);
 }
 
+/* Destructor */
 Form::~Form() {}
 
-/* Class methods */
+/* Getters */
 std::string Form::getName() const { return (_name); }
 
 bool	Form::isSigned() const { return (_signed); }
@@ -67,6 +73,7 @@ int		Form::getSignGrade() const {return (_signGrade); }
 
 int		Form::getExecGrade() const {return (_execGrade); }
 
+/* Class methods */
 void	Form::beSigned(Bureaucrat const &signee) 
 {
 	if (signee.getGrade() > this->getSignGrade())
