@@ -31,13 +31,13 @@ AForm::AForm(std::string name, int sign_grade, int exec_grade, std::string targe
 		_signed(false)
 {
 	if (sign_grade < 1)
-		throw AForm::GradeTooHigh();
+		throw AForm::GradeTooHighException();
 	else if (sign_grade > 150)
-		throw AForm::GradeTooLow();
+		throw AForm::GradeTooLowException();
 	if (exec_grade < 1)
-		throw AForm::GradeTooHigh();
+		throw AForm::GradeTooHighException();
 	else if (exec_grade > 150)
-		throw AForm::GradeTooLow();
+		throw AForm::GradeTooLowException();
 	std::cout << "Form created with parameterized constructor\n";
 }
 
@@ -78,7 +78,7 @@ int		AForm::getExecGrade() const {return (_exec_grade); }
 void	AForm::beSigned(Bureaucrat const &signee) 
 {
 	if (signee.getGrade() > this->getSignGrade())
-		throw Bureaucrat::GradeTooLow();
+		throw Bureaucrat::GradeTooLowException();
 	_signed = true;
 }
 
@@ -96,12 +96,17 @@ std::ostream & operator<<(std::ostream &os_object, AForm const &object)
 }
 
 /* Exceptions */
-const char* AForm::GradeTooHigh::what() const noexcept
+const char* AForm::GradeTooHighException::what() const noexcept
 {
 	return(EXCEPTION_HIGH);
 }
 
-const char* AForm::GradeTooLow::what() const noexcept
+const char* AForm::GradeTooLowException::what() const noexcept
 {
 	return(EXCEPTION_LOW);
+}
+
+const char* AForm::NotSignedException::what() const noexcept
+{
+	return(EXCEPTION_NOT_SIGNED);
 }

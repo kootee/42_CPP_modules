@@ -38,7 +38,9 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &to_copy)
 void    RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
 	if (executor.getGrade() > this->getExecGrade())
-		throw Bureaucrat::GradeTooLow();
+		throw Bureaucrat::GradeTooLowException();
+    if (!this->isSigned())
+        throw AForm::NotSignedException();
     static bool success = false;
     if (success)
     {

@@ -31,13 +31,13 @@ Form::Form(std::string name, int signGrade, int execGrade)
 		_execGrade(execGrade)
 {
 	if (signGrade < 1)
-		throw Form::GradeTooHigh();
+		throw Form::GradeTooHighException();
 	if (signGrade > 150)
-		throw Form::GradeTooLow();
+		throw Form::GradeTooLowException();
 	if (execGrade < 1)
-		throw Form::GradeTooHigh();
+		throw Form::GradeTooHighException();
 	if (execGrade > 150)
-		throw Form::GradeTooLow();
+		throw Form::GradeTooLowException();
 	std::cout << "Form created with Name: " << name 
 			<< " | Sign Grade: " << signGrade 
 			<< " | Excec Grade: " << execGrade << "\n";
@@ -77,7 +77,7 @@ int		Form::getExecGrade() const {return (_execGrade); }
 void	Form::beSigned(Bureaucrat const &signee) 
 {
 	if (signee.getGrade() > this->getSignGrade())
-		throw Bureaucrat::GradeTooLow();
+		throw Bureaucrat::GradeTooLowException();
 	_signed = true;
 }
 
@@ -95,12 +95,12 @@ std::ostream & operator<<(std::ostream &os_object, Form const &object)
 }
 
 /* Exceptions */
-const char *Form::GradeTooHigh::what() const throw () 
+const char *Form::GradeTooHighException::what() const throw () 
 {
 	return(EXCEPTION_HIGH);
 }
 
-const char *Form::GradeTooLow::what() const throw () 
+const char *Form::GradeTooLowException::what() const throw () 
 {
 	return(EXCEPTION_LOW);
 }

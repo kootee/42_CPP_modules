@@ -19,6 +19,7 @@
 
 #define EXCEPTION_HIGH	"grade too high"
 #define EXCEPTION_LOW	"grade too low"
+#define EXCEPTION_NOT_SIGNED "the form is not signed"
 
 class Bureaucrat;
 
@@ -49,15 +50,20 @@ public:
 	virtual void	execute(Bureaucrat const &executor) const = 0;
 
 	/* Exceptions */
-    class GradeTooHigh : public std::exception
+    class GradeTooHighException : public std::exception
 	{
 		public:
-			const char* what() const throw();
+			const char* what() const noexcept;
 	};
-	class GradeTooLow : public std::exception
+	class GradeTooLowException : public std::exception
 	{
 		public:
-			const char* what() const throw();
+			const char* what() const noexcept;
+	};
+	class NotSignedException : public std::exception
+	{
+		public:
+			const char* what() const noexcept;
 	};
 };
 

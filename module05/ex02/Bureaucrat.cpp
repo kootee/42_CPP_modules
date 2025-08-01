@@ -21,9 +21,9 @@ Bureaucrat::Bureaucrat() : _grade(150), _name("Default")
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name)
 {
     if (grade < 1)
-        throw Bureaucrat::GradeTooHigh();
+        throw Bureaucrat::GradeTooHighException();
     else if (grade > 150)
-        throw Bureaucrat::GradeTooLow();
+        throw Bureaucrat::GradeTooLowException();
     else
         _grade = grade;
     std::cout << "Bureaucrat created with parameterized constructor\n";
@@ -54,7 +54,7 @@ void    Bureaucrat::incrementGrade(void)
     int temp = _grade - 1;
     
     if (temp < 1)
-        throw Bureaucrat::GradeTooHigh();
+        throw Bureaucrat::GradeTooHighException();
     else
         _grade = temp;
 }
@@ -64,7 +64,7 @@ void    Bureaucrat::decrementGrade(void)
     int temp = _grade + 1;
     
     if (temp > 150)
-        throw Bureaucrat::GradeTooLow();
+        throw Bureaucrat::GradeTooLowException();
     else
         _grade = temp;
 }
@@ -111,12 +111,12 @@ std::ostream & operator<<(std::ostream &os_object, Bureaucrat const &object)
 }
 
 /* Exceptions */
-const char *Bureaucrat::GradeTooHigh::what() const throw () 
+const char *Bureaucrat::GradeTooHighException::what() const throw () 
 {
 	return(EXCEPTION_HIGH);
 }
 
-const char *Bureaucrat::GradeTooLow::what() const throw () 
+const char *Bureaucrat::GradeTooLowException::what() const throw () 
 {
 	return(EXCEPTION_LOW);
 }

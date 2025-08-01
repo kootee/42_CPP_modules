@@ -31,6 +31,7 @@ public:
 
     /* Class member functions */
     AForm    *makeForm(std::string name, std::string target);
+	
     /* Exceptions */
     class NoSuchForm : public std::exception
 	{

@@ -38,7 +38,9 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &to_cop
 void    ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
     if (executor.getGrade() > this->getExecGrade())
-		throw Bureaucrat::GradeTooLow();
+		throw Bureaucrat::GradeTooLowException();
+    if (!this->isSigned())
+        throw AForm::NotSignedException();
     std::ofstream out(this->getTarget());
     out <<  "  *     *     *     *     *     *     *  \n"
             " ***   ***   ***   ***   ***   ***   *** \n"

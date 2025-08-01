@@ -46,12 +46,12 @@ public:
 	void		decrementGrade();
 
 	/* Exceptions */
-	class GradeTooHigh : public std::exception
+	class GradeTooHighException : public std::exception
 	{
 		public:
 			const char* what() const throw();
 	};
-	class GradeTooLow : public std::exception
+	class GradeTooLowException : public std::exception
 	{
 		public:
 			const char* what() const throw();
