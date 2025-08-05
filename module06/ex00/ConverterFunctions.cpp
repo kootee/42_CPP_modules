@@ -117,7 +117,7 @@ ConversionResult ConverterFunctions::convertChar(const std::string &to_convert)
 	try
 	{
 		result.charValue = to_convert[0];
-		result.charStatus = VALID;
+		result.charStatus = std::isprint(result.charValue) ? VALID : -1;
 	}
 	catch (const std::exception& e) 
 	{ 
@@ -167,11 +167,12 @@ ConversionResult ConverterFunctions::convertFloat(const std::string &to_convert)
     try
     {
         result.floatValue = std::stof(to_convert);
+		std::cout << "float was: " << result.floatValue << "\n";
         result.floatStatus = VALID;
     }
     catch (const std::exception& e)
 	{
-		std::cerr << "Unable to convert Float literal: " << e.what() << "\n";
+		std::cout << "Unable to convert Float literal: " << e.what() << "\n";
 		return invalidResult();
 	}
 	setCharValue<float>(result, result.floatValue);

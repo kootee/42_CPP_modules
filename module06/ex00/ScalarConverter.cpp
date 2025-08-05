@@ -53,6 +53,7 @@ static int getLiteralType(const std::string &to_convert)
         {
             std::stof(s);
             return FLOAT;
+			std::cout << "was float";
         }
         catch (...) 
 		{
