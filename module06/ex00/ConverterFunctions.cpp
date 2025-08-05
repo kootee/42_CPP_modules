@@ -46,8 +46,8 @@ ConversionResult ConverterFunctions::setPseudoLiterals(const std::string &to_con
 		result.doubleValue = std::numeric_limits<double>::infinity();
 		if (to_convert[0] == '-')
 		{
-			result.floatValue * -1;
-			result.doubleValue * -1;
+			result.floatValue *= -1;
+			result.doubleValue *= -1;
 		}
 	}
 	else
