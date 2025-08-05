@@ -66,10 +66,8 @@ static void setCharValue(ConversionResult& result, T value)
 		value <= std::numeric_limits<char>::max())
 	{
 		result.charValue = static_cast<char>(value);
-		result.charStatus = VALID;
+		result.charStatus = std::isprint(value) ? VALID : -1;
 	}
-	else if (!std::isprint(value))
-		result.charStatus = -1;
 	else
 		result.charStatus = INVALID;
 }
@@ -90,7 +88,7 @@ static void setIntValue(ConversionResult& result, T value)
 template <typename T>
 static void setFloatValue(ConversionResult& result, T value)
 {
-	if (value >= std::numeric_limits<float>::min() && 
+	if (value >= std::numeric_limits<float>::lowest() && 
 		value <= std::numeric_limits<float>::max())
 	{
     	result.floatValue = static_cast<float>(value);
@@ -103,7 +101,7 @@ static void setFloatValue(ConversionResult& result, T value)
 template <typename T>
 static void setDoubleValue(ConversionResult& result, T value)
 {
-	if (value >= std::numeric_limits<double>::min() && 
+	if (value >= std::numeric_limits<double>::lowest() && 
 		value <= std::numeric_limits<double>::max())
 	{
     	result.doubleValue = static_cast<double>(value);
