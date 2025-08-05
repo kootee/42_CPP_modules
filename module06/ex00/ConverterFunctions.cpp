@@ -16,22 +16,6 @@ static ConversionResult invalidResult()
 	return result;
 }
 
-template <typename T>
-bool isWithinRange(const std::string &value)
-{
-    try
-    {
-        long double numericValue = std::stold(value);
-
-        return numericValue >= static_cast<long double>(std::numeric_limits<T>::min()) &&
-               numericValue <= static_cast<long double>(std::numeric_limits<T>::max());
-    }
-    catch (const std::exception &)
-    {
-        return false;
-    }
-}
-
 ConversionResult ConverterFunctions::setPseudoLiterals(const std::string &to_convert)
 {
     ConversionResult result;
@@ -132,9 +116,6 @@ ConversionResult ConverterFunctions::convertChar(const std::string &to_convert)
 
 ConversionResult ConverterFunctions::convertInt(const std::string &to_convert)
 {
-	if (!isWithinRange<int>(to_convert))
-		return invalidResult();
-
     ConversionResult result;
 	try
 	{
@@ -154,15 +135,11 @@ ConversionResult ConverterFunctions::convertInt(const std::string &to_convert)
 
 ConversionResult ConverterFunctions::convertFloat(const std::string &to_convert)
 {
-	
 	if (to_convert == "nanf" ||  
 		to_convert == "+inff" ||
 		to_convert == "-inff" )
 		return (setPseudoLiterals(to_convert));
 	
-    if (!isWithinRange<float>(to_convert))
-		return invalidResult();
-
 	ConversionResult result;
     try
     {
@@ -183,9 +160,6 @@ ConversionResult ConverterFunctions::convertFloat(const std::string &to_convert)
 
 ConversionResult ConverterFunctions::convertDouble(const std::string &to_convert)
 {
-	if (!isWithinRange<double>(to_convert))
-		return invalidResult();
-
 	if (to_convert == "nan" ||  
 		to_convert == "+inf" ||
 		to_convert == "-inf" )
