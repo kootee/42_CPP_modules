@@ -8,7 +8,9 @@ debug   ?= 0
 NAME = convert
 
 # Source files
-SRCS = main.cpp ScalarConverter.cpp
+SRCS =  main.cpp \
+		ScalarConverter.cpp \
+		ConverterFunctions.cpp
 
 # Object files
 OBJS = ${SRCS:.cpp=.o}
