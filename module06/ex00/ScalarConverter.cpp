@@ -15,7 +15,6 @@
 #include <iostream>
 #include <limits>
 #include <cmath>
-#include <cctype>
 #include <iomanip>
 
 static int getLiteralType(const std::string &to_convert)

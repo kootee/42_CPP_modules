@@ -13,8 +13,6 @@
 #pragma once
 
 #include <string>
-#include <iostream>
-#include <cctype>
 
 class ScalarConverter
 {
