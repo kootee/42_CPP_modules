@@ -5,7 +5,7 @@ class Serializer
 {
     private:
         Serializer() = default;
-        virtual ~Serializer() = 0;
+        ~Serializer() = default;
 		Serializer(const Serializer& other) = default;
 		Serializer& operator=(const Serializer& other) = default;
 
