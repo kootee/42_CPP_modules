@@ -47,8 +47,8 @@ static int getLiteralType(const std::string &to_convert)
     if (isInt)
         return INT;
     if (to_convert.back() == 'f' && 
-		!to_convert.find("inf") != std::string::npos && 
-		!to_convert.find("nan") != std::string::npos)
+		to_convert.find("inf") != std::string::npos && 
+		to_convert.find("nan") != std::string::npos)
     {
         std::string s = to_convert.substr(0, to_convert.length() - 1);
         try
