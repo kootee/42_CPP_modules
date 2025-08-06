@@ -8,23 +8,23 @@
 /* Helper functions */
 static ConversionResult invalidResult()
 {
-	ConversionResult result;
-	result.charStatus = INVALID;
-	result.intStatus = INVALID;
-	result.floatStatus = INVALID;
-	result.doubleStatus = INVALID;
-	return result;
+	return
+	{
+		.charStatus = INVALID,
+		.intStatus = INVALID,
+		.floatStatus = INVALID,
+		.doubleStatus = INVALID
+	};
 }
 
 ConversionResult ConverterFunctions::setPseudoLiterals(const std::string &to_convert)
 {
-    ConversionResult result;
-	result.charStatus = INVALID;
-	result.intStatus = INVALID;
+    ConversionResult result = invalidResult();
 	result.floatStatus = VALID;
 	result.doubleStatus = VALID;
-
-	if (to_convert.find("inf"))
+	
+	std::string substr = to_convert.substr(0, to_convert.length());
+	if (substr == "inf" || substr == "-inf" || substr == "+inf")
 	{
 		result.floatValue = std::numeric_limits<float>::infinity();
 		result.doubleValue = std::numeric_limits<double>::infinity();
@@ -144,7 +144,6 @@ ConversionResult ConverterFunctions::convertFloat(const std::string &to_convert)
     try
     {
         result.floatValue = std::stof(to_convert);
-		std::cout << "float was: " << result.floatValue << "\n";
         result.floatStatus = VALID;
     }
     catch (const std::exception& e)

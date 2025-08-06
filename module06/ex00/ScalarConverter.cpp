@@ -22,16 +22,16 @@ static int getLiteralType(const std::string &to_convert)
 {
     if (to_convert.length() == 1 && !std::isdigit(to_convert[0]))
         return CHAR;
-
-    if (to_convert == "nan" ||  
+		
+	if (to_convert == "nanf" ||  
+		to_convert == "+inff" ||
+		to_convert == "-inff" )
+		return FLOAT;
+    
+	if (to_convert == "nan" ||  
         to_convert == "+inf" ||
         to_convert == "-inf" )
         return DOUBLE;
-
-	if (to_convert == "nanf" ||  
-        to_convert == "+inff" ||
-        to_convert == "-inff" )
-        return FLOAT;
 
     bool isInt = true;
     for (size_t i = 0; i < to_convert.length(); ++i)
@@ -46,7 +46,9 @@ static int getLiteralType(const std::string &to_convert)
     }
     if (isInt)
         return INT;
-    if (to_convert.find('.') != std::string::npos && to_convert.back() == 'f')
+    if (to_convert.back() == 'f' && 
+		!to_convert.find("inf") != std::string::npos && 
+		!to_convert.find("nan") != std::string::npos)
     {
         std::string s = to_convert.substr(0, to_convert.length() - 1);
         try
@@ -55,8 +57,9 @@ static int getLiteralType(const std::string &to_convert)
             return FLOAT;
 			std::cout << "was float";
         }
-        catch (...) 
+        catch (const std::exception& e) 
 		{
+			std::cout << "Invalid literal: " << e.what() << "\n";
 			return INVALID;
 		}
     }
@@ -67,11 +70,13 @@ static int getLiteralType(const std::string &to_convert)
             std::stod(to_convert);
             return DOUBLE;
         }
-        catch (...) 
+        catch (const std::exception& e) 
 		{
+			std::cout << "Invalid literal: " << e.what() << "\n";
 			return INVALID;
 		}
     }
+	std::cout << "Invalid literal\n";
     return INVALID;
 }
 
@@ -125,7 +130,6 @@ void ScalarConverter::convert(const std::string &to_convert)
 			result = ConverterFunctions::convertDouble(to_convert);
 			break;
 		default:
-			std::cout << "Invalid literal\n";
 			return;
 	}
 	printConversionResult(result);

@@ -61,6 +61,9 @@ int main(int argc, char** argv)
 
         std::cout << "\nTesting: -42.0f\n";
         ScalarConverter::convert("-42.0f");
+        
+		std::cout << "\nTesting: 235.565f\n";
+        ScalarConverter::convert("235.565f");
 
         std::cout << "\nTesting: nanf\n";
         ScalarConverter::convert("nanf");
@@ -95,6 +98,12 @@ int main(int argc, char** argv)
 
         std::cout << "\nTesting: -42.0\n";
         ScalarConverter::convert("-42.0");
+        
+		std::cout << "\nTesting: 0.12335\n";
+        ScalarConverter::convert("0.12335");
+
+        std::cout << "\nTesting: -0.12335\n";
+        ScalarConverter::convert("-0.12335");
 
         std::cout << "\nTesting: nan\n";
         ScalarConverter::convert("nan");
@@ -149,13 +158,13 @@ int main(int argc, char** argv)
         ScalarConverter::convert(".."); // Multiple dots
 
         std::cout << "\nTesting: 42..0\n";
-        ScalarConverter::convert("42..0"); // Malformed number
+        ScalarConverter::convert("42..0");
 
         std::cout << "\nTesting: 42.0.0\n";
-        ScalarConverter::convert("42.0.0"); // Multiple dots in number
+        ScalarConverter::convert("42.0.0");
 
         std::cout << "\nTesting: 42f\n";
-        ScalarConverter::convert("42f"); // Missing decimal point for float
+        ScalarConverter::convert("42f");
 
         std::cout << "\nTesting: 42.0ff\n";
         ScalarConverter::convert("42.0ff"); // Extra 'f' in float
