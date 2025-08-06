@@ -23,8 +23,8 @@ ConversionResult ConverterFunctions::setPseudoLiterals(const std::string &to_con
 	result.floatStatus = VALID;
 	result.doubleStatus = VALID;
 	
-	std::string substr = to_convert.substr(0, to_convert.length());
-	if (substr == "inf" || substr == "-inf" || substr == "+inf")
+	if (to_convert.find("-inf") != std::string::npos || 
+		to_convert.find("+inf") != std::string::npos)
 	{
 		result.floatValue = std::numeric_limits<float>::infinity();
 		result.doubleValue = std::numeric_limits<double>::infinity();

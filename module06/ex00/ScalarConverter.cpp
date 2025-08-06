@@ -20,6 +20,8 @@
 
 static int getLiteralType(const std::string &to_convert)
 {
+	if (to_convert.length() == 0)
+		return INVALID;
     if (to_convert.length() == 1 && !std::isdigit(to_convert[0]))
         return CHAR;
 		
@@ -47,8 +49,8 @@ static int getLiteralType(const std::string &to_convert)
     if (isInt)
         return INT;
     if (to_convert.back() == 'f' && 
-		to_convert.find("inf") != std::string::npos && 
-		to_convert.find("nan") != std::string::npos)
+		to_convert.find("inf") == std::string::npos && 
+		to_convert.find("nan") == std::string::npos)
     {
         std::string s = to_convert.substr(0, to_convert.length() - 1);
         try
@@ -59,7 +61,6 @@ static int getLiteralType(const std::string &to_convert)
         }
         catch (const std::exception& e) 
 		{
-			std::cout << "Invalid literal: " << e.what() << "\n";
 			return INVALID;
 		}
     }
@@ -72,11 +73,9 @@ static int getLiteralType(const std::string &to_convert)
         }
         catch (const std::exception& e) 
 		{
-			std::cout << "Invalid literal: " << e.what() << "\n";
 			return INVALID;
 		}
     }
-	std::cout << "Invalid literal\n";
     return INVALID;
 }
 
@@ -130,6 +129,7 @@ void ScalarConverter::convert(const std::string &to_convert)
 			result = ConverterFunctions::convertDouble(to_convert);
 			break;
 		default:
+			std::cout << "Invalid literal\n";
 			return;
 	}
 	printConversionResult(result);
