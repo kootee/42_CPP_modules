@@ -12,6 +12,7 @@
 
 #include "ScalarConverter.hpp"
 #include <iostream>
+#include <limits>
 
 int main(int argc, char** argv)
 {
@@ -19,8 +20,8 @@ int main(int argc, char** argv)
         ScalarConverter::convert(argv[1]);
     else
     {
-        // Char literals
         std::cout << "---RUNNING TESTS---\n";
+        std::cout << "\nTESTING CHAR LITERALS\n";
         std::cout << "Testing: a\n";
         ScalarConverter::convert("a");
 
@@ -36,18 +37,27 @@ int main(int argc, char** argv)
         std::cout << "\nTesting: \\n\n";
         ScalarConverter::convert("\n"); // Non-printable char
 
-        // Int literals
+        std::cout << "\nTesting:  \n";
+        ScalarConverter::convert(" "); // Space
+
+        std::cout << "\nTesting: -\n";
+        ScalarConverter::convert("-"); // Just a minus sign
+
+        std::cout << "\nTesting: +\n";
+        ScalarConverter::convert("+"); // Just a plus sign
+
+        std::cout << "\nTesting: .\n";
+        ScalarConverter::convert("."); // Just a dot
+
+        std::cout << "\nTesting: f\n";
+        ScalarConverter::convert("f"); // Just an 'f'
+
+        std::cout << "\nTESTING INT LITERALS\n";
         std::cout << "\nTesting: 42\n";
         ScalarConverter::convert("42");
 
         std::cout << "\nTesting: -42\n";
         ScalarConverter::convert("-42");
-
-        std::cout << "\nTesting: 2147483647\n";
-        ScalarConverter::convert("2147483647"); // INT_MAX
-
-        std::cout << "\nTesting: -2147483648\n";
-        ScalarConverter::convert("-2147483648"); // INT_MIN
 
         std::cout << "\nTesting: 0\n";
         ScalarConverter::convert("0"); // Zero as int
@@ -55,7 +65,18 @@ int main(int argc, char** argv)
         std::cout << "\nTesting: -0\n";
         ScalarConverter::convert("-0"); // Negative zero
 
-        // Float literals
+        int intMin = std::numeric_limits<int>::lowest();
+        int intMax = std::numeric_limits<int>::max();
+        std::string minIntStr = std::to_string(intMin);
+        std::string maxIntStr = std::to_string(intMax);
+
+        std::cout << "\nTesting: " << minIntStr << "\n";
+        ScalarConverter::convert(minIntStr);
+
+        std::cout << "\nTesting: " << maxIntStr << "\n";
+        ScalarConverter::convert(maxIntStr);
+
+        std::cout << "\nTESTING FLOAT LITERALS\n";
         std::cout << "\nTesting: 42.0f\n";
         ScalarConverter::convert("42.0f");
 
@@ -80,19 +101,18 @@ int main(int argc, char** argv)
         std::cout << "\nTesting: -0.0f\n";
         ScalarConverter::convert("-0.0f"); // Negative zero as float
 
-        std::cout << "\nTesting: 1e-38f\n";
-        ScalarConverter::convert("1e-38f"); // Smallest normalized float
+        float minFloat = std::numeric_limits<float>::lowest();
+        float maxFloat = std::numeric_limits<float>::max();
+        std::string minFloatStr = std::to_string(minFloat);
+        std::string maxFloatStr = std::to_string(maxFloat);
+        
+        std::cout << "\nTesting: " << minFloatStr << "\n";
+        ScalarConverter::convert(minFloatStr);
 
-        std::cout << "\nTesting: 1e+38f\n";
-        ScalarConverter::convert("1e+38f"); // Largest normalized float
+        std::cout << "\nTesting: " << maxFloatStr << "\n";
+        ScalarConverter::convert(maxFloatStr);
 
-        std::cout << "\nTesting: 1.17549e-38f\n";
-        ScalarConverter::convert("1.17549e-38f"); // Float min
-
-        std::cout << "\nTesting: 3.40282e+38f\n";
-        ScalarConverter::convert("3.40282e+38f"); // Float max
-
-        // Double literals
+        std::cout << "\nTESTING DOUBLE LITERALS\n";
         std::cout << "\nTesting: 42.0\n";
         ScalarConverter::convert("42.0");
 
@@ -120,13 +140,18 @@ int main(int argc, char** argv)
         std::cout << "\nTesting: -0.0\n";
         ScalarConverter::convert("-0.0"); // Negative zero as double
 
-        std::cout << "\nTesting: 2.22507e-308\n";
-        ScalarConverter::convert("2.22507e-308"); // Double min
+        double minDouble = std::numeric_limits<double>::lowest();
+        double maxDouble = std::numeric_limits<double>::max();
+        std::string minDoubleStr = std::to_string(minDouble);
+        std::string maxDoubleStr = std::to_string(maxDouble);
 
-        std::cout << "\nTesting: 1.79769e+308\n";
-        ScalarConverter::convert("1.79769e+308"); // Double max
+        std::cout << "Testing: " << minDoubleStr << "\n";
+        ScalarConverter::convert(minDoubleStr);
 
-        // Random inputs
+        std::cout << "Testing: " << maxDoubleStr << "\n";
+        ScalarConverter::convert(maxDoubleStr);
+
+        std::cout << "\nTESTING RANDOM LITERALS\n";
         std::cout << "\nTesting: abc\n";
         ScalarConverter::convert("abc");
 
@@ -151,9 +176,6 @@ int main(int argc, char** argv)
         std::cout << "\nTesting: \n";
         ScalarConverter::convert(""); // Empty string
 
-        std::cout << "\nTesting:  \n";
-        ScalarConverter::convert(" "); // Space
-
         std::cout << "\nTesting: ..\n";
         ScalarConverter::convert(".."); // Multiple dots
 
@@ -168,18 +190,6 @@ int main(int argc, char** argv)
 
         std::cout << "\nTesting: 42.0ff\n";
         ScalarConverter::convert("42.0ff"); // Extra 'f' in float
-
-        std::cout << "\nTesting: -\n";
-        ScalarConverter::convert("-"); // Just a minus sign
-
-        std::cout << "\nTesting: +\n";
-        ScalarConverter::convert("+"); // Just a plus sign
-
-        std::cout << "\nTesting: .\n";
-        ScalarConverter::convert("."); // Just a dot
-
-        std::cout << "\nTesting: f\n";
-        ScalarConverter::convert("f"); // Just an 'f'
 
         std::cout << "\nTesting: nanff\n";
         ScalarConverter::convert("nanff"); // Invalid pseudo-literal

@@ -44,8 +44,10 @@ ConversionResult ConverterFunctions::setPseudoLiterals(const std::string &to_con
 template <typename T>
 static void setCharValue(ConversionResult& result, T value)
 {
-	if (value >= std::numeric_limits<char>::min() &&
-		value <= std::numeric_limits<char>::max())
+	char limitMax = std::numeric_limits<char>::max();
+	char limitMin = std::numeric_limits<char>::min();
+	if (value >= limitMin &&
+		value <= limitMax)
 	{
 		result.charValue = static_cast<char>(value);
 		result.charStatus = std::isprint(value) ? VALID : -1;
@@ -57,21 +59,28 @@ static void setCharValue(ConversionResult& result, T value)
 template <typename T>
 static void setIntValue(ConversionResult& result, T value)
 {
-	if (value >= std::numeric_limits<int>::min() && 
-		value <= std::numeric_limits<int>::max())
+	int limitMax = std::numeric_limits<int>::max();
+	int limitMin = std::numeric_limits<int>::min();
+	if (value >= limitMin &&
+		value <= limitMax)
 	{
-    	result.intValue = static_cast<int>(value);
+		result.intValue = static_cast<int>(value);
 		result.intStatus = VALID;
-	}
+	} 
 	else
+	{
 		result.intStatus = INVALID;
+	}
+	
 }
 
 template <typename T>
 static void setFloatValue(ConversionResult& result, T value)
 {
-	if (value >= std::numeric_limits<float>::lowest() && 
-		value <= std::numeric_limits<float>::max())
+	float limitMax = std::numeric_limits<float>::max();
+	float limitMin = std::numeric_limits<float>::lowest();
+	if (value >= limitMin && 
+		value <= limitMax)
 	{
     	result.floatValue = static_cast<float>(value);
 		result.floatStatus = VALID;
@@ -83,8 +92,10 @@ static void setFloatValue(ConversionResult& result, T value)
 template <typename T>
 static void setDoubleValue(ConversionResult& result, T value)
 {
-	if (value >= std::numeric_limits<double>::lowest() && 
-		value <= std::numeric_limits<double>::max())
+	double limitMax = std::numeric_limits<double>::max();
+	double limitMin = std::numeric_limits<double>::lowest();
+	if (value >= limitMin && 
+		value <= limitMax)
 	{
     	result.doubleValue = static_cast<double>(value);
 		result.doubleStatus = VALID;
