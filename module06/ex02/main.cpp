@@ -8,8 +8,6 @@
 
 Base* generate(void)
 {
-    std::srand(static_cast<unsigned int>(std::time(0)));
-
     int classType = std::rand() % 3;
     switch (classType)
     {
@@ -63,6 +61,8 @@ void identify(Base& p)
 
 int main()
 {
+	std::srand(static_cast<unsigned int>(std::time(0)));
+	
 	std::cout << "Testing generate and identify functions:\n";
 	for (int i = 0; i < 10; i++)
 	{
