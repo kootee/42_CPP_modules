@@ -1,24 +1,21 @@
 #include <iostream>
 #include <exception>
 
-/*  
-    template <template parameter> (type returned by function) <T>
-    the last T means that the functin's template param is also
-    the class template param. Declaring class function templates:
-    ---> template <class T> T ClassName<T>::functionName()
-
-    This is the syntax used in the class template specialization:
-    template <> class mycontainer <char> { ... };
-*/
-
-template <typename T, size_t N, void(*func)> 
-void iter(T *a, size_t len, void(*f)(int &i)) 
+template <typename T, size_t N, void(*func)(T &i)>
+void iter(T(&a)[N], size_t len, void(*f)(T &i))
 {
+    if (len == 0) 
+        return;
     for (size_t i = 0; i < len; i++) 
     {
-        if (i > a.size())
-            throw std::exception();
-        else
+        try 
+        {
             f(a[i]);
+        }
+        catch (const std::exception &e)
+        {
+            std::cerr << "Exception: " << e.what() << "\n";
+            return;
+        }
     }
 }
