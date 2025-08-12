@@ -5,7 +5,7 @@ DBFLAGS = -g
 
 debug   ?= 0
 
-NAME = iter
+NAME = array
 
 # Source files
 SRCS = main.cpp
