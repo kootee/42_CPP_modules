@@ -4,8 +4,9 @@
 template <typename T, size_t N, void(*func)(T &i)>
 void iter(T(&a)[N], size_t len, void(*f)(T &i))
 {
-    if (len == 0) 
-        return;
+    if (len != N) 
+        throw std::out_of_range("Invalid length");
+
     for (size_t i = 0; i < len; i++) 
     {
         try 
@@ -14,7 +15,7 @@ void iter(T(&a)[N], size_t len, void(*f)(T &i))
         }
         catch (const std::exception &e)
         {
-            std::cerr << "Exception: " << e.what() << "\n";
+            std::cout << "Exception: " << e.what() << "\n";
             return;
         }
     }

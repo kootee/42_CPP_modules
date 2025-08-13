@@ -10,6 +10,9 @@ NAME = iter
 # Source files
 SRCS = main.cpp
 
+# Header files
+HEADERS = iter.hpp
+
 # Object files
 OBJS = ${SRCS:.cpp=.o}
 
@@ -25,7 +28,7 @@ ${NAME}: ${OBJS}
 	${CC} ${CPPFLAGS} -o ${NAME} ${OBJS}
 
 # Compile source cpp files into object files
-%.o: %.cpp
+%.o: %.cpp ${HEADERS}
 	${CC} ${CPPFLAGS} -c $< -o $@
 
 clean:

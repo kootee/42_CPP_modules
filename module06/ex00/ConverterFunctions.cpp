@@ -68,10 +68,7 @@ static void setIntValue(ConversionResult& result, T value)
 		result.intStatus = VALID;
 	} 
 	else
-	{
 		result.intStatus = INVALID;
-	}
-	
 }
 
 template <typename T>
