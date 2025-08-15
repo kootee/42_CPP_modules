@@ -41,7 +41,7 @@ int main()
     int arr1[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     try 
     {
-        iter<int, 10, multiplyByTwo>(arr1, 10, multiplyByTwo);
+        iter<int, 10, multiplyByTwo>(arr1);
         std::cout << "Result\n";
         for (int i = 0; i < 5; i++) {
             std::cout << arr1[i] << " ";
@@ -58,7 +58,7 @@ int main()
     int arr2[6] = {1, 2, 3, 4, 5, 6};
     try 
     {
-        iter<int, 6, sumArray>(arr2, 6, sumArray);
+        iter<int, 6, sumArray>(arr2);
         std::cout << "Result\n";
         for (int i = 0; i < 5; i++) {
             std::cout << arr2[i] << " ";
@@ -75,7 +75,7 @@ int main()
     int arr3[5] = {1, 2, 3, 4, 5};
     try 
     {
-        iter<int, 5, squareArray>(arr3, 5, squareArray);
+        iter<int, 5, squareArray>(arr3);
         std::cout << "Result\n";
         for (int i = 0; i < 5; i++) {
             std::cout << arr3[i] << " ";
@@ -92,7 +92,7 @@ int main()
     int arr4[5] = {1, 2, 3, 4, 5};
     try 
     {
-        iter<int, 5, decrementArray>(arr4, 5, decrementArray);
+        iter<int, 5, decrementArray>(arr4);
         std::cout << "Result\n";
         for (int i = 0; i < 5; i++) {
             std::cout << arr4[i] << " ";
@@ -108,7 +108,7 @@ int main()
     int arr5[5] = {1, 2, 3, 4, 5};
     try 
     {
-        iter<int, 5, multiplyByTwo>(arr5, 700, multiplyByTwo);
+        iter<int, 5, multiplyByTwo>(arr5);
         std::cout << "Result\n";
         for (int i = 0; i < 5; i++) {
             std::cout << arr5[i] << " ";
@@ -124,7 +124,7 @@ int main()
     std::string arr6[5] = {"World", "C++", "is", "great", "!!!"};
     try 
     {
-        iter<std::string, 5, addHello>(arr6, 5, addHello);
+        iter<std::string, 5, addHello>(arr6);
         std::cout << "Result\n";
         for (int i = 0; i < 5; i++) 
         {
@@ -141,7 +141,7 @@ int main()
     std::string arr7[5] = {"World", "C++", "is", "great", "!!!"};
     try 
     {
-        iter<std::string, 5, addAsterisk>(arr7, 2, addAsterisk);
+        iter<std::string, 5, addAsterisk>(arr7);
         std::cout << "Result\n";
         for (int i = 0; i < 5; i++) 
         {
@@ -157,7 +157,7 @@ int main()
     std::string arr8[1] = {""};
     try 
     {
-        iter<std::string, 1, addAsterisk>(arr8, 0, addAsterisk);
+        iter<std::string, 1, addAsterisk>(arr8);
     }
     catch (const std::exception& e) 
     {
