@@ -1,22 +1,24 @@
 #pragma once
 
 #include <cstddef>
+#include <vector>
 
 class Span
 {
 	private:
 		std::size_t _capacity;
-
+		std::vector<int> _container;
+		
 		Span() = default;
+
 	public:
-		Span(std::size_t capacity);
+		Span(unsigned int capacity);
 		~Span();
 
-		Span& operator=(const Span& other);
 		Span(const Span& other);
+		Span& operator=(const Span& other);
 
-		void addNumber(typename T number);
+		void addNumber(int number);
 		std::size_t shortestSpan();
 		std::size_t longestSpan();
-
 };
