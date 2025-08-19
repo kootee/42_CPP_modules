@@ -3,12 +3,15 @@ CC = c++
 CPPFLAGS := -Wall -Wextra -Werror -std=c++11
 DBFLAGS = -g
 
-debug   ?= 0
+debug ?= 0
 
 NAME = span
 
 # Source files
-SRCS = main.cpp
+SRCS = main.cpp Span.cpp
+
+# Header files
+HEADERS = Span.hpp
 
 # Object files
 OBJS = ${SRCS:.cpp=.o}
@@ -25,7 +28,7 @@ ${NAME}: ${OBJS}
 	${CC} ${CPPFLAGS} -o ${NAME} ${OBJS}
 
 # Compile source cpp files into object files
-%.o: %.cpp
+%.o: %.cpp ${HEADERS}
 	${CC} ${CPPFLAGS} -c $< -o $@
 
 clean:
