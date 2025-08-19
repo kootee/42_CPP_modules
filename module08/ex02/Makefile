@@ -8,7 +8,7 @@ debug   ?= 0
 NAME = mutantstack
 
 # Source files
-SRCS = main.cpp MutantStack.cpp
+SRCS = main.cpp
 
 # Header files
 HEADERS = MutantStack.hpp
