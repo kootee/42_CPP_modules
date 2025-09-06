@@ -6,10 +6,10 @@
 class Span
 {
 	private:
-		std::size_t _capacity;
+		unsigned int _capacity;
 		std::vector<int> _container;
 		
-		Span() = default;
+		Span();
 
 	public:
 		Span(unsigned int capacity);

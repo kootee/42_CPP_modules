@@ -38,8 +38,9 @@ int main()
         std::deque<int> deq = {5, 10, 15, 20};
         std::cout << "Found in deque: " << *easyfind(deq, 15) << "\n";
 
-        std::vector<int> dupVec = {1, 2, 3, 3, 4};
-        std::cout << "Looking for first occurrence: " << *easyfind(dupVec, 3) << "\n";
+        std::vector<int> intVector = {1, 2, 3, 3, 4};
+        std::vector<int>::iterator it = easyfind(intVector, 3);
+        std::cout << "Looking for first occurrence: " << *it << "\n";
 
         std::list<int> negList = {-10, -20, -30, -40};
         std::cout << "Found in list with negative numbers: " << *easyfind(negList, -30) << "\n";

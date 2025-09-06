@@ -8,7 +8,7 @@
 
 void test_basic_functionality()
 {
-    std::cout << "=== Basic Functionality Test ===\n";
+    std::cout << "=== Basic Functionality Test (subject) ===\n";
     MutantStack<int> mstack;
 
     mstack.push(5);
@@ -119,7 +119,8 @@ void test_algorithm_compatibility()
     mstack.push(45);
     mstack.push(43);
     mstack.push(25);
-    
+    mstack.size();
+
     std::cout << "Before sorting: ";
     for (MutantStack<int>::iterator it = mstack.begin(); it != mstack.end(); ++it)
     {
