@@ -1,21 +1,15 @@
 #include "PmergeMe.hpp"
 #include "iterator"
 
-PmergeMe::PmergeMe() 
-{
-	_comparisons = 0;
-}
-
 PmergeMe::PmergeMe(const std::vector<std::string>& elements) 
 {
-	_comparisons = 0;
 	processInput(elements);
 }
 
 PmergeMe::~PmergeMe() 
 {
 	_vContainer.clear();
-	_lContainer.clear();
+	_dContainer.clear();
 }
 
 void PmergeMe::displayTimes()
@@ -23,7 +17,7 @@ void PmergeMe::displayTimes()
 
     std::cout << "Time to process a range of " << _vContainer.size()
               << " elements with std::vector: " << _vTime.count() << " us\n";
-    std::cout << "Time to process a range of " << _lContainer.size()
+    std::cout << "Time to process a range of " << _dContainer.size()
               << " elements with std::deque: " << _lTime.count() << " us\n";
 }
 
@@ -55,13 +49,13 @@ void PmergeMe::processInput(const std::vector<std::string>& args)
 	{
         int num = std::stoi(arg);
         _vContainer.emplace_back(num);
-        _lContainer.emplace_back(num);
+        _dContainer.emplace_back(num);
     }
 }
 
-double PmergeMe::generateJacobsthal(int n) 
+int PmergeMe::generateJacobsthal(int n) 
 {
-	return (std::round(std::pow(2, n + 1) + std::pow(-1, n) / 3));
+	return static_cast<int>(std::round((std::pow(2, n + 1) + std::pow(-1, n)) / 3));
 }
 
 void PmergeMe::performSorting()
@@ -72,7 +66,7 @@ void PmergeMe::performSorting()
 	_vTime = std::chrono::duration<double, std::micro>(endTime - startTime);
 	
 	startTime = std::chrono::high_resolution_clock::now();
-	sortContainer(_lContainer, 1);
+	sortContainer(_dContainer, 1);
 	endTime = std::chrono::high_resolution_clock::now();
 	_lTime = std::chrono::duration<double, std::micro>(endTime - startTime);
 

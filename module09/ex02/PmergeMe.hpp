@@ -8,23 +8,23 @@
 #include <chrono>
 #include <algorithm>
 #include <cmath>
+#include <iterator>
 
 class PmergeMe 
 {	
 	private:
 		std::vector<int>	_vContainer;
-		std::deque<int>		_lContainer;
-
-		size_t _comparisons;
+		std::deque<int>		_dContainer;
 
 		std::chrono::duration<double, std::micro> _vTime;
 		std::chrono::duration<double, std::micro> _lTime;
 		
-		PmergeMe();
+		PmergeMe() = delete;
 		PmergeMe(const PmergeMe& other) = delete;
 		PmergeMe& operator=(const PmergeMe& other) = delete;
 				
-		double generateJacobsthal(int n);
+		int generateJacobsthal(int n);
+
 	public:
 		PmergeMe(const std::vector<std::string>& elements);
 		~PmergeMe();
@@ -60,43 +60,59 @@ class PmergeMe
 
 	// Insert pend into main according to Jacobstahl
 	template <typename Container>
-	void insertPend(Container& main, Container& pend)
+	void insertPend(Container& main, Container& pend, bool odd)
 	{
-		int prevJt = generateJacobsthal(1);
-		int insertions = 0;
-
-		for (int elemPos = 2; ; elemPos++)
+		if (pend.empty())
+			return;
+			
+		// Insert first element of pend at the beginning
+		auto firstPend = pend.begin();
+		auto insertPos = std::upper_bound(main.begin(), main.begin() + 1, *firstPend);
+		main.insert(insertPos, *firstPend);
+		pend.erase(firstPend);
+		
+		// Use Jacobsthal sequence for remaining elements
+		int jacobIndex = 2;
+		int prevJacob = 1;
+		
+		while (!pend.empty())
 		{
-			int currJt = generateJacobsthal(elemPos);
-			int diffJt = currJt - prevJt;
-			if (diffJt > pend.size())
-				break;
-			auto pendIt = std::next(pend.begin(), diffJt - 1);
-			auto bound = std::next(main.begin(), (currJt + insertions));
-			int offset = 0;
-			while (0 < diffJt--)
+			int currJacob = generateJacobsthal(jacobIndex);
+			int pendIndex = currJacob - prevJacob - 1;
+			
+			// If we exceed pend size, insert remaining elements in reverse order
+			if (pendIndex >= static_cast<int>(pend.size()))
 			{
-				auto id = std::upper_bound(main.begin(), bound, *pendIt);
-				auto elemToInsert = main.insert(id, *pendIt);
-				pendIt = pend.erase(pendIt);
-				std::advance(pendIt, - 1);
-				
-				if ((elemToInsert - main.begin()) == currJt + insertions)
-					offset += 1;
-				bound = main.begin();
-				std::advance(currJt + insertions - offset);
+				for (int i = pend.size() - 1; i >= 0; i--)
+				{
+					auto pendIt = std::next(pend.begin(), i);
+					auto searchEnd = std::next(main.begin(), main.size() - pend.size() + i + (odd ? 1 : 0));
+					auto insertPos = std::upper_bound(main.begin(), searchEnd, *pendIt);
+					main.insert(insertPos, *pendIt);
+				}
+				break;
 			}
-			insertions += currJt - prevJt;
-			offset = 0;
-			prevJt = currJt;
-		}
-		// Insert remaining from pend
-		for (int i = pend.size() - 1; i >= 0; i--)
-		{
-			auto currPend = std::next(pend.begin(), i);
-			auto currBound = std::next(main.begin(), main.size() - pend.size() + i + odd);
-			auto id = std::upper_bound(main.begin(), currBound, *currPend);
-			main.insert(id, *currPend);	
+			
+			// Insert elements from currJacob position down to prevJacob position
+			for (int i = std::min(pendIndex, static_cast<int>(pend.size()) - 1); 
+				 i >= 0 && currJacob - prevJacob > 0; 
+				 i--, currJacob--)
+			{
+				auto pendIt = std::next(pend.begin(), i);
+				int pairedElementPos = prevJacob + i;
+				int searchEndPos = std::min(pairedElementPos + 1, static_cast<int>(main.size()));
+				auto searchEnd = std::next(main.begin(), searchEndPos);
+				
+				auto insertPos = std::upper_bound(main.begin(), searchEnd, *pendIt);
+				main.insert(insertPos, *pendIt);
+				pendIt = pend.erase(pendIt);
+				
+				if (i > 0 && pendIt != pend.begin())
+					--pendIt;
+			}
+			
+			prevJacob = generateJacobsthal(jacobIndex);
+			jacobIndex++;
 		}
 	}
 
@@ -175,7 +191,7 @@ class PmergeMe
 			pend.insert(pend.end(), oddPosition);
 		}
 
-		insertPend(main, pend);
+		insertPend(main, pend, odd);
 		finaliseSortedContainer(c, main, recursionLvl);
 	}
 };
