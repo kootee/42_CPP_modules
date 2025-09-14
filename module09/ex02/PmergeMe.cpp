@@ -1,0 +1,89 @@
+#include "PmergeMe.hpp"
+#include "iterator"
+
+PmergeMe::PmergeMe() 
+{
+	_comparisons = 0;
+}
+
+PmergeMe::PmergeMe(const std::vector<std::string>& elements) 
+{
+	_comparisons = 0;
+	processInput(elements);
+}
+
+PmergeMe::~PmergeMe() 
+{
+	_vContainer.clear();
+	_lContainer.clear();
+}
+
+void PmergeMe::displayTimes()
+{
+
+    std::cout << "Time to process a range of " << _vContainer.size()
+              << " elements with std::vector: " << _vTime.count() << " us\n";
+    std::cout << "Time to process a range of " << _lContainer.size()
+              << " elements with std::deque: " << _lTime.count() << " us\n";
+}
+
+std::vector<int> PmergeMe::getElements()
+{
+    return _vContainer;
+}
+
+static void checkInput(const std::vector<std::string>& args) 
+{
+	for (const std::string& arg : args) 
+	{
+		for (char c : arg) 
+		{
+			if (!std::isdigit(c)) 
+				throw std::invalid_argument("Error: Invalid input.");
+		}
+		if (std::stol(arg) < 0) 
+		{
+			throw std::invalid_argument("Error: Negative numbers are not allowed.");
+		}
+	}
+}
+
+void PmergeMe::processInput(const std::vector<std::string>& args) 
+{
+    checkInput(args);
+    for (const std::string& arg : args) 
+	{
+        int num = std::stoi(arg);
+        _vContainer.emplace_back(num);
+        _lContainer.emplace_back(num);
+    }
+}
+
+double PmergeMe::generateJacobsthal(int n) 
+{
+	return (std::round(std::pow(2, n + 1) + std::pow(-1, n) / 3));
+}
+
+void PmergeMe::performSorting()
+{
+	auto startTime = std::chrono::high_resolution_clock::now();
+	sortContainer(_vContainer, 1);
+	auto endTime = std::chrono::high_resolution_clock::now();
+	_vTime = std::chrono::duration<double, std::micro>(endTime - startTime);
+	
+	startTime = std::chrono::high_resolution_clock::now();
+	sortContainer(_lContainer, 1);
+	endTime = std::chrono::high_resolution_clock::now();
+	_lTime = std::chrono::duration<double, std::micro>(endTime - startTime);
+
+	displayTimes();
+}
+
+std::ostream& operator<<(std::ostream& os, const std::vector<int>& Container)
+{
+	for (int num : Container)
+	{
+		os << num << ' ';
+	}
+	return os;
+}
