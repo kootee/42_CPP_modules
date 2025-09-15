@@ -58,6 +58,29 @@ class PmergeMe
 		}
 	}
 
+	template <typename Iterator, typename T>
+	Iterator upperBoundBinarySearch(Iterator first, Iterator last, const T& value)
+	{
+		using difference_type = typename std::iterator_traits<Iterator>::difference_type;
+    	difference_type count = std::distance(first, last);
+
+		while (count > 0) 
+		{
+			difference_type step = count / 2;
+			Iterator mid = first;
+			std::advance(mid, step);
+
+			if (!(value < *mid)) 
+			{ 
+				first = ++mid;
+				count -= step + 1;
+			} 
+			else
+				count = step;
+    	}
+    	return first;
+	}
+
 	// Insert pend into main according to Jacobstahl
 	template <typename Container>
 	void insertPend(Container& main, Container& pend, bool odd)
@@ -110,7 +133,6 @@ class PmergeMe
 				if (i > 0 && pendIt != pend.begin())
 					--pendIt;
 			}
-			
 			prevJacob = generateJacobsthal(jacobIndex);
 			jacobIndex++;
 		}
@@ -183,14 +205,12 @@ class PmergeMe
 			std::advance(insertMain, aIndex);
 			main.insert(main.end(), insertMain);
 		}
-
 		if (odd)
 		{
 			auto oddPosition = end;
 			std::advance(oddPosition, recursionLvl - 1);
 			pend.insert(pend.end(), oddPosition);
 		}
-
 		insertPend(main, pend, odd);
 		finaliseSortedContainer(c, main, recursionLvl);
 	}
