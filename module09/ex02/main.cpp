@@ -18,7 +18,7 @@ int main(int argc, char** argv)
 		std::cout << "Before: ";
 		std::cout << sorter.getElements();
 		std::cout << "\n";
-        sorter.performSorting();
+        sorter.fordJohnsonSort();
 		std::cout << "After: ";
 		std::cout << sorter.getElements();
 		std::cout << "\n";

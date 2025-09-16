@@ -35,10 +35,8 @@ static void checkInput(const std::vector<std::string>& args)
 			if (!std::isdigit(c)) 
 				throw std::invalid_argument("Error: Invalid input.");
 		}
-		if (std::stol(arg) < 0) 
-		{
+		if (std::stol(arg) < 0)
 			throw std::invalid_argument("Error: Negative numbers are not allowed.");
-		}
 	}
 }
 
@@ -53,21 +51,20 @@ void PmergeMe::processInput(const std::vector<std::string>& args)
     }
 }
 
-int PmergeMe::generateJacobsthal(int n) 
+int PmergeMe::jacobstahl(int n) 
 {
 	return static_cast<int>(std::round((std::pow(2, n + 1) + std::pow(-1, n)) / 3));
 }
 
-void PmergeMe::performSorting()
+void PmergeMe::fordJohnsonSort()
 {
 	auto startTime = std::chrono::high_resolution_clock::now();
-	//sortContainer(_vContainer, 1);
-	fordJohnson(_vContainer.begin(), _vContainer.end());
+	sortContainer(_vContainer);
 	auto endTime = std::chrono::high_resolution_clock::now();
 	_vTime = std::chrono::duration<double, std::micro>(endTime - startTime);
 	
 	startTime = std::chrono::high_resolution_clock::now();
-	sortContainer(_dContainer, 1);
+	sortContainer(_dContainer);
 	endTime = std::chrono::high_resolution_clock::now();
 	_lTime = std::chrono::duration<double, std::micro>(endTime - startTime);
 
