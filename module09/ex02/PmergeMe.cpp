@@ -61,7 +61,8 @@ int PmergeMe::generateJacobsthal(int n)
 void PmergeMe::performSorting()
 {
 	auto startTime = std::chrono::high_resolution_clock::now();
-	sortContainer(_vContainer, 1);
+	//sortContainer(_vContainer, 1);
+	fordJohnson(_vContainer.begin(), _vContainer.end());
 	auto endTime = std::chrono::high_resolution_clock::now();
 	_vTime = std::chrono::duration<double, std::micro>(endTime - startTime);
 	

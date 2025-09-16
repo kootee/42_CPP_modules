@@ -9,12 +9,13 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/module09/ex02/PmergeMe",
-            "args": ["5", "2", "4", "8", "65", "46", "478", "7", "56"],
+            "args": ["5", "2", "4", "8", "65", "46", "48", "7", "56"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
             "externalConsole": false,
-            "MIMode": "gdb",
+            "MIMode": "lldb",
+			"miDebuggerPath": "/usr/bin/gdb",
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",

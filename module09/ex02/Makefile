@@ -1,7 +1,7 @@
 CC = c++
 
 CPPFLAGS := -Wall -Wextra -Werror -std=c++11
-DBFLAGS = -g
+DBFLAGS = -g -O0
 
 debug   ?= 0
 

@@ -214,6 +214,103 @@ class PmergeMe
 		insertPend(main, pend, odd);
 		finaliseSortedContainer(c, main, recursionLvl);
 	}
+
+	template <typename Iterator>
+	void fordJohnson(Iterator first, Iterator last) {
+    auto n = std::distance(first, last);
+    if (n < 2) return;
+
+    using T = typename std::iterator_traits<Iterator>::value_type;
+
+    // 1. Form pairs
+    std::vector<std::pair<T,T>> pairs;
+    pairs.reserve(n / 2);
+    bool hasOdd = (n % 2) != 0;
+    T oddValue{};
+    if (hasOdd) oddValue = *(std::prev(last));
+
+    for (auto it = first; std::distance(it, last) >= 2; std::advance(it, 2)) {
+        T a = *it;
+        T b = *std::next(it);
+        if (a > b) std::swap(a, b); // (small, large)
+        pairs.push_back(std::make_pair(a, b));
+    }
+
+    // 2. Collect and recursively sort larges
+    std::vector<T> larges;
+    larges.reserve(pairs.size());
+    for (auto &p : pairs) larges.push_back(p.second);
+    fordJohnson(larges.begin(), larges.end());
+
+    // 3. Build initial main chain (sorted larges)
+    std::vector<T> chain = larges;
+
+    // 4. Collect smalls in the order of their associated larges
+    // Map each large value back to its small(s). For duplicates, handle all matches.
+    std::vector<T> smalls;
+    smalls.reserve(pairs.size());
+    for (auto &p : pairs) {
+        // p.second is large, p.first its partner
+        smalls.push_back(p.first);
+    }
+
+    // 5. Jacobsthal insertion order
+    auto jacob = [&](int k)->size_t {
+        // J(0)=0, J(1)=1
+        if (k == 0) return 0;
+        if (k == 1) return 1;
+        size_t a = 0, b = 1;
+        for (int i = 2; i <= k; ++i) {
+            size_t c = b + 2 * a;
+            a = b;
+            b = c;
+        }
+        return b;
+    };
+
+    std::vector<bool> inserted(smalls.size(), false);
+    size_t insertedCount = 0;
+
+    auto binaryInsert = [&](const T &val) {
+        auto pos = std::upper_bound(chain.begin(), chain.end(), val);
+        chain.insert(pos, val);
+    };
+
+    // Always insert the first small associated with the first large
+    if (!smalls.empty()) {
+        binaryInsert(smalls[0]);
+        inserted[0] = true;
+        insertedCount++;
+    }
+
+    // Use Jacobsthal indices to decide how many new smalls to insert each phase
+    for (int k = 2; insertedCount < smalls.size(); ++k) {
+        size_t Jk = jacob(k);
+        size_t Jk_1 = jacob(k - 1);
+        // Indices to insert: (Jk - 1) down to (Jk_1)
+        if (Jk == 0) continue;
+        if (Jk > smalls.size()) Jk = smalls.size();
+        size_t start = (Jk_1 >= 1) ? (Jk_1) : 1;
+        if (start >= Jk) continue;
+        for (size_t idx = Jk - 1; idx >= start; --idx) {
+            if (!inserted[idx]) {
+                binaryInsert(smalls[idx]);
+                inserted[idx] = true;
+                insertedCount++;
+            }
+            if (idx == start) break;
+        }
+    }
+
+    // 6. Insert odd leftover if present
+    if (hasOdd) {
+        auto pos = std::upper_bound(chain.begin(), chain.end(), oddValue);
+        chain.insert(pos, oddValue);
+    }
+
+    // 7. Copy back
+    std::copy(chain.begin(), chain.end(), first);
+}
 };
 	
 std::ostream& operator<<(std::ostream& os, const std::vector<int>& Container);
