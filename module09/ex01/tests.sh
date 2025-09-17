@@ -3,6 +3,13 @@
 # Test cases
 echo "Running tests for RPN program..."
 
+# Test 0
+echo "Test 0:"
+echo "Argument: 1 1 +"
+echo "Output: $(./RPN "1 1 +")"
+echo "Expected: 2"
+echo
+
 # Test 1
 echo "Test 1:"
 echo "Argument: 8 9 * 9 - 9 - 9 - 4 - 1 +"

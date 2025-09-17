@@ -1,7 +1,4 @@
 #include "PmergeMe.hpp"
-#include <iostream>
-#include <vector>
-#include <string>
 
 int main(int argc, char** argv) 
 {
@@ -22,6 +19,7 @@ int main(int argc, char** argv)
 		std::cout << "After: ";
 		std::cout << sorter.getElements();
 		std::cout << "\n";
+		sorter.displayTimes();
     } 
 	catch (const std::exception& e) 
 	{

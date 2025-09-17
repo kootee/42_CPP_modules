@@ -1,6 +1,4 @@
 #include "RPN.hpp"
-#include <iostream>
-#include <stdexcept>
 
 int main(int argc, char** argv) 
 {
@@ -12,13 +10,10 @@ int main(int argc, char** argv)
 
     const std::string expr = argv[1];
     RPN rpn;
-    try 
-	{
+    try {
         double result = rpn.evaluate(expr);
         std::cout << result << "\n";
-    } 
-	catch (const std::exception& e) 
-	{
+    } catch (const std::exception& e) {
         std::cerr << e.what() << "\n";
         return 1;
     }

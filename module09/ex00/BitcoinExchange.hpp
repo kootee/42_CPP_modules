@@ -1,20 +1,24 @@
 #pragma once
 
-#include <string>
 #include <map>
+#include <fstream>
+#include <sstream>
+#include <iostream>
+#include <stdexcept>
+#include <iomanip>
 
-class BitcoinExchange {
-private:
-    std::map<std::string, float> _db;
+class BitcoinExchange 
+{
+	private:
+		std::map<std::string, float> _db;
 
-public:
-    // Canonical form
-    BitcoinExchange();
-    ~BitcoinExchange();
-	BitcoinExchange(const BitcoinExchange& other);
-	BitcoinExchange& operator=(const BitcoinExchange& other);
+	public:
+		BitcoinExchange();
+		~BitcoinExchange();
+		BitcoinExchange(const BitcoinExchange& other);
+		BitcoinExchange& operator=(const BitcoinExchange& other);
 
-    void loadDatabase(const std::string& csvFilePath);
-    void processInputFile(const std::string& inputFilePath) const;
-	float calculateValue(const std::string& date, float amount) const;
+		void loadDatabase(const std::string& csvFilePath);
+		void processInputFile(const std::string& inputFilePath) const;
+		float calculateValue(const std::string& date, float amount) const;
 };

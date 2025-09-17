@@ -1,5 +1,4 @@
 #include "PmergeMe.hpp"
-#include "iterator"
 
 PmergeMe::PmergeMe(const std::vector<std::string>& elements) 
 {
@@ -67,8 +66,6 @@ void PmergeMe::fordJohnsonSort()
 	sortContainer(_dContainer);
 	endTime = std::chrono::high_resolution_clock::now();
 	_lTime = std::chrono::duration<double, std::micro>(endTime - startTime);
-
-	displayTimes();
 }
 
 std::ostream& operator<<(std::ostream& os, const std::vector<int>& Container)
