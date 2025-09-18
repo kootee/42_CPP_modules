@@ -9,7 +9,7 @@
 #include <cmath>
 #include <iterator>
 
-class PmergeMe 
+class PmergeMe
 {	
 	private:
 		std::vector<int>	_vContainer;
@@ -22,7 +22,7 @@ class PmergeMe
 		PmergeMe(const PmergeMe& other) = delete;
 		PmergeMe& operator=(const PmergeMe& other) = delete;
 				
-		public:
+	public:
 		PmergeMe(const std::vector<std::string>& elements);
 		~PmergeMe();
 		
@@ -57,10 +57,12 @@ class PmergeMe
 		template <typename Container>
 		void sortContainer(Container& container) 
 		{
+			using T = typename Container::value_type;
+
 			auto n = container.size();
 			if (n < 2) return;
 
-			std::vector<std::pair<int, int>> pairs;
+			std::vector<std::pair<T, T>> pairs;
 			pairs.reserve(n / 2);
 
 			bool odd = (n % 2) != 0;
@@ -94,21 +96,21 @@ class PmergeMe
 			std::vector<bool> inserted(pend.size(), false);
 			size_t insertedCount = 0;
 
-			if (!pend.empty()) 
+			if (!pend.empty())
 			{
 				binaryInsert(main, pend[0]);
 				inserted[0] = true;
 				insertedCount++;
 			}
 
-			for (int k = 2; insertedCount < pend.size(); ++k) 
+			for (int k = 2; insertedCount < pend.size(); ++k)
 			{
 				size_t Jk = jacobstahl(k);
-				size_t Jk_1 = jacobstahl(k - 1);
+				size_t Jkprev = jacobstahl(k - 1);
 				if (Jk == 0) 
 					continue;
 				if (Jk > pend.size()) Jk = pend.size();
-				size_t start = (Jk_1 >= 1) ? (Jk_1) : 1;
+				size_t start = (Jkprev >= 1) ? (Jkprev) : 1;
 				if (start >= Jk) 
 					continue;
 				for (size_t idx = Jk - 1; idx >= start; --idx) 
