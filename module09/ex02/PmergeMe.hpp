@@ -47,89 +47,149 @@ class PmergeMe
 			(void)size;
 		}
 
-		template<typename Container>
-		void binaryInsert(Container& container, int value)
+		template <typename Container>
+		void binaryInsert(Container& container, const typename Container::value_type& value) 
 		{
-			typename Container::iterator pos = std::upper_bound(container.begin(), container.end(), value);
+			auto pos = std::upper_bound(container.begin(), container.end(), value);
 			container.insert(pos, value);
 		}
 
-		template <typename Container>
-		void sortContainer(Container& container) 
+
+		template<typename T>
+		void addPairs(std::vector<T>& pairs, T& first, T& second, size_t pairSize)
 		{
-			using T = typename Container::value_type;
-
-			auto n = container.size();
-			if (n < 2) return;
-
-			std::vector<std::pair<T, T>> pairs;
-			pairs.reserve(n / 2);
-
-			bool odd = (n % 2) != 0;
-			int oddValue;
-			if (odd) 
-				oddValue = container.back();
-
-			auto it = container.begin();
-			while (std::distance(it, container.end()) >= 2) 
+			for (size_t i = pairSize; i > 0; --i)
 			{
-				int a = *it;
-				int b = *std::next(it);
-				if (a > b) std::swap(a, b);
-				pairs.push_back(std::make_pair(a, b));
-				std::advance(it, 2);
+				pairs.emplace_back(first);
+				first++;
+			}
+			for (size_t i = pairSize; i > 0; --i)
+			{
+				pairs.emplace_back(second);
+				second++;
+			}
+		}
+
+		template <typename Iterator>
+		void swapPairs(Iterator start, Iterator end, int lvl)
+		{
+			int skip = 2 * lvl;
+			for (Iterator it = start; it != end; std::advance(it, skip))
+			{
+				Iterator currPair = std::next(it, lvl - 1);
+				Iterator nextPair = std::next(it, lvl * 2 - 1);
+				if (*currPair > *nextPair)
+				{
+					Iterator startPos = std::next(currPair, - lvl + 1);
+					Iterator endPos = std::next(startPos, lvl);
+					while (startPos != endPos)
+					{
+						std::iter_swap(startPos, std::next(startPos, lvl));
+						startPos++;
+					}
+				}
+			}
+		}
+
+		template <typename srcContainer, typename destContainer, typename T>
+		void copyContainer(const srcContainer& src, destContainer& dest)
+		{
+			dest.clear();
+			for (const T& elem : src) 
+			{
+				dest.push_back(elem);
+			}
+		}
+
+		template <typename Container>
+		void sortContainer(Container& container, int pairSize) 
+		{
+			int pairs = container.size() / pairSize;
+			if (pairs < 2) 
+				return;
+			
+			bool odd = (pairs % 2 != 0) ? 1 : 0;
+
+			auto start = container.begin();
+			auto lastPair = container.begin();
+			std::advance(lastPair, pairSize * pairs);
+			auto end = lastPair;
+			int stepsToLastPair = (odd) ? pairSize : 0;
+			std::advance(end, -stepsToLastPair);
+
+			swapPairs(start, end, pairSize);
+			
+			// Sort pairs recursively until not possible anymore
+			if (container.size() / (pairSize * 2) >= 2)
+				sortContainer(container, pairSize * 2);
+
+			// Create main and pend containers
+			std::vector<typename Container::iterator> main;
+			std::vector<typename Container::iterator> pend;
+
+			// Init main and pend
+			int b1Index = pairSize - 1; 
+			int a1Index = (pairSize * 2) - 1;;
+			main.insert(main.end(), std::next(container.begin(), b1Index));
+			main.insert(main.end(), std::next(container.begin(), a1Index));
+
+			for (int i = 4; i < pairs; i += 2)
+			{
+				int bIndex = pairSize * (i - 1) - 1;
+				int aIndex = pairSize * (i - 1);
+
+				auto insertPend = container.begin();
+				std::advance(insertPend, bIndex);
+				pend.insert(pend.end(), insertPend);
+
+				auto insertMain = container.begin();
+				std::advance(insertMain, aIndex);
+				main.insert(main.end(), insertMain);
+			}
+			if (odd)
+			{
+				auto oddPosition = end;
+				std::advance(oddPosition, pairSize - 1);
+				pend.insert(pend.end(), oddPosition);
 			}
 
-			Container aChain;
-			reserveIfVector(aChain, pairs.size());
-			for (auto &p : pairs) 
-				aChain.push_back(p.second);
-			sortContainer(aChain);
 
-			Container main = aChain;
-
-			Container pend;
-			reserveIfVector(pend, pairs.size());
-			for (auto &p : pairs)
-				pend.push_back(p.first);
+			std::vector<int> mainVec;
+			for (size_t i = 0; i < main.size(); ++i)
+				mainVec.push_back(*main[i]);
+			std::vector<int> pendVec;
+			for (size_t i = 0; i < pend.size(); ++i)
+				pendVec.push_back(*pend[i]);
 
 			std::vector<bool> inserted(pend.size(), false);
 			size_t insertedCount = 0;
 
 			if (!pend.empty())
 			{
-				binaryInsert(main, pend[0]);
+				binaryInsert(mainVec, pendVec[0]);
 				inserted[0] = true;
 				insertedCount++;
 			}
 
-			for (int k = 2; insertedCount < pend.size(); ++k)
+			for (int k = 2; insertedCount < pendVec.size(); ++k)
 			{
 				size_t Jk = jacobstahl(k);
 				size_t Jkprev = jacobstahl(k - 1);
-				if (Jk == 0) 
-					continue;
-				if (Jk > pend.size()) Jk = pend.size();
-				size_t start = (Jkprev >= 1) ? (Jkprev) : 1;
-				if (start >= Jk) 
-					continue;
-				for (size_t idx = Jk - 1; idx >= start; --idx) 
+
+				if (Jk > pendVec.size())
+					Jk = pendVec.size();
+
+				size_t firstIdx = (Jkprev >= 1) ? (Jkprev) : 1;
+				for (size_t idx = Jk - 1; idx >= firstIdx; --idx) 
 				{
-					if (!inserted[idx]) 
+					if (!inserted[idx])
 					{
-						binaryInsert(main, pend[idx]);
+						binaryInsert(mainVec, pendVec[idx]);
 						inserted[idx] = true;
 						insertedCount++;
 					}
-					if (idx == start) 
-						break;
 				}
 			}
-
-			if (odd)
-				binaryInsert(main, oddValue);
-
-			container = main;
 		}
 };
 	

@@ -1,11 +1,12 @@
 #include "PmergeMe.hpp"
+#include "iterator"
 
-PmergeMe::PmergeMe(const std::vector<std::string>& elements)
+PmergeMe::PmergeMe(const std::vector<std::string>& elements) 
 {
 	processInput(elements);
 }
 
-PmergeMe::~PmergeMe()
+PmergeMe::~PmergeMe() 
 {
 	_vContainer.clear();
 	_dContainer.clear();
@@ -25,13 +26,13 @@ std::vector<int> PmergeMe::getElements()
     return _vContainer;
 }
 
-static void checkInput(const std::vector<std::string>& args)
+static void checkInput(const std::vector<std::string>& args) 
 {
-	for (const std::string& arg : args)
+	for (const std::string& arg : args) 
 	{
-		for (char c : arg)
+		for (char c : arg) 
 		{
-			if (!std::isdigit(c))
+			if (!std::isdigit(c)) 
 				throw std::invalid_argument("Error: Invalid input.");
 		}
 		if (std::stol(arg) < 0)
@@ -39,10 +40,10 @@ static void checkInput(const std::vector<std::string>& args)
 	}
 }
 
-void PmergeMe::processInput(const std::vector<std::string>& args)
+void PmergeMe::processInput(const std::vector<std::string>& args) 
 {
     checkInput(args);
-    for (const std::string& arg : args)
+    for (const std::string& arg : args) 
 	{
         int num = std::stoi(arg);
         _vContainer.emplace_back(num);
@@ -50,7 +51,7 @@ void PmergeMe::processInput(const std::vector<std::string>& args)
     }
 }
 
-int PmergeMe::jacobstahl(int n)
+int PmergeMe::jacobstahl(int n) 
 {
 	return static_cast<int>(std::round((std::pow(2, n + 1) + std::pow(-1, n)) / 3));
 }
@@ -58,14 +59,16 @@ int PmergeMe::jacobstahl(int n)
 void PmergeMe::fordJohnsonSort()
 {
 	auto startTime = std::chrono::high_resolution_clock::now();
-	sortContainer(_vContainer);
+	sortContainer(_vContainer, 1);
 	auto endTime = std::chrono::high_resolution_clock::now();
 	_vTime = std::chrono::duration<double, std::micro>(endTime - startTime);
 	
 	startTime = std::chrono::high_resolution_clock::now();
-	sortContainer(_dContainer);
+	sortContainer(_dContainer, 1);
 	endTime = std::chrono::high_resolution_clock::now();
 	_lTime = std::chrono::duration<double, std::micro>(endTime - startTime);
+
+	displayTimes();
 }
 
 std::ostream& operator<<(std::ostream& os, const std::vector<int>& Container)
